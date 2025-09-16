@@ -1,4 +1,4 @@
-// src\app\(dashboard)\dashboard\daily-content\DailyContentClient.tsx
+// src\app\(dashboard)\dashboard\daily-content\DailyContentClient.tsx 
 "use client";
 import React from "react";
 import { useSearchParams } from "next/navigation";
