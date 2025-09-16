@@ -51,7 +51,7 @@ export default function MediaLibrary({
         {/* {active === "Guided Breathwork" && <GuidedBreathworkPage />} */}
         {active === "Guided Breathwork" && <GuidedBreathwork/>}
         {/* {active === "Guided Meditation" && <GuidedMeditationPage />} */}
-        {active === "Guided Meditation" && <GuidedMeditation/>
+        {active === "Guided Meditation" && <GuidedMeditation/>}
         {active === "Video of the Day" && <VideoOfTheDay />}
         {active === "Sales Training" && <SalesTraining />}
       </div>
