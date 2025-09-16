@@ -1,8 +1,10 @@
-// src/app/(dashboard)/dashboard/components/DailyContent/index.tsx
+// src\app\(dashboard)\dashboard\daily-content\page.tsx
 "use client";
 import React from "react";
 import QuotesPage from "./quotes/page";
-import BuzzwordsPage from "./buzzwords/page";
+// import BuzzwordsPage from "./buzzwords/page";
+import { Buzzwords as BuzzwordsPage } from "./buzzwords/page";
+
 import { EMPTY_ICONS } from "../components/emptyIcons";
 
 type EmptyStateConfig = {
@@ -31,6 +33,7 @@ export default function DailyContent({ selectedSubTab }: { selectedSubTab?: stri
     return <QuotesPage emptyStateConfig={quotesEmptyConfig} />;
   }
   if (selectedSubTab === "Buzzwords") {
+    // return <BuzzwordsPage emptyStateConfig={buzzwordsEmptyConfig} />;
     return <BuzzwordsPage emptyStateConfig={buzzwordsEmptyConfig} />;
   }
 
