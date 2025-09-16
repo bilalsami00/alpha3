@@ -2,7 +2,8 @@
 "use client";
 import React from "react";
 import QuotesPage from "./quotes/page";
-import BuzzwordsPage from "./buzzwords/page";
+// import BuzzwordsPage from "./buzzwords/page";
+import BuzzwordsPage from "./buzzwords/Buzzwords";
 import { EMPTY_ICONS } from "../components/emptyIcons";
 
 type EmptyStateConfig = {
