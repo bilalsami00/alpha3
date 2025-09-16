@@ -1,10 +1,14 @@
-// src\app\(dashboard)\dashboard\components\MediaLibrary\index.tsx
+// src\app\(dashboard)\dashboard\media-library\page.tsx
 "use client";
 import React, { useEffect, useState } from "react";
-import GuidedBreathworkPage from "./guided-breathwork/page";
-import GuidedMeditationPage from "./guided-meditation/page";
-import VideoOfTheDayPage from "./video-of-the-day/page";
-import SalesTrainingPage from "./sales-training/page";
+// import GuidedBreathworkPage from "./guided-breathwork/page";
+import GuidedBreathwork from "./guided-breathwork/GuidedBreathwork";
+// import GuidedMeditationPage from "./guided-meditation/page";
+import GuidedMeditation from "./guided-meditation/GuidedMeditation";
+// import VideoOfTheDayPage from "./video-of-the-day/page";
+import VideoOfTheDay from "./video-of-the-day/VideoOfTheDay";
+// import SalesTrainingPage from "./sales-training/page";
+ import SalesTraining from "./sales-training/SalesTraining";
 
 const TABS = [
   "Guided Breathwork",
@@ -44,10 +48,12 @@ export default function MediaLibrary({
       {/* </div> */}
 
       <div className="flex items-center justify-between mb-6 sm:mt-6 2xl:mt-12 ">
-        {active === "Guided Breathwork" && <GuidedBreathworkPage />}
-        {active === "Guided Meditation" && <GuidedMeditationPage />}
-        {active === "Video of the Day" && <VideoOfTheDayPage />}
-        {active === "Sales Training" && <SalesTrainingPage />}
+        {/* {active === "Guided Breathwork" && <GuidedBreathworkPage />} */}
+        {active === "Guided Breathwork" && <GuidedBreathwork/>}
+        {/* {active === "Guided Meditation" && <GuidedMeditationPage />} */}
+        {active === "Guided Meditation" && <GuidedMeditation/>
+        {active === "Video of the Day" && <VideoOfTheDay />}
+        {active === "Sales Training" && <SalesTraining />}
       </div>
     </div>
   );
