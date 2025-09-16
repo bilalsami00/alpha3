@@ -187,8 +187,6 @@ export default function HallOfFame() {
     <div className="w-full">
       <div className="flex items-center justify-between mb-6 sm:mt-6 2xl:mt-12">
         <h2 className="txt-24 font-semibold">Hall of Fame</h2>
-        {/* <div className="flex items-center gap-4">
-          <button */}
           <div className="flex items-center gap-4">
           {items.length > 0 && (
             <button

@@ -1,3 +1,4 @@
+// src\app\(dashboard)\dashboard\daily-content\buzzwords\Buzzwords.tsx
 "use client";
 import React, { useMemo, useState, useEffect } from "react";
 import { useToastContext } from "../../lib/ToastContext";
@@ -99,12 +100,8 @@ export default function Buzzwords({
 
   return (
     <div className="w-full">
-      {/* ...rest of UI exactly as you already have... */}
       <div className="flex items-center justify-between mb-6 sm:mt-6 2xl:mt-12">
         <h2 className="txt-24 font-semibold">Buzzwords</h2>
-
-        {/* <div className="flex items-center gap-4">
-          <button */}
           <div className="flex items-center gap-4">
           {items.length > 0 && (
             <button

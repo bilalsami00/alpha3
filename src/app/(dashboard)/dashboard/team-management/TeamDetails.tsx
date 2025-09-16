@@ -372,17 +372,6 @@ export default function TeamDetails({
           <Image src="/authBack-button.svg" alt="Back" width={32} height={32} />
         </button>
         <h2 className="txt-24 font-semibold">{team.name}</h2>
-        {/* <div className="ml-auto">
-          <button
-            onClick={() => {
-              setEditingMember(null);
-              setAddOpen(true);
-            }}
-            className="px-4 py-2 txt-16 rounded-lg bg-[#25292A] text-white"
-          >
-            Add Team Member
-          </button>
-        </div> */}
         <div className="ml-auto">
           {members.length > 0 && (
             <button
