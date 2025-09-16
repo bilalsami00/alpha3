@@ -187,16 +187,21 @@ export default function HallOfFame() {
     <div className="w-full">
       <div className="flex items-center justify-between mb-6 sm:mt-6 2xl:mt-12">
         <h2 className="txt-24 font-semibold">Hall of Fame</h2>
-        <div className="flex items-center gap-4">
-          <button
+        {/* <div className="flex items-center gap-4">
+          <button */}
+          <div className="flex items-center gap-4">
+          {items.length > 0 && (
+            <button
             onClick={openAdd}
             className="px-4 py-2 bg-[#25292A] text-white rounded-lg txt-16"
           >
             Add to Hall of Fame
           </button>
+          )}
         </div>
       </div>
 
+      {items.length > 0 && (
       <div className="mb-4">
         <SearchBar
           value={searchQuery}
@@ -207,6 +212,7 @@ export default function HallOfFame() {
           placeholder="Search team members"
         />
       </div>
+      )}
 
       <div className="bg-white rounded shadow- sm overflow-hidden">
         <GenericTable<HallItem>

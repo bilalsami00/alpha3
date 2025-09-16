@@ -406,7 +406,8 @@ export default function TeamManagement({
       <div className="flex items-center justify-between mb-6 sm:mt-6 2xl:mt-12">
         <h2 className="txt-24 font-semibold">Team Management</h2>
         {/* top-right create button */}
-        {createButton}
+        {/* {createButton} */}
+        {teams.length > 0 && createButton}
       </div>
 
       {/* Search */}

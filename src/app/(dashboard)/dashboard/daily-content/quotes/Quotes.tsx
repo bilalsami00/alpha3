@@ -1,3 +1,4 @@
+//  src\app\(dashboard)\dashboard\daily-content\Quotes\Quotes.tsx
 "use client";
 import React, { useMemo, useState, useEffect } from "react";
 import { useToastContext } from "../../lib/ToastContext";
@@ -97,8 +98,11 @@ export default function Quotes({
     <div className="w-full">
       <div className="flex items-center justify-between mb-6 sm:mt-6 2xl:mt-12">
         <h2 className="txt-24 font-semibold">Quotes</h2>
-        <div className="flex items-center gap-4">
-          <button
+        {/* <div className="flex items-center gap-4">
+          <button */}
+          <div className="flex items-center gap-4">
+          {items.length > 0 && (
+            <button
             onClick={() => {
               setEditing(null);
               setAddOpen(true);
@@ -107,6 +111,7 @@ export default function Quotes({
           >
             Add Quote
           </button>
+          )}
         </div>
       </div>
 
