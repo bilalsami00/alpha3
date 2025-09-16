@@ -50,7 +50,8 @@
 // src/app/(dashboard)/dashboard/daily-content/page.tsx
 "use client";
 import React from "react";
-import QuotesPage from "./quotes/page";
+// import QuotesPage from "./quotes/page";
+import QuotesPage from "./quotes/Quotes";
 import BuzzwordsPage from "./buzzwords/Buzzwords";
 import { EMPTY_ICONS } from "../components/emptyIcons";
 import { useSearchParams } from "next/navigation";
