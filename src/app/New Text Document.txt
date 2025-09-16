@@ -1,0 +1,66 @@
+src/app/(dashboard)/dashboard/
+├─ layout.tsx                 // server layout for the dashboard (shell)
+├─ page.tsx                   // optional redirect -> /dashboard/users
+├─ users/
+│  ├─ page.tsx                // route -> /dashboard/users
+│  ├─ types.ts
+│  ├─ usersData.ts
+│  └─ ViewModal.tsx
+├─ team-management/
+│  ├─ page.tsx
+│  ├─ TeamDetails.tsx
+│  ├─ TeamTable.tsx
+│  ├─ teamMembersData.ts
+│  ├─ teamData.ts
+│  ├─ RemoveModal.tsx
+│  ├─ CreateTeamModal.tsx
+│  ├─ AddMemberModal.tsx
+│  └─ TeamMember/
+│     ├─ TeamMemberSearch.tsx
+│     └─ StatusDropdown.tsx
+├─ daily-content/
+│  ├─ page.tsx
+│  ├─ data.ts
+│  ├─ SharedCalendar.tsx
+│  ├─ usePaginatedList.ts
+│  ├─ AddEditItem.tsx
+│  └─ Quotes/
+│     ├─ Quotes.tsx
+│     └─ QuotesTable.tsx
+│  └─ Buzzwords/
+│     ├─ Buzzwords.tsx
+│     └─ BuzzwordsTable.tsx
+├─ media-library/
+│  ├─ page.tsx
+│  ├─ ActionMenuMedia.tsx
+│  ├─ mediaData.ts
+│  ├─ MediaModal.tsx
+│  ├─ MediaTable.tsx
+│  ├─ GuidedBreathwork.tsx
+│  ├─ GuidedMeditation.tsx
+│  ├─ SalesTraining.tsx
+│  └─ VideoOfTheDay.tsx
+├─ hall-of-fame/
+│  ├─ page.tsx
+│  ├─ data.ts
+│  └─ AddEditHallModal.tsx
+└─ sales-manual/
+   ├─ page.tsx
+   ├─ ActionMenu.tsx
+   ├─ AddEditSalesModal.tsx
+   ├─ salesdata.ts
+   ├─ RepsChecklist.tsx
+   ├─ FundamentalScript.tsx
+   └─ SalesBible.tsx
+
+// shared UI components used across routes
+src/app/(dashboard)/dashboard/components/
+├─ BaseModal.tsx
+├─ ConfirmModal.tsx
+├─ EmptyState.tsx
+├─ GenericTable.tsx
+├─ InlineSelect.tsx
+├─ Pagination.tsx
+├─ SearchBar.tsx
+├─ ToastManager.tsx
+└─ emptyIcons.ts
