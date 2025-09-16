@@ -170,15 +170,15 @@ export default function CreateNewPassword() {
               {/* Error message with fixed height and opacity transition */}
               <p
                 className={`text-[#25292A] flex gap-1 text-xs mt-1 transition-opacity duration-100 ${
-                  errors.password ? "opacity-100" : "opacity-0"
+                  errors.password ? "opacity-100 text-red-500" : "opacity-0"
                 }`}
               >
-                <Image
+                {/* <Image
                   src="/authIcons/info-circle.svg"
                   alt="warning"
                   width={16}
                   height={16}
-                />{" "}
+                />{" "} */}
                 {errors.password ?? "\u00A0"}
               </p>
             </div>
@@ -235,15 +235,15 @@ export default function CreateNewPassword() {
               {/* Error message with fixed height and opacity transition */}
               <p
                 className={`text-[#25292A] flex gap-1 text-xs mt-1 transition-opacity duration-100 ${
-                  errors.confirmPassword ? "opacity-100" : "opacity-0"
+                  errors.confirmPassword ? "opacity-100 text-red-500" : "opacity-0"
                 }`}
               >
-                <Image
+                {/* <Image
                   src="/authIcons/info-circle.svg"
                   alt="warning"
                   width={16}
                   height={16}
-                />{" "}
+                />{" "} */}
                 {errors.confirmPassword ?? "\u00A0"}
               </p>
             </div>
