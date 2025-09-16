@@ -1,9 +1,9 @@
-// src\app\(dashboard)\dashboard\daily-content\DailyContentClient.tsx 
+// src\app\(dashboard)\dashboard\daily-content\DailyContentClient.tsx
 "use client";
 import React from "react";
-import { useSearchParams } from "next/navigation";
 import QuotesPage from "./quotes/Quotes";
 import BuzzwordsPage from "./buzzwords/Buzzwords";
+import { useSearchParams } from "next/navigation";
 import { EMPTY_ICONS } from "../components/emptyIcons";
 
 type EmptyStateConfig = {
