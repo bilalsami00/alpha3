@@ -221,8 +221,8 @@ export default function GuidedBreathwork({
 
       <ConfirmModal
         open={confirm.open}
-        title="Delete media"
-        description="Are you sure you want to delete this media item? This action cannot be undone."
+        title="Are you sure you want to delete this video?"
+        description="This action cannot be undone. The video will be permanently removed from guided breathwork sessions."
         intent="danger"
         confirmLabel="Delete"
         onCancel={() => setConfirm({ open: false })}

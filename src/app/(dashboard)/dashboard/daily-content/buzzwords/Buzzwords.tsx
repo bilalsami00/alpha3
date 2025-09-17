@@ -92,8 +92,8 @@ export default function Buzzwords({
   const effectiveEmptyState = (
     <EmptyState
       icon={emptyStateConfig?.icon}
-      title={emptyStateConfig?.title ?? "No buzzwords yet"}
-      subtitle={emptyStateConfig?.subtitle ?? "Add a buzzword to populate this list."}
+      title={emptyStateConfig?.title ?? "No buzzwords add yet"}
+      subtitle={emptyStateConfig?.subtitle ?? "Add a new buzzword to energize the team and keep the lingo fresh."}
       action={emptyAction}
     />
   );

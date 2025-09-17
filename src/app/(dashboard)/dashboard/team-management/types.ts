@@ -1,4 +1,4 @@
-// src/app/(dashboard)/dashboard/components/TeamManagement/types.ts
+// src\app\(dashboard)\dashboard\team-management\types.ts
 export type MemberStatusFilter = "All" | "Onboard" | "Invited";
 
 export type Team = {

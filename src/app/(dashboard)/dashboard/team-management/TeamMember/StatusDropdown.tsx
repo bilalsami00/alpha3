@@ -121,8 +121,8 @@ export default function StatusDropdown({
           className="absolute top-11 right-0 w-[180px] bg-white rounded-lg shadow-sm z-[60] overflow-hidden"
           style={{
             border: "1px solid #E9EDEE",
-            paddingTop: 8,
-            paddingBottom: 8,
+            // paddingTop: 8,
+            // paddingBottom: 8,
           }}
           onKeyDown={(e) => {
             const items = Array.from(

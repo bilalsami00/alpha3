@@ -60,7 +60,9 @@ export default function AddEditItem({
 
   // refs used to control scrolling + focus behavior
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
-  const mainInputRef = useRef<HTMLInputElement | HTMLTextAreaElement | null>(null);
+  const mainInputRef = useRef<HTMLInputElement | HTMLTextAreaElement | null>(
+    null
+  );
 
   const MAX_CHARS = DEFAULT_MAX;
 
@@ -284,7 +286,7 @@ export default function AddEditItem({
   return (
     // <div className="max-w-[486px] max-xl:h-[450px] max-2xl:max-h-[600px] rounded-xl bg-white overflow-hidden flex flex-col custom-scroll">
     <div className="max-w-[486px] max-2xl:max-h-[500px] rounded-xl bg-white overflow-hidden flex flex-col custom-scroll">
-    <style>{`@keyframes slideIn { 0% { opacity: 0; transform: translateX(40px) translateY(-6px) scale(.995); } 60% { opacity: 1; transform: translateX(-8px) translateY(2px) scale(1.01); } 100% { opacity: 1; transform: translateX(0) translateY(0) scale(1); } }`}</style>
+      <style>{`@keyframes slideIn { 0% { opacity: 0; transform: translateX(40px) translateY(-6px) scale(.995); } 60% { opacity: 1; transform: translateX(-8px) translateY(2px) scale(1.01); } 100% { opacity: 1; transform: translateX(0) translateY(0) scale(1); } }`}</style>
 
       <div className="flex items-center justify-between p-4 border-b border-[color:var(--Neutral-Grey-20,#E9EDEE)]">
         <h3 className="txt-24 font-medium">
@@ -302,7 +304,10 @@ export default function AddEditItem({
       </div>
 
       {/* SCROLLABLE MIDDLE */}
-      <div ref={scrollContainerRef} className="p-6 overflow-auto min-h-0 flex-1 scroller">
+      <div
+        ref={scrollContainerRef}
+        className="p-6 overflow-auto min-h-0 flex-1 scroller"
+      >
         <div className="mb-4">
           <div className="txt-14 font-medium mb-2">Schedule Date</div>
           <div className="relative">
@@ -403,7 +408,9 @@ export default function AddEditItem({
               }}
               disabled={addAnotherDisabled}
               aria-disabled={addAnotherDisabled}
-              className={`text-[#111827] font-medium flex items-center gap-2 mt-3 ${addAnotherDisabled ? "opacity-40 cursor-not-allowed" : ""}`}
+              className={`text-[#111827] font-medium flex items-center gap-2 mt-3 ${
+                addAnotherDisabled ? "opacity-40 cursor-not-allowed" : ""
+              }`}
             >
               <span className="text-2xl leading-none">+</span>{" "}
               <span className="txt-14">Add another</span>
@@ -480,7 +487,7 @@ export default function AddEditItem({
       <div className="flex items-center justify-end gap-4 bg-[#F2F5F6] px-6 py-4 border-t border-[color:var(--Neutral-Grey-20,#E9EDEE)]">
         <button
           onClick={onCancel}
-          className="w-28 h-10 px-3 py-2 txt-16 font-semibold rounded-lg bg-white border border-[color:var(--Neutral-Grey-10,#E9EDEE)]"
+          className="w-25 h-10 px-3 py-2 txt-16 font-semibold rounded-lg bg-white border border-[color:var(--Neutral-Grey-10,#E9EDEE)]"
         >
           Cancel
         </button>
@@ -492,7 +499,7 @@ export default function AddEditItem({
               ? !(text.trim() && date)
               : entries.length === 0 && !(text.trim() && date))
           }
-          className="w-36 h-10 px-3 py-2 txt-16 font-semibold rounded-lg bg-[#0E0E0E] text-white disabled:opacity-50 disabled:cursor-not-allowed"
+          className="min-w-25 max-w-36 h-10 px-3 py-2 txt-16 font-semibold rounded-lg bg-[#0E0E0E] text-white disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {saving
             ? mode === "edit"
@@ -502,6 +509,26 @@ export default function AddEditItem({
             ? "Save Changes"
             : `Add`}
         </button>
+        {/* <button
+          onClick={handleSave}
+          disabled={
+            saving ||
+            (mode === "edit"
+              ? !(text.trim() && date)
+              : entries.length === 0 && !(text.trim() && date))
+          }
+          className={`${
+            mode === "edit" ? "w-33" : "w-25"
+          } h-10 px-3 py-2 txt-16 font-semibold rounded-lg bg-[#0E0E0E] text-white disabled:opacity-50 disabled:cursor-not-allowed`}
+        >
+          {saving
+            ? mode === "edit"
+              ? "Saving…"
+              : "Adding…"
+            : mode === "edit"
+            ? "Save Changes"
+            : "Add"}
+        </button> */}
       </div>
     </div>
   );
@@ -526,7 +553,10 @@ function PreviewCard({
 }) {
   const isAnimating = animateUid === e.uid;
   const [cardCalendarOpen, setCardCalendarOpen] = useState(false);
-  const [cardCalendarPos, setCardCalendarPos] = useState<{ left: number; top: number } | null>(null);
+  const [cardCalendarPos, setCardCalendarPos] = useState<{
+    left: number;
+    top: number;
+  } | null>(null);
 
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const cardPortalRef = useRef<HTMLDivElement | null>(null);
@@ -556,7 +586,10 @@ function PreviewCard({
     document.addEventListener(CLOSE_ALL_CALENDARS_EVENT, handleGlobalClose);
     return () => {
       document.removeEventListener("pointerdown", handlePointerDown);
-      document.removeEventListener(CLOSE_ALL_CALENDARS_EVENT, handleGlobalClose);
+      document.removeEventListener(
+        CLOSE_ALL_CALENDARS_EVENT,
+        handleGlobalClose
+      );
     };
   }, [cardCalendarOpen]);
 
@@ -588,7 +621,9 @@ function PreviewCard({
       className="bg-white rounded-lg p-3 border w-full border-[var(--Neutral-Grey-10,#E9EDEE)]"
       style={{
         width: 420,
-        ...(isAnimating ? { animation: "slideIn 380ms cubic-bezier(.2,.9,.25,1)" } : {}),
+        ...(isAnimating
+          ? { animation: "slideIn 380ms cubic-bezier(.2,.9,.25,1)" }
+          : {}),
       }}
     >
       <div className="flex mb-2 flex-col-reverse w-full">
@@ -607,7 +642,11 @@ function PreviewCard({
               }
             }}
             onKeyDown={(ev) => {
-              if (ev.key === "Enter" || ev.key === " " || ev.key === "ArrowDown") {
+              if (
+                ev.key === "Enter" ||
+                ev.key === " " ||
+                ev.key === "ArrowDown"
+              ) {
                 ev.preventDefault();
                 if (!cardCalendarOpen) openCardCalendar();
               }
@@ -668,7 +707,11 @@ function PreviewCard({
         </div>
 
         <div className="flex justify-end gap-2">
-          <button onClick={onRemove} className="p-1 rounded hover:bg-neutral-100" aria-label="Delete">
+          <button
+            onClick={onRemove}
+            className="p-1 rounded hover:bg-neutral-100"
+            aria-label="Delete"
+          >
             <Image
               src="/dashboardIcons/DailyContent/trash-black.svg"
               alt="Delete"
@@ -686,7 +729,9 @@ function PreviewCard({
           <input
             ref={taRef as any}
             value={e.text}
-            onChange={(ev) => onUpdate({ text: ev.target.value.slice(0, maxChars) })}
+            onChange={(ev) =>
+              onUpdate({ text: ev.target.value.slice(0, maxChars) })
+            }
             className="w-full px-3 txt-12 rounded-lg mb-0 bg-[#F2F5F6] focus:outline-none focus-green h-14"
             placeholder={`Add ${label} (Max ${maxChars} characters)`}
           />
@@ -694,7 +739,9 @@ function PreviewCard({
           <textarea
             ref={taRef as any}
             value={e.text}
-            onChange={(ev) => onUpdate({ text: ev.target.value.slice(0, maxChars) })}
+            onChange={(ev) =>
+              onUpdate({ text: ev.target.value.slice(0, maxChars) })
+            }
             rows={4}
             maxLength={maxChars}
             className="w-full p-3 txt-12 rounded-lg mb-0 resize-none bg-[#F2F5F6] focus:outline-none focus-green h-24"

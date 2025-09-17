@@ -128,7 +128,7 @@ export default function SidebarClient() {
                           )}
                         </div>
                       ) : (
-                        <Link href={item.href || `/dashboard/${toSlug(item.name)}`} onClick={() => isMobile && setSidebarOpen(false)} className={`flex items-center px-4 py-2 txt-16 rounded-md transition-colors ${isTabSelected(item.href) ? "bg-brand text-[#0E0E0E] font-medium" : "font-normal hover:bg-neutral-100"}`}>
+                        <Link href={item.href || `/dashboard/${toSlug(item.name)}`} onClick={() => isMobile && setSidebarOpen(false)} className={`flex items-center px-4 py-2 txt-16 rounded-md transition-colors ${isTabSelected(item.href) ? "bg-brand text-[#0E0E0E] font-medium" : "text-text-col font-normal hover:bg-neutral-100"}`}>
                           <div className="w-6 h-6 mr-3 flex items-center justify-center">
                             <Image src={item.icon || ""} alt={item.name} width={24} height={24} className={`object-contain ${isTabSelected(item.href) ? "filter brightness-0" : ""}`} />
                           </div>

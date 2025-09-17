@@ -416,7 +416,8 @@ export default function TeamDetails({
           <EmptyState
             icon={EMPTY_ICONS.teams}
             title="No team members added yet"
-            subtitle={`Start building your ${team.name} team by adding your first employee.`}
+            // subtitle={`Start building your ${team.name} team by adding your first employee.`}
+            subtitle={`Start building your Alpha Arc team by adding your first employee.`}
             action={
               <button
                 onClick={() => setAddOpen(true)}

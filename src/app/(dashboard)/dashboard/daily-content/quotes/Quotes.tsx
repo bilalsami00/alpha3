@@ -88,8 +88,8 @@ export default function Quotes({
   const effectiveEmptyState = (
     <EmptyState
       icon={emptyStateConfig?.icon}
-      title={emptyStateConfig?.title ?? "No quotes"}
-      subtitle={emptyStateConfig?.subtitle ?? ""}
+      title={emptyStateConfig?.title ?? "No quote add yet"}
+      subtitle={emptyStateConfig?.subtitle ?? "Add a motivational quote to inspire your team and set the tone for success."}
       action={emptyAction}
     />
   );
