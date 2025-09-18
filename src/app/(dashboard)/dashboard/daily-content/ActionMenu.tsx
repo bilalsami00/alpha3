@@ -43,14 +43,18 @@ export default function ActionMenu({
       </button>
 
       {open && (
-        <div className="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg z-50 border border-gray-200">
-          <div className="py-1">
+        <div
+          // className="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg z-50 border border-gray-200"
+          className="fixed right-10  rounded-lg bg-white shadow-[4px_4px_40px_0px_#00000005] border border-[var(--Neutral-Grey-0,#F2F5F6)] w-45 max-w-[175px] z-50"
+        >
+          <div className="py- 1">
             <button
               onClick={() => {
                 onEdit();
                 setOpen(false);
               }}
-              className="flex items-center w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
+              // className="flex items-center w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
+              className="flex items-center w-full h-[44px] text-left px-4 py-2 txt-14 rounded-t-lg hover:bg-gray-100 border-b border-[var(--Neutral-Grey-10,#E9EDEE)]"
             >
               <Image
                 src="/dashboardIcons/edit.svg"
@@ -66,7 +70,8 @@ export default function ActionMenu({
                 onDelete();
                 setOpen(false);
               }}
-              className="flex items-center w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
+              // className="flex items-center w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
+              className="flex items-center w-full h-[44px] text-left px-4 py-2 txt-14 rounded-b-lg hover:bg-gray-100"
             >
               <Image
                 src="/dashboardIcons/trash.svg"

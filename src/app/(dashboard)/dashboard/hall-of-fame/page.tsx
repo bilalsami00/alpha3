@@ -149,7 +149,7 @@
 
 // // // //         return (
 // // // //           <div className="flex items-center gap-3">
-             
+
 // // // //             <div>
 // // // //               <div className="txt-14">{m.name}</div>
 // // // //             </div>
@@ -382,20 +382,6 @@
 // // // //     </div>
 // // // //   );
 // // // // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // // // // File: src/app/(dashboard)/dashboard/components/HallOfFame/index.tsx
 // // // "use client";
@@ -823,19 +809,6 @@
 // // //     </div>
 // // //   );
 // // // }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // // "use client";
 // // import React, { useMemo, useState, useRef, useEffect } from "react";
@@ -1275,7 +1248,6 @@
 // //     </div>
 // //   );
 // // }
-
 
 // // File: src/app/(dashboard)/dashboard/components/HallOfFame/index.tsx
 // "use client";
@@ -1739,14 +1711,6 @@
 //   );
 // }
 
-
-
-
-
-
-
-
-
 // File: src/app/(dashboard)/dashboard/components/HallOfFame/index.tsx
 "use client";
 import React, { useMemo, useState, useRef, useEffect } from "react";
@@ -1852,7 +1816,8 @@ export default function HallOfFame() {
             const name = teamIdToName((row as any).teamId);
             if (name) map.set(mid, name);
           }
-          if ((row as any).teamName) map.set(mid, String((row as any).teamName).trim());
+          if ((row as any).teamName)
+            map.set(mid, String((row as any).teamName).trim());
         }
       }
 
@@ -1863,7 +1828,8 @@ export default function HallOfFame() {
             const name = teamIdToName((row as any).teamId);
             if (name) map.set(rid, name);
           }
-          if ((row as any).teamName) map.set(rid, String((row as any).teamName).trim());
+          if ((row as any).teamName)
+            map.set(rid, String((row as any).teamName).trim());
         }
       }
     });
@@ -1876,15 +1842,21 @@ export default function HallOfFame() {
     if (!m && !row) return "";
 
     // prefer member mapping
-    const mid = m ? ((m as any).id ?? (m as any).memberId ?? null) : null;
-    if (mid != null && memberTeamMap.has(mid)) return memberTeamMap.get(mid) || "";
+    const mid = m ? (m as any).id ?? (m as any).memberId ?? null : null;
+    if (mid != null && memberTeamMap.has(mid))
+      return memberTeamMap.get(mid) || "";
 
     // fallback: check row mapping
-    const rid = row ? ((row as any).id ?? null) : null;
-    if (rid != null && memberTeamMap.has(rid)) return memberTeamMap.get(rid) || "";
+    const rid = row ? (row as any).id ?? null : null;
+    if (rid != null && memberTeamMap.has(rid))
+      return memberTeamMap.get(rid) || "";
 
     // fallback: try numeric teamId fields
-    const memberTeamId = (m as any)?.teamId ?? (m as any)?.team?.id ?? (row as any)?.teamId ?? null;
+    const memberTeamId =
+      (m as any)?.teamId ??
+      (m as any)?.team?.id ??
+      (row as any)?.teamId ??
+      null;
     if (memberTeamId != null) {
       const t = INITIAL_TEAMS.find((tt) => tt.id === Number(memberTeamId));
       if (t) return t.name;
@@ -1955,6 +1927,40 @@ export default function HallOfFame() {
   const paginated = filtered.slice(startIndex, startIndex + rowsPerPage);
 
   // CRUD handlers
+  // const handleAddOrUpdate = async (payload: HallPayload) => {
+  //   if (editing) {
+  //     setItems((prev) =>
+  //       prev.map((p) =>
+  //         p.id === editing.id
+  //           ? {
+  //               ...p,
+  //               title: payload.title,
+  //               classYear: payload.classYear!,
+  //               memberId: payload.memberId,
+  //             }
+  //           : p
+  //       )
+  //     );
+  //     showToast("Hall of Fame has been updated.", "success");
+  //     setEditing(null);
+  //     setModalOpen(false);
+  //     return;
+  //   }
+
+  //   const id = Date.now() + Math.floor(Math.random() * 1000);
+  //   setItems((prev) => [
+  //     {
+  //       id,
+  //       memberId: payload.memberId,
+  //       title: payload.title,
+  //       classYear: payload.classYear!,
+  //     },
+  //     ...prev,
+  //   ]);
+  //   showToast("Member added to Hall of Fame.", "success");
+  //   setModalOpen(false);
+  //   setCurrentPage(1);
+  // };
   const handleAddOrUpdate = async (payload: HallPayload) => {
     if (editing) {
       setItems((prev) =>
@@ -1965,6 +1971,8 @@ export default function HallOfFame() {
                 title: payload.title,
                 classYear: payload.classYear!,
                 memberId: payload.memberId,
+                // use undefined for "no team" to satisfy HallItem type
+                teamId: payload.teamId ?? undefined,
               }
             : p
         )
@@ -1975,6 +1983,7 @@ export default function HallOfFame() {
       return;
     }
 
+    // add new row (persist teamId, use undefined when missing)
     const id = Date.now() + Math.floor(Math.random() * 1000);
     setItems((prev) => [
       {
@@ -1982,6 +1991,7 @@ export default function HallOfFame() {
         memberId: payload.memberId,
         title: payload.title,
         classYear: payload.classYear!,
+        teamId: payload.teamId ?? undefined, // <- use undefined, not null
       },
       ...prev,
     ]);
@@ -2056,9 +2066,7 @@ export default function HallOfFame() {
 
         return (
           <div className="flex items-center gap-3">
-            <div className="txt-14 font-medium">
-              {teamName || "Unassigned"}
-            </div>
+            <div className="txt-14 font-medium">{teamName || "Unassigned"}</div>
           </div>
         );
       },
@@ -2199,28 +2207,37 @@ export default function HallOfFame() {
         />
       )} */}
       {modalOpen && (
-  <AddEditHallModal
-    open={modalOpen}
-    onClose={() => {
-      setModalOpen(false);
-      setEditing(null);
-    }}
-    initial={
-      editing
-        ? {
-            memberId: editing.memberId,
-            classYear: editing.classYear,
-            title: editing.title,
-            // ensure teamId is passed when editing
-            teamId: (editing as any).teamId ?? null,
+        <AddEditHallModal
+          open={modalOpen}
+          onClose={() => {
+            setModalOpen(false);
+            setEditing(null);
+          }}
+          // initial={
+          //   editing
+          //     ? {
+          //         memberId: editing.memberId,
+          //         classYear: editing.classYear,
+          //         title: editing.title,
+          //         // ensure teamId is passed when editing
+          //         teamId: (editing as any).teamId ?? null,
+          //       }
+          //     : undefined
+          // }
+          initial={
+            editing
+              ? {
+                  memberId: editing.memberId,
+                  classYear: editing.classYear,
+                  title: editing.title,
+                  teamId: (editing as any).teamId ?? null,
+                }
+              : undefined
           }
-        : undefined
-    }
-    mode={editing ? "edit" : "add"}
-    onSave={async (payload) => handleAddOrUpdate(payload)}
-  />
-)}
-
+          mode={editing ? "edit" : "add"}
+          onSave={async (payload) => handleAddOrUpdate(payload)}
+        />
+      )}
     </div>
   );
 }
@@ -2269,13 +2286,17 @@ function ActionsCell({
       </button>
 
       {open && (
-        <div className="absolute right-0  rounded-lg bg-white shadow-[4px_4px_40px_0px_#00000005] border border-[var(--Neutral-Grey-0,#F2F5F6)] w-40 z-50">
+        <div
+          // className="fixed right-10  rounded-lg bg-white shadow-[4px_4px_40px_0px_#00000005] border border-[var(--Neutral-Grey-0,#F2F5F6)] w-40 z-50"
+          className="fixed right-10  rounded-lg bg-white shadow-[4px_4px_40px_0px_#00000005] border border-[var(--Neutral-Grey-0,#F2F5F6)] w-45 max-w-[175px] z-50"
+        >
           <button
             onClick={() => {
               setOpen(false);
               onEdit();
             }}
-            className="w-full text-left px-4 py-2 border-b border-b-[var(--Neutral-Grey-20,#D8DFE0)] flex items-center gap-2"
+            // className="w-full text-left px-4 py-2 border-b border-b-[var(--Neutral-Grey-20,#D8DFE0)] flex items-center gap-2"
+            className="flex items-center w-full h-[44px] text-left px-4 py-2 txt-14 hover:bg-gray-100 rounded-t-lg border-b border-[var(--Neutral-Grey-10,#E9EDEE)]"
           >
             <Image
               src="/dashboardIcons/edit.svg"
@@ -2291,7 +2312,8 @@ function ActionsCell({
               setOpen(false);
               onRemove();
             }}
-            className="w-full text-left px-4 py-2 flex items-center gap-2"
+            // className="w-full text-left px-4 py-2 flex items-center gap-2"
+            className="flex items-center w-full h-[44px] text-left px-4 py-2 txt-14 hover:bg-gray-100 rounded-b-lg "
           >
             <Image
               src="/dashboardIcons/close-circle.svg"

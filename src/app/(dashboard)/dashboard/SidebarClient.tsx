@@ -145,7 +145,7 @@ export default function SidebarClient() {
           <div className="mt-6 py-4 bottom-0 bg-white">
             <button onClick={handleLogout} className="w-full h-10 py-2 px-3 flex items-center gap-2 rounded-lg hover:bg-neutral-100 transition-colors">
               <Image src="/dashboardIcons/logout.svg" alt="Logout" width={24} height={24} />
-              <span className="txt-16 font-medium">Logout</span>
+              <span className="txt-16 font-medium text-text-col">Logout</span>
             </button>
           </div>
         </div>

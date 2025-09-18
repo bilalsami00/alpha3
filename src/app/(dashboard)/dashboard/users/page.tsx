@@ -230,12 +230,14 @@ export default function Users() {
           {openMenuId === user.id && (
             <div
               ref={(el) => registerMenuRef(user.id, el)}
-              className="absolute right-4 sm:right-0   sm:-mt-1 w-40 bg-white rounded-md shadow-lg z-50 border border-gray-200"
+              // className="absolute right-4 sm:right-0   sm:-mt-1 w-40 bg-white rounded-md shadow-lg z-50 border border-gray-200"
+              className="fixed right-15  rounded-lg bg-white shadow-[4px_4px_40px_0px_#00000005] border border-[var(--Neutral-Grey-0,#F2F5F6)] w-45 max-w-[175px] z-50"
             >
-              <div className="py-1">
+              <div className="py- 1">
                 <button
                   onClick={() => handleMenuAction(user, "restrict")}
-                  className="flex items-center w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
+                  // className="flex items-center w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
+                  className="flex items-center w-full h-[44px] text-left px-4 py-2 txt-14 rounded-t-lg hover:bg-gray-100 border-b border-[var(--Neutral-Grey-10,#E9EDEE)]"
                 >
                   <Image
                     src={
@@ -252,7 +254,8 @@ export default function Users() {
                 </button>
                 <button
                   onClick={() => handleMenuAction(user, "delete")}
-                  className="flex items-center w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
+                  // className="flex items-center w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
+                  className="flex items-center w-full h-[44px] text-left px-4 py-2 txt-14 rounded-b-lg hover:bg-gray-100 "
                 >
                   <Image
                     src="/dashboardIcons/trash.svg"
@@ -366,7 +369,9 @@ export default function Users() {
   return (
     <div className="w-full h-full">
       {/* Heading */}
-      <h2 className="txt-24 font-semibold mb-6 sm:ml- 6 sm:mt-6 2xl:mt-12">Users</h2>
+      <h2 className="txt-24 font-semibold mb-6 sm:ml- 6 sm:mt-6 2xl:mt-12">
+        Users
+      </h2>
 
       {/* Tabs */}
       <div
@@ -433,40 +438,40 @@ export default function Users() {
       )}
 
       <div className="bg-white rounded shadow-s m overflow-hidden">
+        {/* Table */}
+        <GenericTable<User>
+          columns={activeTab === "request" ? requestColumns : userColumns}
+          data={paginatedUsers}
+          rowKey={(user) => user.id}
+          rowClassName={(r, idx) =>
+            (startIndex + idx) % 2 === 0 ? "bg-white" : "bg-[#F2F5F6]"
+          }
+          emptyState={
+            <EmptyState
+              title={emptyStateCopy[activeTab].title}
+              subtitle={emptyStateCopy[activeTab].subtitle}
+              // className="!w-[357px]"
+            />
+          }
+          tableClassName="sm:ml- 6"
+        />
 
-      {/* Table */}
-      <GenericTable<User>
-        columns={activeTab === "request" ? requestColumns : userColumns}
-        data={paginatedUsers}
-        rowKey={(user) => user.id}
-        rowClassName={(r, idx) => ((startIndex + idx) % 2 === 0 ? "bg-white" : "bg-[#F2F5F6]")}
-
-        emptyState={
-          <EmptyState
-            title={emptyStateCopy[activeTab].title}
-            subtitle={emptyStateCopy[activeTab].subtitle}
-            // className="!w-[357px]"
-          />
-        }
-        tableClassName="sm:ml- 6"
-      />
-
-      {/* Pagination */}
-      {totalItems > 0 && (
-        <div className="">
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={setCurrentPage}
-            rowsPerPage={rowsPerPage}
-            onRowsPerPageChange={(n) => {
-              setRowsPerPage(n);
-              setCurrentPage(1);
-            }}
-            totalItems={totalItems}
-          />
-        </div>
-      )}
+        {/* Pagination */}
+        {totalItems > 0 && (
+          <div className="">
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={setCurrentPage}
+              rowsPerPage={rowsPerPage}
+              onRowsPerPageChange={(n) => {
+                setRowsPerPage(n);
+                setCurrentPage(1);
+              }}
+              totalItems={totalItems}
+            />
+          </div>
+        )}
       </div>
 
       {/* Confirm modal */}
