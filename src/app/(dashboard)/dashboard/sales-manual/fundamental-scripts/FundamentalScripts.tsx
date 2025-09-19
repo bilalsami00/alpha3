@@ -75,13 +75,19 @@ export default function FundamentalScripts({
       } else {
         // EDIT: prefer matching by id, fallback to previous matching logic
         setItems((p) => {
-          const idFromValue = value && typeof value === "object" ? (value as any).id : undefined;
+          const idFromValue =
+            value && typeof value === "object" ? (value as any).id : undefined;
           const idFromInit = init?.id ?? undefined;
           const idToMatch = idFromValue ?? idFromInit;
 
-          const idx = idToMatch !== undefined
-            ? p.findIndex((x) => x.id === idToMatch)
-            : p.findIndex((x) => (init && x.script === init) || x.term === (init?.term ?? init));
+          const idx =
+            idToMatch !== undefined
+              ? p.findIndex((x) => x.id === idToMatch)
+              : p.findIndex(
+                  (x) =>
+                    (init && x.script === init) ||
+                    x.term === (init?.term ?? init)
+                );
 
           if (idx === -1) {
             // no matched item to update — do nothing to avoid accidental insertion
@@ -91,8 +97,10 @@ export default function FundamentalScripts({
           const next = [...p];
           next[idx] = {
             ...next[idx],
-            term: typeof value === "object" ? String(value.term) : String(value),
-            script: typeof value === "object" ? String(value.script) : String(value),
+            term:
+              typeof value === "object" ? String(value.term) : String(value),
+            script:
+              typeof value === "object" ? String(value.script) : String(value),
           };
           return next;
         });
@@ -100,7 +108,10 @@ export default function FundamentalScripts({
       }
     }
 
-    document.addEventListener("salesManual:itemSaved", onSaved as EventListener);
+    document.addEventListener(
+      "salesManual:itemSaved",
+      onSaved as EventListener
+    );
     return () =>
       document.removeEventListener(
         "salesManual:itemSaved",
@@ -108,10 +119,10 @@ export default function FundamentalScripts({
       );
   }, [showToast]);
 
-  useEffect(() => onHasItemsChange?.(items.length > 0), [
-    items.length,
-    onHasItemsChange,
-  ]);
+  useEffect(
+    () => onHasItemsChange?.(items.length > 0),
+    [items.length, onHasItemsChange]
+  );
 
   useEffect(() => {
     console.log(
@@ -166,7 +177,10 @@ export default function FundamentalScripts({
 
               document.dispatchEvent(
                 new CustomEvent("salesManual:requestEdit", {
-                  detail: { type: "fundamentalScript", item: { id: r.id, term: r.term, script: r.script } },
+                  detail: {
+                    type: "fundamentalScript",
+                    item: { id: r.id, term: r.term, script: r.script },
+                  },
                 })
               );
             }
@@ -177,17 +191,12 @@ export default function FundamentalScripts({
     },
   ];
 
-  // function handleDelete(id?: number) {
-  //   if (!id) return;
-  //   setItems((p) => p.filter((x) => x.id !== id));
-  // }
   function handleDelete(id?: number) {
-  if (!id) return;
-  setItems((p) => p.filter((x) => x.id !== id));
-  showToast("Fundamental script deleted.", "info"); // <-- add this
-  setConfirm({ open: false });
-}
-
+    if (!id) return;
+    setItems((p) => p.filter((x) => x.id !== id));
+    showToast("Fundamental script deleted.", "info"); // <-- add this
+    setConfirm({ open: false });
+  }
 
   const emptyAction = (
     <button
@@ -231,18 +240,18 @@ export default function FundamentalScripts({
       )}
 
       {items.length > 0 && (
-      <div className="mb-4 flex items-center gap-4">
-        <div className="flex-1">
-          <SearchBar
-            value={q}
-            onChange={(v) => {
-              setQ(v);
-              setPage(1);
-            }}
-            placeholder="Search sales term"
-          />
+        <div className="mb-4 flex items-center gap-4">
+          <div className="flex-1">
+            <SearchBar
+              value={q}
+              onChange={(v) => {
+                setQ(v);
+                setPage(1);
+              }}
+              placeholder="Search sales term"
+            />
+          </div>
         </div>
-      </div>
       )}
 
       <div className="bg-white rounded-lg overflow-hidden">
@@ -268,7 +277,9 @@ export default function FundamentalScripts({
             <Pagination
               currentPage={page}
               totalPages={totalPages}
-              onPageChange={(p) => setPage(Math.max(1, Math.min(totalPages, p)))}
+              onPageChange={(p) =>
+                setPage(Math.max(1, Math.min(totalPages, p)))
+              }
               rowsPerPage={rowsPerPage}
               onRowsPerPageChange={(n) => {
                 setRowsPerPage(n);

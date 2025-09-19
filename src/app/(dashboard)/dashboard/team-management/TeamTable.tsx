@@ -152,20 +152,6 @@ export default function TeamTable({
       onClick: handleCellClick,
       render: (team) => (
         <div className="flex items-center txt-14 font-medium cursor-pointer w-auto">
-          {/* <div
-            className="w-11 h-11 rounded-full border flex items-center justify-center mr-3 bg-white border-[color:var(--Neutral-Grey-10,#E9EDEE)]"
-            aria-hidden
-          >
-            <span
-              className="txt-18"
-              style={{
-                fontFamily: "SF Pro Display, sans-serif",
-                fontWeight: 700,
-              }}
-            >
-              {team.name.substring(0, 2).toUpperCase()}
-            </span>
-          </div> */}
           <div className="flex flex-col">
             <span className="font-medium">{team.name}</span>
           </div>
@@ -178,7 +164,6 @@ export default function TeamTable({
       width: "502px",
       isClickable: true,
       onClick: handleCellClick, // <-- full TD clickable now
-      // render: (team) => <span className="cursor-pointer">{team.memberCount} members</span>,
       render: (team) => (
         <span className="cursor-pointer">{team.memberCount}</span>
       ),
@@ -206,7 +191,6 @@ export default function TeamTable({
       data={data}
       rowKey={(team) => team.id}
       emptyState={null} // Parent handles EmptyState rendering (so we can show Create button there)
-      // rowClassName={(r) => (r.id % 2 === 0 ? "bg-[#F2F5F6]" : "bg-white")}
       rowClassName={(r, idx) =>
         (startIndex + idx) % 2 === 0 ? "bg-white" : "bg-[#F2F5F6]"
       }

@@ -92,13 +92,6 @@ export default function EmailVerification() {
         <div className="   bg-white  mx-auto md:mx-0 ">
           {/* Back Button */}
           <div onClick={() => router.back()} className="cursor-pointer mb-6">
-            {/* <Image
-              src="/authIcons/authBack-button.svg"
-              height={24}
-              width={24}
-              className="h-10 w-10"
-              alt="left-arrows"
-            /> */}
             <GoArrowLeft className="h-8 w-8"/>
           </div>
 

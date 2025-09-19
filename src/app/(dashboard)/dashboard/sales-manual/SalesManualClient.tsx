@@ -25,7 +25,8 @@ export default function SalesManualClient() {
   );
 
   useEffect(() => {
-    if (controlled && isValidTab(selectedSubTab)) setActive(selectedSubTab as TabName);
+    if (controlled && isValidTab(selectedSubTab))
+      setActive(selectedSubTab as TabName);
   }, [selectedSubTab, controlled]);
 
   // modal state
@@ -48,12 +49,30 @@ export default function SalesManualClient() {
     setModalState({ open: true, mode: "add", type: t });
   }
 
-  function openEditForChecklist(item: { id?: number; category: string; task: string }) {
-    setModalState({ open: true, mode: "edit", type: "repsChecklist", initial: item });
+  function openEditForChecklist(item: {
+    id?: number;
+    category: string;
+    task: string;
+  }) {
+    setModalState({
+      open: true,
+      mode: "edit",
+      type: "repsChecklist",
+      initial: item,
+    });
   }
 
-  function openEditForScript(item: { id?: number; term: string; script: string }) {
-    setModalState({ open: true, mode: "edit", type: "fundamentalScript", initial: item });
+  function openEditForScript(item: {
+    id?: number;
+    term: string;
+    script: string;
+  }) {
+    setModalState({
+      open: true,
+      mode: "edit",
+      type: "fundamentalScript",
+      initial: item,
+    });
   }
 
   return (
@@ -65,8 +84,15 @@ export default function SalesManualClient() {
 
         <div className="flex items-center gap-4">
           {active !== "Sales Bible" && (
-            <button onClick={openAddForActive} className="px-4 py-2 bg-[#25292A] text-white rounded-lg txt-16">
-              {active === "Reps Checklist" ? "Add Checklist Item" : active === "Fundamental Scripts" ? "Add Fundamental Script" : `Add ${active}`}
+            <button
+              onClick={openAddForActive}
+              className="px-4 py-2 bg-[#25292A] text-white rounded-lg txt-16"
+            >
+              {active === "Reps Checklist"
+                ? "Add Checklist Item"
+                : active === "Fundamental Scripts"
+                ? "Add Fundamental Script"
+                : `Add ${active}`}
             </button>
           )}
         </div>
@@ -76,7 +102,9 @@ export default function SalesManualClient() {
         {active === "Reps Checklist" && (
           <RepsChecklist
             onHasItemsChange={(has) => setActiveHasItems(has)}
-            onAdd={() => setModalState({ open: true, mode: "add", type: "repsChecklist" })}
+            onAdd={() =>
+              setModalState({ open: true, mode: "add", type: "repsChecklist" })
+            }
             onEdit={(it) => openEditForChecklist(it)}
           />
         )}
@@ -84,12 +112,22 @@ export default function SalesManualClient() {
         {active === "Fundamental Scripts" && (
           <FundamentalScripts
             onHasItemsChange={(has) => setActiveHasItems(has)}
-            onAdd={() => setModalState({ open: true, mode: "add", type: "fundamentalScript" })}
+            onAdd={() =>
+              setModalState({
+                open: true,
+                mode: "add",
+                type: "fundamentalScript",
+              })
+            }
             onEdit={(it) => openEditForScript(it)}
           />
         )}
 
-        {active === "Sales Bible" && <SalesBible onHasItemsChange={(has: boolean) => setActiveHasItems(has)} />}
+        {active === "Sales Bible" && (
+          <SalesBible
+            onHasItemsChange={(has: boolean) => setActiveHasItems(has)}
+          />
+        )}
       </div>
 
       <AddEditSalesModal
@@ -100,7 +138,10 @@ export default function SalesManualClient() {
         onClose={() => setModalState((s) => ({ ...s, open: false }))}
         onSave={(payload) => {
           // parent doesn't need to dispatch; modal already did. Just log or do additional persistent save if desired.
-          console.log("AddEditSalesModal saved payload (parent onSave)", payload);
+          console.log(
+            "AddEditSalesModal saved payload (parent onSave)",
+            payload
+          );
         }}
       />
     </div>

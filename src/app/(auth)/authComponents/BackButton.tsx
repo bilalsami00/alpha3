@@ -1,9 +1,10 @@
+// src\app\(auth)\authComponents\BackButton.tsx
 import Image from "next/image";
 import React from "react";
-import { useRouter} from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function BackButton() {
-      const router = useRouter();
+  const router = useRouter();
   return (
     <div onClick={() => router.back()} className="cursor-pointer mb-3">
       <Image

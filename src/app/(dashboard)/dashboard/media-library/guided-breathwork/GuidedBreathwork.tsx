@@ -82,7 +82,9 @@ export default function GuidedBreathwork({
   }) {
     if (modalMode === "add") {
       const id = `gb-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
-      const thumbnailUrl = payload.file ? URL.createObjectURL(payload.file) : null;
+      const thumbnailUrl = payload.file
+        ? URL.createObjectURL(payload.file)
+        : null;
       const newItem: MediaItem = {
         id,
         title: payload.title,
@@ -97,7 +99,9 @@ export default function GuidedBreathwork({
     }
 
     if (modalMode === "edit" && editing) {
-      const thumbnailUrl = payload.file ? URL.createObjectURL(payload.file) : editing.thumbnailUrl ?? null;
+      const thumbnailUrl = payload.file
+        ? URL.createObjectURL(payload.file)
+        : editing.thumbnailUrl ?? null;
       const updated: MediaItem = {
         ...editing,
         title: payload.title,
@@ -122,7 +126,10 @@ export default function GuidedBreathwork({
   }
 
   const emptyAction = (
-    <button onClick={openAdd} className="px-4 py-2 rounded-lg bg-[#25292A] text-white">
+    <button
+      onClick={openAdd}
+      className="px-4 py-2 rounded-lg bg-[#25292A] text-white"
+    >
       {emptyStateConfig?.actionLabel ?? `Add Video`}
     </button>
   );

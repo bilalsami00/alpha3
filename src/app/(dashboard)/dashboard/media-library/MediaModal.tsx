@@ -63,13 +63,6 @@ export default function MediaModalV2({
     setFile(f);
   }
 
-  // function handleRemovePreview(e?: React.MouseEvent) {
-  //   e?.stopPropagation();
-  //   if (inputRef.current) inputRef.current.value = "";
-  //   if (previewUrl && !initial?.thumbnailUrl) URL.revokeObjectURL(previewUrl);
-  //   setPreviewUrl(null);
-  //   setFile(null);
-  // }
   // fixing the above function to also prevent default behavior --> file explorer opening on clicking remove button
   function handleRemovePreview(e?: React.MouseEvent) {
     e?.stopPropagation(); // stop bubbling to label

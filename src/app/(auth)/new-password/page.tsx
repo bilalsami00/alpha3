@@ -58,37 +58,6 @@ export default function CreateNewPassword() {
     setIsSubmitting(true);
     router.push("/login");
 
-    // try {
-    //   const response = await fetch(
-    //     "https://peptide-backend.mazedigital.us/users/v1_web_forget-password",
-    //     {
-    //       method: "PATCH",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //       body: JSON.stringify({
-    //         email: email,
-    //         password: password,
-    //       }),
-    //     }
-    //   );
-    //   const result = await response.json();
-    //   if (result.status === "success") {
-    //     toast.success("Your password has been reset successfully.");
-    //     // router.push("/login");
-    //     document.cookie =
-    //       "onNewPassword_gate=; Path=/; Max-Age=0; SameSite=Lax"; // delete
-    //     router.replace("/login");
-    //     localStorage.removeItem("peptide_user_email");
-    //   } else {
-    //     toast.error(result.message);
-    //   }
-    // } catch (error) {
-    //   toast.error("An error occurred. Please try again.");
-    //   console.error("🔁 error ===>", error);
-    // } finally {
-    //   setIsSubmitting(false);
-    // }
   };
 
   useEffect(() => {
@@ -173,12 +142,6 @@ export default function CreateNewPassword() {
                   errors.password ? "opacity-100 text-red-500" : "opacity-0"
                 }`}
               >
-                {/* <Image
-                  src="/authIcons/info-circle.svg"
-                  alt="warning"
-                  width={16}
-                  height={16}
-                />{" "} */}
                 {errors.password ?? "\u00A0"}
               </p>
             </div>
@@ -235,15 +198,11 @@ export default function CreateNewPassword() {
               {/* Error message with fixed height and opacity transition */}
               <p
                 className={`text-[#25292A] flex gap-1 text-xs mt-1 transition-opacity duration-100 ${
-                  errors.confirmPassword ? "opacity-100 text-red-500" : "opacity-0"
+                  errors.confirmPassword
+                    ? "opacity-100 text-red-500"
+                    : "opacity-0"
                 }`}
               >
-                {/* <Image
-                  src="/authIcons/info-circle.svg"
-                  alt="warning"
-                  width={16}
-                  height={16}
-                />{" "} */}
                 {errors.confirmPassword ?? "\u00A0"}
               </p>
             </div>
@@ -253,21 +212,11 @@ export default function CreateNewPassword() {
               disabled={!isFormValid()}
               className={`w-full txt-18 2xl:w-[496px] 2xl:h-[56px] py-3 rounded-lg font-semibold transition ${
                 isFormValid()
-                  ? // ? " bg-[#25292A] text-white cursor-not-allowed"
-                    // : "bg-[#25292A] text-white cursor-pointer"
-                    " bg-[#25292A] text-white cursor-pointer"
+                  ? " bg-[#25292A] text-white cursor-pointer"
                   : "bg-[#25292A] text-white cursor-not-allowed"
               }`}
             >
-              {/* {isSubmitting ? (
-                <img
-                  src="/homePage/loader.gif"
-                  alt="Loading..."
-                  className="w-6 h-6 mx-auto bg-[#224674]"
-                />
-              ) : ( */}
               Save
-              {/* )} */}
             </button>
           </form>
         </div>

@@ -56,12 +56,16 @@ export default function TeamFilter({
 
   const highlighted = open || focused;
 
-  const options = [{ id: "", name: "All teams" }, ...teams.map((t) => ({ id: String(t.id), name: t.name }))];
+  const options = [
+    { id: "", name: "All teams" },
+    ...teams.map((t) => ({ id: String(t.id), name: t.name })),
+  ];
 
   const label = options.find((o) => o.id === selectedTeam)?.name ?? "All teams";
 
   const focusMenuItem = (idx: number) => {
-    const items = menuRef.current?.querySelectorAll<HTMLButtonElement>("[role='menuitem']");
+    const items =
+      menuRef.current?.querySelectorAll<HTMLButtonElement>("[role='menuitem']");
     const el = items?.[idx];
     el?.focus();
   };
@@ -106,8 +110,12 @@ export default function TeamFilter({
             className="w-full min-w-[180px] h-full flex items-center justify-between px-4 text-sm rounded-lg focus:outline-none"
             style={{
               background: "#FFFFFF",
-              border: highlighted ? "1px solid var(--Secondary-action, #00C47E)" : "1px solid #E9EDEE",
-              boxShadow: highlighted ? "0 6px 18px rgba(0,196,126,0.08)" : undefined,
+              border: highlighted
+                ? "1px solid var(--Secondary-action, #00C47E)"
+                : "1px solid #E9EDEE",
+              boxShadow: highlighted
+                ? "0 6px 18px rgba(0,196,126,0.08)"
+                : undefined,
               color: "#111827",
               height: 40,
             }}
@@ -142,7 +150,9 @@ export default function TeamFilter({
               }}
               onKeyDown={(e) => {
                 const items = Array.from(
-                  menuRef.current?.querySelectorAll<HTMLButtonElement>("[role='menuitem']") || []
+                  menuRef.current?.querySelectorAll<HTMLButtonElement>(
+                    "[role='menuitem']"
+                  ) || []
                 );
                 if (!items.length) return;
                 const active = document.activeElement as HTMLElement | null;
@@ -176,31 +186,17 @@ export default function TeamFilter({
                   >
                     <div className="flex items-center justify-between">
                       <div className="truncate">{opt.name}</div>
-                      {/* optional count */}
-                      {/* {opt.id !== "" && (
-                        <div className="text-xs text-[#94A3A8] ml-2">
-                          {teams.find((t) => String(t.id) === opt.id)?.memberCount ?? ""}
-                        </div>
-                      )} */}
                     </div>
                   </button>
 
-                  {i < options.length - 1 && <div aria-hidden className="h-[1px] w-full bg-[#E9EDEE]" />}
+                  {i < options.length - 1 && (
+                    <div aria-hidden className="h-[1px] w-full bg-[#E9EDEE]" />
+                  )}
                 </React.Fragment>
               ))}
             </div>
           )}
         </div>
-
-        {/* optional add button (kept commented in your original) */}
-        {/* {onAdd && (
-          <button
-            onClick={onAdd}
-            className="px-4 py-2 bg-[#25292A] text-white rounded-lg txt-16"
-          >
-            {addLabel}
-          </button>
-        )} */}
       </div>
     </div>
   );

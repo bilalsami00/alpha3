@@ -103,7 +103,6 @@ export default function LoginPage() {
             <div >
               <label className="block txt-14 font-normal mb-1">
                 Email Address
-                {/* <span className="text-red-500">*</span> */}
               </label>
               <input
                 type="email"
@@ -139,7 +138,6 @@ export default function LoginPage() {
                 }`}
               >
                 {/* optional icon */}
-                {/* <Image src="/authIcons/info-circle.svg" alt="warning" width={16} height={16} /> */}
                 <span className="text-red-500 text-xs">
                   {errors.email ?? "\u00A0"}
                 </span>

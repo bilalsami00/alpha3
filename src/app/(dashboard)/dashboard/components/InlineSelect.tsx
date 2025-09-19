@@ -45,7 +45,9 @@ export default function InlineSelect<T>({
   const rootRef = useRef<HTMLDivElement | null>(null);
 
   // stable id for this instance
-  const idRef = useRef<string>(`inline-select-${Math.random().toString(36).slice(2, 9)}`);
+  const idRef = useRef<string>(
+    `inline-select-${Math.random().toString(36).slice(2, 9)}`
+  );
 
   useEffect(() => {
     function handleOpen(ev: Event) {
@@ -77,14 +79,26 @@ export default function InlineSelect<T>({
       }
     }
 
-    document.addEventListener("hall:openInlineSelect", handleOpen as EventListener);
-    document.addEventListener("hall:closeInlineSelects", handleClose as EventListener);
+    document.addEventListener(
+      "hall:openInlineSelect",
+      handleOpen as EventListener
+    );
+    document.addEventListener(
+      "hall:closeInlineSelects",
+      handleClose as EventListener
+    );
     document.addEventListener("pointerdown", onPointerDown);
     document.addEventListener("focusin", onFocusIn);
 
     return () => {
-      document.removeEventListener("hall:openInlineSelect", handleOpen as EventListener);
-      document.removeEventListener("hall:closeInlineSelects", handleClose as EventListener);
+      document.removeEventListener(
+        "hall:openInlineSelect",
+        handleOpen as EventListener
+      );
+      document.removeEventListener(
+        "hall:closeInlineSelects",
+        handleClose as EventListener
+      );
       document.removeEventListener("pointerdown", onPointerDown);
       document.removeEventListener("focusin", onFocusIn);
     };
@@ -93,7 +107,11 @@ export default function InlineSelect<T>({
   const active = open || focused;
 
   return (
-    <div className="relative" ref={rootRef} data-hall-inline-select-id={idRef.current}>
+    <div
+      className="relative"
+      ref={rootRef}
+      data-hall-inline-select-id={idRef.current}
+    >
       <button
         type="button"
         onMouseDown={(e) => {
@@ -102,30 +120,45 @@ export default function InlineSelect<T>({
           if (open) {
             document.dispatchEvent(new CustomEvent("hall:closeInlineSelects"));
           } else {
-            document.dispatchEvent(new CustomEvent("hall:openInlineSelect", { detail: { id: idRef.current } }));
+            document.dispatchEvent(
+              new CustomEvent("hall:openInlineSelect", {
+                detail: { id: idRef.current },
+              })
+            );
           }
         }}
         onFocus={() => {
-          document.dispatchEvent(new CustomEvent("hall:openInlineSelect", { detail: { id: idRef.current } }));
+          document.dispatchEvent(
+            new CustomEvent("hall:openInlineSelect", {
+              detail: { id: idRef.current },
+            })
+          );
         }}
         aria-haspopup="listbox"
         aria-expanded={open}
         className={`w-full text-left p-3 rounded-lg bg-[#F2F5F6] txt-12 flex items-center justify-between ${triggerClassName}`}
-        style={active ? { border: "1px solid var(--Secondary-action, #00C47E)" } : { border: "1px solid transparent" }}
+        style={
+          active
+            ? { border: "1px solid var(--Secondary-action, #00C47E)" }
+            : { border: "1px solid transparent" }
+        }
       >
-        <div className={`${value ? "text-[#111827]" : "text-[#9CA3AF]"}`}>{value ? renderItem(value) : placeholder}</div>
+        <div className={`${value ? "text-[#111827]" : "text-[#9CA3AF]"}`}>
+          {value ? renderItem(value) : placeholder}
+        </div>
         {showCaret && (
-          <div className={`transform transition-transform ${open ? "rotate-180" : ""}`}>
-            {/* <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
-              <path d="M6 9l6 6 6-6" stroke="#6B7280" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-            </svg> */}
+          <div
+            className={`transform transition-transform ${
+              open ? "rotate-180" : ""
+            }`}
+          >
             <Image
               src="/arrow-down.svg"
               alt="Caret"
               width={24}
               height={24}
-            //   className={` ${open ? "rotate-180" : ""}`}
-              />
+              //   className={` ${open ? "rotate-180" : ""}`}
+            />
           </div>
         )}
       </button>
@@ -145,7 +178,9 @@ export default function InlineSelect<T>({
                 ev.stopPropagation();
                 onChange(it);
                 // close all selects after selecting
-                document.dispatchEvent(new CustomEvent("hall:closeInlineSelects"));
+                document.dispatchEvent(
+                  new CustomEvent("hall:closeInlineSelects")
+                );
               }}
               className="w-full text-left px-3 py-4 hover:bg-[#dde2e3] txt-12 flex items-center border-b border-[color:var(--Neutral-Grey-20,#D8DFE0)]"
             >

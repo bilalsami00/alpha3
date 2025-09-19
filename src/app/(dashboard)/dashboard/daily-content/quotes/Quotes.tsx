@@ -53,7 +53,10 @@ export default function Quotes({
   const startIndex = (currentPage - 1) * rowsPerPage;
   const paginated = filtered.slice(startIndex, startIndex + rowsPerPage);
 
-  const handleAddOrUpdate = (payload: { text: string; scheduleDate: string }) => {
+  const handleAddOrUpdate = (payload: {
+    text: string;
+    scheduleDate: string;
+  }) => {
     if (editing) {
       setItems((prev) =>
         prev.map((p) => (p.id === editing.id ? { ...p, ...payload } : p))
@@ -89,7 +92,10 @@ export default function Quotes({
     <EmptyState
       icon={emptyStateConfig?.icon}
       title={emptyStateConfig?.title ?? "No quote add yet"}
-      subtitle={emptyStateConfig?.subtitle ?? "Add a motivational quote to inspire your team and set the tone for success."}
+      subtitle={
+        emptyStateConfig?.subtitle ??
+        "Add a motivational quote to inspire your team and set the tone for success."
+      }
       action={emptyAction}
     />
   );
@@ -98,17 +104,17 @@ export default function Quotes({
     <div className="w-full">
       <div className="flex items-center justify-between mb-6 sm:mt-6 2xl:mt-12">
         <h2 className="txt-24 font-semibold">Quotes</h2>
-          <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4">
           {items.length > 0 && (
             <button
-            onClick={() => {
-              setEditing(null);
-              setAddOpen(true);
-            }}
-            className="px-4 py-2 bg-[#25292A] text-white rounded-lg txt-16"
-          >
-            Add Quote
-          </button>
+              onClick={() => {
+                setEditing(null);
+                setAddOpen(true);
+              }}
+              className="px-4 py-2 bg-[#25292A] text-white rounded-lg txt-16"
+            >
+              Add Quote
+            </button>
           )}
         </div>
       </div>
@@ -186,7 +192,9 @@ export default function Quotes({
         open={confirm.open}
         title="Delete quote"
         description={
-          confirm.quote ? "This will permanently delete the quote from the list." : ""
+          confirm.quote
+            ? "This will permanently delete the quote from the list."
+            : ""
         }
         confirmLabel="Delete"
         intent="danger"

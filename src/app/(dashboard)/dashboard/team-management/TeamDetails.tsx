@@ -13,7 +13,6 @@ import type { Team, TeamMember } from "./types";
 import { useToastContext } from "../lib/ToastContext";
 import { TEAM_MEMBERS } from "./teamMembersData"; // existing dummy data
 import RemoveModal from "./RemoveModal";
-// import TeamMemberSearch, { MemberStatusFilter } from "./TeamMember/TeamMemberSearch";
 import TeamMemberSearch from "./TeamMember/TeamMemberSearch";
 import type { MemberStatusFilter } from "./types"; // <-- use the shared type
 

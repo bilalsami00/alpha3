@@ -10,13 +10,18 @@ export function usePaginatedList<T>(
 ) {
   const [items, setItems] = useState<T[]>(initialItems);
   const [q, setQ] = useState("");
-  const [rowsPerPage, setRowsPerPage] = useState(opts?.initialRowsPerPage ?? 10);
+  const [rowsPerPage, setRowsPerPage] = useState(
+    opts?.initialRowsPerPage ?? 10
+  );
   const [currentPage, setCurrentPage] = useState(1);
 
   const filtered = useMemo(() => {
     const qq = q.trim().toLowerCase();
     if (!qq) return items;
-    const filterFn = opts?.filterFn ?? ((item: any, s: string) => ((item.text ?? "") as string).toLowerCase().includes(s));
+    const filterFn =
+      opts?.filterFn ??
+      ((item: any, s: string) =>
+        ((item.text ?? "") as string).toLowerCase().includes(s));
     return items.filter((it) => filterFn(it, qq));
   }, [items, q, opts]);
 

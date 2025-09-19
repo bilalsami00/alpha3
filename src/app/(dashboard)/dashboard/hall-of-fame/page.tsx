@@ -214,40 +214,6 @@ export default function HallOfFame() {
   const paginated = filtered.slice(startIndex, startIndex + rowsPerPage);
 
   // CRUD handlers
-  // const handleAddOrUpdate = async (payload: HallPayload) => {
-  //   if (editing) {
-  //     setItems((prev) =>
-  //       prev.map((p) =>
-  //         p.id === editing.id
-  //           ? {
-  //               ...p,
-  //               title: payload.title,
-  //               classYear: payload.classYear!,
-  //               memberId: payload.memberId,
-  //             }
-  //           : p
-  //       )
-  //     );
-  //     showToast("Hall of Fame has been updated.", "success");
-  //     setEditing(null);
-  //     setModalOpen(false);
-  //     return;
-  //   }
-
-  //   const id = Date.now() + Math.floor(Math.random() * 1000);
-  //   setItems((prev) => [
-  //     {
-  //       id,
-  //       memberId: payload.memberId,
-  //       title: payload.title,
-  //       classYear: payload.classYear!,
-  //     },
-  //     ...prev,
-  //   ]);
-  //   showToast("Member added to Hall of Fame.", "success");
-  //   setModalOpen(false);
-  //   setCurrentPage(1);
-  // };
   const handleAddOrUpdate = async (payload: HallPayload) => {
     if (editing) {
       setItems((prev) =>
@@ -473,26 +439,6 @@ export default function HallOfFame() {
       </div>
 
       {/* Add / Edit modal */}
-      {/* {modalOpen && (
-        <AddEditHallModal
-          open={modalOpen}
-          onClose={() => {
-            setModalOpen(false);
-            setEditing(null);
-          }}
-          initial={
-            editing
-              ? {
-                  memberId: editing.memberId,
-                  classYear: editing.classYear,
-                  title: editing.title,
-                }
-              : undefined
-          }
-          mode={editing ? "edit" : "add"}
-          onSave={async (payload) => handleAddOrUpdate(payload)}
-        />
-      )} */}
       {modalOpen && (
         <AddEditHallModal
           open={modalOpen}
@@ -500,17 +446,6 @@ export default function HallOfFame() {
             setModalOpen(false);
             setEditing(null);
           }}
-          // initial={
-          //   editing
-          //     ? {
-          //         memberId: editing.memberId,
-          //         classYear: editing.classYear,
-          //         title: editing.title,
-          //         // ensure teamId is passed when editing
-          //         teamId: (editing as any).teamId ?? null,
-          //       }
-          //     : undefined
-          // }
           initial={
             editing
               ? {
@@ -573,16 +508,12 @@ function ActionsCell({
       </button>
 
       {open && (
-        <div
-          // className="fixed right-10  rounded-lg bg-white shadow-[4px_4px_40px_0px_#00000005] border border-[var(--Neutral-Grey-0,#F2F5F6)] w-40 z-50"
-          className="fixed right-10  rounded-lg bg-white shadow-[4px_4px_40px_0px_#00000005] border border-[var(--Neutral-Grey-0,#F2F5F6)] w-45 max-w-[175px] z-50"
-        >
+        <div className="fixed right-10  rounded-lg bg-white shadow-[4px_4px_40px_0px_#00000005] border border-[var(--Neutral-Grey-0,#F2F5F6)] w-45 max-w-[175px] z-50">
           <button
             onClick={() => {
               setOpen(false);
               onEdit();
             }}
-            // className="w-full text-left px-4 py-2 border-b border-b-[var(--Neutral-Grey-20,#D8DFE0)] flex items-center gap-2"
             className="flex items-center w-full h-[44px] text-left px-4 py-2 txt-14 hover:bg-gray-100 rounded-t-lg border-b border-[var(--Neutral-Grey-10,#E9EDEE)]"
           >
             <Image
@@ -599,7 +530,6 @@ function ActionsCell({
               setOpen(false);
               onRemove();
             }}
-            // className="w-full text-left px-4 py-2 flex items-center gap-2"
             className="flex items-center w-full h-[44px] text-left px-4 py-2 txt-14 hover:bg-gray-100 rounded-b-lg "
           >
             <Image

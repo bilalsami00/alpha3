@@ -27,10 +27,8 @@ export default function EmptyState({
       role="status"
       aria-live="polite"
     >
-      {/* <div className="flex flex-col items-center justify-center" style={{ width: 357 }}> */}
       <div
         className="flex flex-col items-center justify-center sm:w-[480px]"
-        // style={{ width: 357 }}
       >
         <div className="w-16 h-16 rounded-full flex items-center justify-center">
           <Image src={icon} alt="Empty" width={64} height={64} />

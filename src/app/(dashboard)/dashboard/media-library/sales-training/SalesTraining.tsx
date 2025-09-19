@@ -77,7 +77,9 @@ export default function SalesTraining({
   }) {
     if (modalMode === "add") {
       const id = `st-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
-      const thumbnailUrl = payload.file ? URL.createObjectURL(payload.file) : null;
+      const thumbnailUrl = payload.file
+        ? URL.createObjectURL(payload.file)
+        : null;
       const newItem: MediaItem = {
         id,
         title: payload.title,
@@ -119,7 +121,10 @@ export default function SalesTraining({
   }
 
   const emptyAction = (
-    <button onClick={openAdd} className="px-4 py-2 rounded-lg bg-[#25292A] text-white">
+    <button
+      onClick={openAdd}
+      className="px-4 py-2 rounded-lg bg-[#25292A] text-white"
+    >
       {emptyStateConfig?.actionLabel ?? `Add Video`}
     </button>
   );

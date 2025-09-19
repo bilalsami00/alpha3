@@ -42,7 +42,11 @@ export default function MediaTable({
       key: "description",
       header: "Description",
       width: "502px",
-      render: (m) => <div className="txt-14 text-gray-600 truncate">{m.description ?? "-"}</div>,
+      render: (m) => (
+        <div className="txt-14 text-gray-600 truncate">
+          {m.description ?? "-"}
+        </div>
+      ),
     },
     {
       key: "action",
@@ -51,10 +55,7 @@ export default function MediaTable({
       align: "center",
       render: (m) => (
         <div className="flex items-center justify-center w-full">
-          <ActionMenuV2
-            onEdit={() => onEdit(m)}
-            onDelete={() => onDelete(m)}
-          />
+          <ActionMenuV2 onEdit={() => onEdit(m)} onDelete={() => onDelete(m)} />
         </div>
       ),
     },
@@ -65,7 +66,9 @@ export default function MediaTable({
       columns={columns}
       data={paginated}
       rowKey={(r) => r.id}
-      rowClassName={(r, idx) => ((startIndex + idx) % 2 === 0 ? "bg-white" : "bg-[#F2F5F6]")}
+      rowClassName={(r, idx) =>
+        (startIndex + idx) % 2 === 0 ? "bg-white" : "bg-[#F2F5F6]"
+      }
       emptyState={emptyState}
     />
   );

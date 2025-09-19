@@ -77,7 +77,9 @@ export default function VideoOfTheDay({
   }) {
     if (modalMode === "add") {
       const id = `votd-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
-      const thumbnailUrl = payload.file ? URL.createObjectURL(payload.file) : null;
+      const thumbnailUrl = payload.file
+        ? URL.createObjectURL(payload.file)
+        : null;
       const newItem: MediaItem = {
         id,
         title: payload.title,
@@ -119,7 +121,10 @@ export default function VideoOfTheDay({
   }
 
   const emptyAction = (
-    <button onClick={openAdd} className="px-4 py-2 rounded-lg bg-[#25292A] text-white">
+    <button
+      onClick={openAdd}
+      className="px-4 py-2 rounded-lg bg-[#25292A] text-white"
+    >
       {emptyStateConfig?.actionLabel ?? `Add Video`}
     </button>
   );
@@ -179,7 +184,9 @@ export default function VideoOfTheDay({
             <Pagination
               currentPage={currentPage}
               totalPages={totalPages}
-              onPageChange={(p) => setCurrentPage(Math.max(1, Math.min(totalPages, p)))}
+              onPageChange={(p) =>
+                setCurrentPage(Math.max(1, Math.min(totalPages, p)))
+              }
               rowsPerPage={rowsPerPage}
               onRowsPerPageChange={(n) => {
                 setRowsPerPage(n);

@@ -509,26 +509,6 @@ export default function AddEditItem({
             ? "Save Changes"
             : `Add`}
         </button>
-        {/* <button
-          onClick={handleSave}
-          disabled={
-            saving ||
-            (mode === "edit"
-              ? !(text.trim() && date)
-              : entries.length === 0 && !(text.trim() && date))
-          }
-          className={`${
-            mode === "edit" ? "w-33" : "w-25"
-          } h-10 px-3 py-2 txt-16 font-semibold rounded-lg bg-[#0E0E0E] text-white disabled:opacity-50 disabled:cursor-not-allowed`}
-        >
-          {saving
-            ? mode === "edit"
-              ? "Saving…"
-              : "Adding…"
-            : mode === "edit"
-            ? "Save Changes"
-            : "Add"}
-        </button> */}
       </div>
     </div>
   );

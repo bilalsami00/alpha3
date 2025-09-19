@@ -1,3 +1,4 @@
+// src\app\(auth)\authComponents\PasswordInput.tsx
 "use client";
 import { useState } from "react";
 import { RiEyeLine, RiEyeOffLine } from "react-icons/ri";
@@ -16,7 +17,14 @@ type Props = {
 };
 
 export default function PasswordInput({
-  label, required, value, onChange, onBlur, onFocus, placeholder, error,
+  label,
+  required,
+  value,
+  onChange,
+  onBlur,
+  onFocus,
+  placeholder,
+  error,
   className = "w-full 2xl:w-[496px]",
 }: Props) {
   const [show, setShow] = useState(false);
@@ -42,16 +50,32 @@ export default function PasswordInput({
           }`}
         />
         <div className="absolute inset-y-0 right-3 flex items-center">
-          <button type="button" onClick={() => setShow((s) => !s)} className="text-[#51595A] hover:text-gray-700 focus:outline-none">
-            {show ? <RiEyeLine className="txt-24 cursor-pointer text-[#224674]" /> : <RiEyeOffLine className="txt-24 cursor-pointer text-[#224674]" />}
+          <button
+            type="button"
+            onClick={() => setShow((s) => !s)}
+            className="text-[#51595A] hover:text-gray-700 focus:outline-none"
+          >
+            {show ? (
+              <RiEyeLine className="txt-24 cursor-pointer text-[#224674]" />
+            ) : (
+              <RiEyeOffLine className="txt-24 cursor-pointer text-[#224674]" />
+            )}
           </button>
         </div>
       </div>
 
-      <p className={`text-[#F14D4D] flex gap-1 text-xs mt-1 transition-opacity duration-100 ${
-        error ? "opacity-100" : "opacity-0"
-      }`}>
-        <Image src="/authIcons/info-circle.svg" alt="warning" width={16} height={16} /> {error ?? "\u00A0"}
+      <p
+        className={`text-[#F14D4D] flex gap-1 text-xs mt-1 transition-opacity duration-100 ${
+          error ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        <Image
+          src="/authIcons/info-circle.svg"
+          alt="warning"
+          width={16}
+          height={16}
+        />{" "}
+        {error ?? "\u00A0"}
       </p>
     </div>
   );

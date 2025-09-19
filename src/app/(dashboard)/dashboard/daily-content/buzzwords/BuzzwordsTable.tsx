@@ -32,27 +32,51 @@ function formatDateLocal(d?: string | null): string {
   if (!d) return "";
   const dt = parseLocalISO(d);
   if (!dt) return d;
-  return `${dt.getDate()}-${dt.getMonth() + 1}-${String(dt.getFullYear()).slice(-2)}`;
+  return `${dt.getDate()}-${dt.getMonth() + 1}-${String(dt.getFullYear()).slice(
+    -2
+  )}`;
 }
 
-export default function BuzzwordsTable({ paginated, startIndex, onEdit, onDelete, emptyState }: Props) {
+export default function BuzzwordsTable({
+  paginated,
+  startIndex,
+  onEdit,
+  onDelete,
+  emptyState,
+}: Props) {
   const columns: Column<QuoteItem>[] = [
     {
       key: "buzzword",
-      header: <div className="w-full flex items-center justify-start">Buzzwords</div>,
+      header: (
+        <div className="w-full flex items-center justify-start">Buzzwords</div>
+      ),
       width: "502px",
-      render: (q) => <div className="txt-14 break-words font-normal">{q.text}</div>,
+      render: (q) => (
+        <div className="txt-14 break-words font-normal">{q.text}</div>
+      ),
     },
     {
       key: "date",
-      header: <div className="w-full flex items-center justify-start ">Schedule Date</div>,
+      header: (
+        <div className="w-full flex items-center justify-start ">
+          Schedule Date
+        </div>
+      ),
       width: "502px",
       align: "center",
-      render: (q) => <div className="w-full flex items-center justify-starr txt-14">{formatDateLocal(q.scheduleDate)}</div>,
+      render: (q) => (
+        <div className="w-full flex items-center justify-starr txt-14">
+          {formatDateLocal(q.scheduleDate)}
+        </div>
+      ),
     },
     {
       key: "action",
-      header: <div className="w-full flex items-center justify-center px-4">Action</div>,
+      header: (
+        <div className="w-full flex items-center justify-center px-4">
+          Action
+        </div>
+      ),
       width: "100px",
       align: "center",
       render: (q) => (
@@ -68,7 +92,9 @@ export default function BuzzwordsTable({ paginated, startIndex, onEdit, onDelete
       columns={columns}
       data={paginated}
       rowKey={(r) => r.id}
-      rowClassName={(r, idx) => ((startIndex + idx) % 2 === 0 ? "bg-white" : "bg-[#F2F5F6]")}
+      rowClassName={(r, idx) =>
+        (startIndex + idx) % 2 === 0 ? "bg-white" : "bg-[#F2F5F6]"
+      }
       emptyState={emptyState}
     />
   );

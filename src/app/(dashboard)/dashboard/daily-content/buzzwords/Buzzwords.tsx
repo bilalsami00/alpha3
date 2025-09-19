@@ -32,9 +32,9 @@ export default function Buzzwords({
 
   const [addOpen, setAddOpen] = useState(false);
   const [editing, setEditing] = useState<QuoteItem | null>(null);
-  const [confirm, setConfirm] = useState<{ open: boolean; quote?: QuoteItem }>(
-    { open: false }
-  );
+  const [confirm, setConfirm] = useState<{ open: boolean; quote?: QuoteItem }>({
+    open: false,
+  });
 
   const filtered = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
@@ -54,7 +54,10 @@ export default function Buzzwords({
   const startIndex = (currentPage - 1) * rowsPerPage;
   const paginated = filtered.slice(startIndex, startIndex + rowsPerPage);
 
-  const handleAddOrUpdate = (payload: { text: string; scheduleDate: string }) => {
+  const handleAddOrUpdate = (payload: {
+    text: string;
+    scheduleDate: string;
+  }) => {
     if (editing) {
       setItems((prev) =>
         prev.map((p) => (p.id === editing.id ? { ...p, ...payload } : p))
@@ -93,7 +96,10 @@ export default function Buzzwords({
     <EmptyState
       icon={emptyStateConfig?.icon}
       title={emptyStateConfig?.title ?? "No buzzwords add yet"}
-      subtitle={emptyStateConfig?.subtitle ?? "Add a new buzzword to energize the team and keep the lingo fresh."}
+      subtitle={
+        emptyStateConfig?.subtitle ??
+        "Add a new buzzword to energize the team and keep the lingo fresh."
+      }
       action={emptyAction}
     />
   );
@@ -102,18 +108,18 @@ export default function Buzzwords({
     <div className="w-full">
       <div className="flex items-center justify-between mb-6 sm:mt-6 2xl:mt-12">
         <h2 className="txt-24 font-semibold">Buzzwords</h2>
-          <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4">
           {items.length > 0 && (
             <button
-            onClick={() => {
-              setEditing(null);
-              setAddOpen(true);
-            }}
-            className="px-4 py-2 bg-[#25292A] text-white rounded-lg txt-16"
-          >
-            Add Buzzword
-          </button>
-        )}
+              onClick={() => {
+                setEditing(null);
+                setAddOpen(true);
+              }}
+              className="px-4 py-2 bg-[#25292A] text-white rounded-lg txt-16"
+            >
+              Add Buzzword
+            </button>
+          )}
         </div>
       </div>
 
@@ -171,7 +177,9 @@ export default function Buzzwords({
         >
           <AddEditItem
             initial={
-              editing ? { text: editing.text, scheduleDate: editing.scheduleDate } : null
+              editing
+                ? { text: editing.text, scheduleDate: editing.scheduleDate }
+                : null
             }
             mode={editing ? "edit" : "add"}
             onCancel={() => {
