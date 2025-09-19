@@ -1,4 +1,4 @@
-//  src\app\(dashboard)\dashboard\daily-content\Quotes\Quotes.tsx
+// src\app\(dashboard)\dashboard\daily-content\quotes\Quotes.tsx
 "use client";
 import React, { useMemo, useState, useEffect } from "react";
 import { useToastContext } from "../../lib/ToastContext";

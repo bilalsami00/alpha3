@@ -1,4 +1,4 @@
-// app/(dashboard)/dashboard/components/Users/types.ts
+// src\app\(dashboard)\dashboard\users\types.ts
 export type UserStatus = "active" | "restricted" | "request";
 
 export interface User {

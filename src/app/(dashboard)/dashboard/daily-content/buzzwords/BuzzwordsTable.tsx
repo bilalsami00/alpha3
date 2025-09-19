@@ -1,4 +1,4 @@
-// src/app/(dashboard)/dashboard/components/DailyContent/Buzzwords/BuzzwordsTable.tsx
+// src\app\(dashboard)\dashboard\daily-content\buzzwords\BuzzwordsTable.tsx
 "use client";
 import React from "react";
 import GenericTable, { Column } from "../../components/GenericTable";

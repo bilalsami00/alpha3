@@ -28,7 +28,9 @@ export default function RepsChecklist({
   const [query, setQuery] = useState("");
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [page, setPage] = useState(1);
-  const [confirm, setConfirm] = useState<{ open: boolean; id?: number }>({ open: false });
+  const [confirm, setConfirm] = useState<{ open: boolean; id?: number }>({
+    open: false,
+  });
 
   // Fallback local modal state (used only when parent onAdd/onEdit not supplied)
   const [fallbackModalOpen, setFallbackModalOpen] = useState(false);
@@ -66,7 +68,10 @@ export default function RepsChecklist({
           const next = [...p];
           value.forEach((r: any) => {
             const idFromDetail = r.id ?? undefined;
-            const idx = idFromDetail !== undefined ? next.findIndex((x) => x.id === idFromDetail) : next.findIndex((x) => x.task === r.task);
+            const idx =
+              idFromDetail !== undefined
+                ? next.findIndex((x) => x.id === idFromDetail)
+                : next.findIndex((x) => x.task === r.task);
             if (idx !== -1) {
               next[idx] = { ...next[idx], category: r.category, task: r.task };
             } else {
@@ -79,18 +84,34 @@ export default function RepsChecklist({
       }
     }
 
-    document.addEventListener("salesManual:itemSaved", onSaved as EventListener);
-    return () => document.removeEventListener("salesManual:itemSaved", onSaved as EventListener);
+    document.addEventListener(
+      "salesManual:itemSaved",
+      onSaved as EventListener
+    );
+    return () =>
+      document.removeEventListener(
+        "salesManual:itemSaved",
+        onSaved as EventListener
+      );
   }, [showToast]);
 
   useEffect(() => {
-    console.log("RepsChecklist mounted. onAdd present?", !!onAdd, "onEdit present?", !!onEdit);
+    console.log(
+      "RepsChecklist mounted. onAdd present?",
+      !!onAdd,
+      "onEdit present?",
+      !!onEdit
+    );
   }, []);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return items;
-    return items.filter((it) => it.category.toLowerCase().includes(q) || it.task.toLowerCase().includes(q));
+    return items.filter(
+      (it) =>
+        it.category.toLowerCase().includes(q) ||
+        it.task.toLowerCase().includes(q)
+    );
   }, [items, query]);
 
   const total = filtered.length;
@@ -123,12 +144,19 @@ export default function RepsChecklist({
               onEdit({ id: r.id, category: r.category, task: r.task });
             } else {
               setFallbackMode("edit");
-              setFallbackInitial({ id: r.id, category: r.category, task: r.task });
+              setFallbackInitial({
+                id: r.id,
+                category: r.category,
+                task: r.task,
+              });
               setFallbackModalOpen(true);
 
               document.dispatchEvent(
                 new CustomEvent("salesManual:requestEdit", {
-                  detail: { type: "repsChecklist", item: { id: r.id, category: r.category, task: r.task } },
+                  detail: {
+                    type: "repsChecklist",
+                    item: { id: r.id, category: r.category, task: r.task },
+                  },
                 })
               );
             }
@@ -140,12 +168,11 @@ export default function RepsChecklist({
   ];
 
   function handleDelete(id?: number) {
-  if (!id) return;
-  setItems((p) => p.filter((x) => x.id !== id));
-  showToast("Reps checklist deleted.", "info"); // <-- add this
-  setConfirm({ open: false });
-}
-
+    if (!id) return;
+    setItems((p) => p.filter((x) => x.id !== id));
+    showToast("Reps checklist deleted.", "info"); // <-- add this
+    setConfirm({ open: false });
+  }
 
   const emptyAction = (
     <button
@@ -188,16 +215,16 @@ export default function RepsChecklist({
       )}
 
       {items.length > 0 && (
-      <div className="mb-4">
-        <SearchBar
-          value={query}
-          onChange={(v) => {
-            setQuery(v);
-            setPage(1);
-          }}
-          placeholder="Search by category or checklist"
-        />
-      </div>
+        <div className="mb-4">
+          <SearchBar
+            value={query}
+            onChange={(v) => {
+              setQuery(v);
+              setPage(1);
+            }}
+            placeholder="Search by category or checklist"
+          />
+        </div>
       )}
 
       <div className="bg-white rounded-lg overflow-auto ">
@@ -205,7 +232,9 @@ export default function RepsChecklist({
           columns={columns}
           data={pageItems}
           rowKey={(r) => r.id}
-          rowClassName={(r, idx) => (idx % 2 === 0 ? "bg-white" : "bg-[#F2F5F6]")}
+          rowClassName={(r, idx) =>
+            idx % 2 === 0 ? "bg-white" : "bg-[#F2F5F6]"
+          }
           emptyState={
             <EmptyState
               icon={EMPTY_ICONS.salesManual}
@@ -221,7 +250,9 @@ export default function RepsChecklist({
             <Pagination
               currentPage={page}
               totalPages={totalPages}
-              onPageChange={(p) => setPage(Math.max(1, Math.min(totalPages, p)))}
+              onPageChange={(p) =>
+                setPage(Math.max(1, Math.min(totalPages, p)))
+              }
               rowsPerPage={rowsPerPage}
               onRowsPerPageChange={(n) => {
                 setRowsPerPage(n);

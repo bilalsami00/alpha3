@@ -1,4 +1,4 @@
-//src\app\(dashboard)\dashboard\sales-manual\sales-bible\SalesBible.tsx
+// src\app\(dashboard)\dashboard\sales-manual\sales-bible\SalesBible.tsx
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import EmptyState from "../../components/EmptyState";

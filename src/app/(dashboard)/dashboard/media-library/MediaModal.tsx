@@ -1,4 +1,4 @@
-// // // // src/app/(dashboard)/dashboard/components/MediaLibrary/MediaModal.tsx
+// src\app\(dashboard)\dashboard\media-library\MediaModal.tsx
 "use client";
 import React, { useEffect, useState, useRef } from "react";
 import BaseModal from "../components/BaseModal";
@@ -71,16 +71,15 @@ export default function MediaModalV2({
   //   setFile(null);
   // }
   // fixing the above function to also prevent default behavior --> file explorer opening on clicking remove button
-function handleRemovePreview(e?: React.MouseEvent) {
-  e?.stopPropagation(); // stop bubbling to label
-  e?.preventDefault();  // also prevent label default behavior
+  function handleRemovePreview(e?: React.MouseEvent) {
+    e?.stopPropagation(); // stop bubbling to label
+    e?.preventDefault(); // also prevent label default behavior
 
-  if (inputRef.current) inputRef.current.value = "";
-  if (previewUrl && !initial?.thumbnailUrl) URL.revokeObjectURL(previewUrl);
-  setPreviewUrl(null);
-  setFile(null);
-}
-
+    if (inputRef.current) inputRef.current.value = "";
+    if (previewUrl && !initial?.thumbnailUrl) URL.revokeObjectURL(previewUrl);
+    setPreviewUrl(null);
+    setFile(null);
+  }
 
   const requiresFile = mode === "add";
   const hasExistingPreview = !!(initial?.thumbnailUrl ?? previewUrl);

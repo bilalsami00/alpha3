@@ -1,4 +1,4 @@
-// src/app/(dashboard)/dashboard/daily-content/page.tsx
+// src\app\(dashboard)\dashboard\daily-content\page.tsx
 import React, { Suspense } from "react";
 import DailyContentClient from "./DailyContentClient";
 

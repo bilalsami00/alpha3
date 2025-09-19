@@ -1,4 +1,4 @@
-// // src\app\(dashboard)\dashboard\components\DailyContent\data.ts
+// src\app\(dashboard)\dashboard\daily-content\data.ts
 export type QuoteItem = { id: number; text: string; scheduleDate: string };
 
 export const INITIAL_QUOTES: QuoteItem[] = [

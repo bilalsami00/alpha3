@@ -1,3 +1,4 @@
+// src\app\(dashboard)\dashboard\media-library\sales-training\SalesTraining.tsx
 "use client";
 import React, { useEffect, useMemo, useState } from "react";
 import { useToastContext } from "../../lib/ToastContext";

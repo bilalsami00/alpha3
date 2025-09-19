@@ -1,4 +1,4 @@
-// src\app\(dashboard)\dashboard\components\DailyContent\SharedCalendar.tsx
+// src\app\(dashboard)\dashboard\daily-content\SharedCalendar.tsx
 "use client";
 import React, { useEffect, useMemo, useState } from "react";
 

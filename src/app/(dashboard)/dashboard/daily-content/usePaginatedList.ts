@@ -1,4 +1,4 @@
-// src/app/(dashboard)/dashboard/components/DailyContent/usePaginatedList.ts
+// src\app\(dashboard)\dashboard\daily-content\usePaginatedList.ts
 import { useMemo, useEffect, useState } from "react";
 
 export function usePaginatedList<T>(

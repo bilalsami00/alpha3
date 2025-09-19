@@ -1,4 +1,4 @@
-// app/(dashboard)/dashboard/components/Users/ViewModal.tsx
+// src\app\(dashboard)\dashboard\users\ViewModal.tsx
 "use client";
 import React from "react";
 import type { User } from "./types";

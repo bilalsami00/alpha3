@@ -1,4 +1,4 @@
-// src\app\(dashboard)\dashboard\components\shared\InlineSelect.tsx
+// src\app\(dashboard)\dashboard\components\InlineSelect.tsx
 "use client";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";

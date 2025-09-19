@@ -1,4 +1,4 @@
-// src/app/(dashboard)/dashboard/components/shared/EmptyState.tsx
+// src\app\(dashboard)\dashboard\components\EmptyState.tsx
 "use client";
 import React from "react";
 import Image from "next/image";

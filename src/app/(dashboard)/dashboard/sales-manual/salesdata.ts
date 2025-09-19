@@ -1,4 +1,4 @@
-// src/app/(dashboard)/dashboard/components/SalesManual/salesdata.ts
+// src\app\(dashboard)\dashboard\sales-manual\salesdata.ts
 export type RepChecklistItem = {
   id: number;
   category: string;

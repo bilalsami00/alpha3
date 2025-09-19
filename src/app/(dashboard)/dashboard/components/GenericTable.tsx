@@ -1,4 +1,4 @@
-// src/app/(dashboard)/dashboard/components/shared/GenericTable.tsx
+// src\app\(dashboard)\dashboard\components\GenericTable.tsx
 "use client";
 import React from "react";
 

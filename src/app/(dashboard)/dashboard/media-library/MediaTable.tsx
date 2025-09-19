@@ -1,4 +1,4 @@
-// src/app/(dashboard)/dashboard/components/MediaLibrary/MediaTable.tsx
+// src\app\(dashboard)\dashboard\media-library\MediaTable.tsx
 "use client";
 import React from "react";
 import GenericTable, { Column } from "../components/GenericTable";

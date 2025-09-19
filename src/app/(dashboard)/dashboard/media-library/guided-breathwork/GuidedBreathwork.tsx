@@ -1,4 +1,4 @@
-// src/app/(dashboard)/dashboard/media-library/guided-breathwork/GuidedBreathwork.tsx
+// src\app\(dashboard)\dashboard\media-library\guided-breathwork\GuidedBreathwork.tsx
 "use client";
 import React, { useEffect, useMemo, useState } from "react";
 import { useToastContext } from "../../lib/ToastContext";

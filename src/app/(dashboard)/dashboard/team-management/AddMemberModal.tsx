@@ -1,4 +1,4 @@
-// src/app/(dashboard)/dashboard/components/TeamManagement/AddMemberModal.tsx
+// src\app\(dashboard)\dashboard\team-management\AddMemberModal.tsx
 "use client";
 import React, { useEffect, useState } from "react";
 import BaseModal from "../components/BaseModal";

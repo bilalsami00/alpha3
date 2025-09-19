@@ -1,4 +1,4 @@
-// src/app/(dashboard)/dashboard/components/shared/ConfirmModal.tsx
+// src\app\(dashboard)\dashboard\components\ConfirmModal.tsx
 "use client";
 import React, { useState } from "react";
 import BaseModal from "./BaseModal";

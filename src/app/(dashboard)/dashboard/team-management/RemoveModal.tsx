@@ -1,4 +1,4 @@
-// src/app/(dashboard)/dashboard/components/shared/RemoveModal.tsx
+// src\app\(dashboard)\dashboard\team-management\RemoveModal.tsx
 "use client";
 import React from "react";
 import ConfirmModal from "../components/ConfirmModal";

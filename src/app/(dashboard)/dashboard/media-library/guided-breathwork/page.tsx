@@ -1,4 +1,4 @@
-// src/app/(dashboard)/dashboard/media-library/guided-breathwork/page.tsx
+// src\app\(dashboard)\dashboard\media-library\guided-breathwork\page.tsx
 "use client";
 import React from "react";
 import GuidedBreathwork from "./GuidedBreathwork";

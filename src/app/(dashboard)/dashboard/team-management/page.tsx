@@ -1,4 +1,4 @@
-// src/app/(dashboard)/dashboard/team-management/page.tsx
+// src\app\(dashboard)\dashboard\team-management\page.tsx
 "use client";
 import React from "react";
 import TeamManagement from "./TeamManagement";

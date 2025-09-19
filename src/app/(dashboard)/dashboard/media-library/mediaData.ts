@@ -1,4 +1,4 @@
-// src/app/(dashboard)/dashboard/components/MediaLibrary/mediaData.ts
+// src\app\(dashboard)\dashboard\media-library\mediaData.ts
 export type MediaItem = {
   id: string | number;
   title: string;

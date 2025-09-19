@@ -1,4 +1,4 @@
-// src\app\(dashboard)\dashboard\components\shared\ToastManager.tsx
+// src\app\(dashboard)\dashboard\components\ToastManager.tsx
 "use client";
 import React from "react";
 import { useToastContext } from "../lib/ToastContext";

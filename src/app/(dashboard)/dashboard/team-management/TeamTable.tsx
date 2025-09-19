@@ -1,4 +1,4 @@
-// src/app/(dashboard)/dashboard/components/TeamManagement/TeamTable.tsx
+// src\app\(dashboard)\dashboard\team-management\TeamTable.tsx
 "use client";
 import React, { useRef, useEffect } from "react";
 import GenericTable, { Column } from "../components/GenericTable";

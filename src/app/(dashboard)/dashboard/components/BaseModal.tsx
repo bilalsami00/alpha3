@@ -1,4 +1,4 @@
-// src/app/(dashboard)/dashboard/components/shared/BaseModal.tsx
+// src\app\(dashboard)\dashboard\components\BaseModal.tsx
 "use client";
 import React, { useEffect } from "react";
 import ReactDOM from "react-dom";

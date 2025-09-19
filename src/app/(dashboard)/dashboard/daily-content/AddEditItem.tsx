@@ -1,5 +1,5 @@
 // boken into component
-// src\app\(dashboard)\dashboard\components\DailyContent\AddEditItem.tsx
+// src\app\(dashboard)\dashboard\daily-content\AddEditItem.tsx
 
 "use client";
 import React, { useEffect, useRef, useState } from "react";

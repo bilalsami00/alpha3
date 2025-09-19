@@ -1,4 +1,4 @@
-// src/app/(dashboard)/dashboard/components/TeamManagement/TeamDetails.tsx
+// src\app\(dashboard)\dashboard\team-management\TeamDetails.tsx
 "use client";
 import React, { useEffect, useState, useRef, useMemo } from "react";
 import Image from "next/image";

@@ -1,4 +1,4 @@
-// src\app\(dashboard)\dashboard\components\shared\emptyIcons.ts
+// src\app\(dashboard)\dashboard\components\emptyIcons.ts
 export const EMPTY_ICONS: Record<string, string> = {
   users: "/dashboardIcons/Users/empty-user.svg",
   teams: "/dashboardIcons/TeamManagement/people.svg",

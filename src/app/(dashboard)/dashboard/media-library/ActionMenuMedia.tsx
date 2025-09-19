@@ -1,4 +1,4 @@
-// src/app/(dashboard)/dashboard/components/MediaLibrary/ActionMenuMedia.tsx
+// src\app\(dashboard)\dashboard\media-library\ActionMenuMedia.tsx
 "use client";
 import React, { useRef, useState, useEffect } from "react";
 import { PiDotsThreeOutline } from "react-icons/pi";

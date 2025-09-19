@@ -1,4 +1,4 @@
-// src\app\(dashboard)\dashboard\components\shared\SearchBar.tsx 
+// src\app\(dashboard)\dashboard\components\SearchBar.tsx
 "use client";
 import React from "react";
 import Image from "next/image";

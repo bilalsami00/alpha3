@@ -1,4 +1,4 @@
-// src\app\(dashboard)\dashboard\components\shared\Pagination.tsx
+// src\app\(dashboard)\dashboard\components\Pagination.tsx
 "use client";
 import React from "react";
 import { GoChevronRight, GoChevronLeft } from "react-icons/go";

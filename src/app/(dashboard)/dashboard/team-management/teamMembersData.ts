@@ -1,4 +1,4 @@
-// app/(dashboard)/dashboard/components/TeamManagement/teamMembersData.ts
+// src\app\(dashboard)\dashboard\team-management\teamMembersData.ts
 import type { TeamMember } from "./types";
 
 export const TEAM_MEMBERS: TeamMember[] = [

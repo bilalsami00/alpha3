@@ -1,4 +1,4 @@
-// // src\app\(dashboard)\dashboard\components\TeamManagement\TeamMember\TeamMemberSearch.tsx
+// // src\app\(dashboard)\dashboard\team-management\TeamMember\TeamMemberSearch.tsx
 "use client";
 
 import React from "react";

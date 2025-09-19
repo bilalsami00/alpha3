@@ -1,4 +1,4 @@
-// src/app/(dashboard)/dashboard/components/HallOfFame/AddEditHallModal.tsx
+// src\app\(dashboard)\dashboard\hall-of-fame\AddEditHallModal.tsx
 "use client";
 import React, { useEffect, useMemo, useState } from "react";
 import BaseModal from "../components/BaseModal";

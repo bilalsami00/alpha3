@@ -1,4 +1,4 @@
-// src/app/(dashboard)/dashboard/components/DailyContent/Quotes/QuotesTable.tsx
+// src\app\(dashboard)\dashboard\daily-content\quotes\QuotesTable.tsx
 "use client";
 import React from "react";
 import GenericTable, { Column } from "../../components/GenericTable";
