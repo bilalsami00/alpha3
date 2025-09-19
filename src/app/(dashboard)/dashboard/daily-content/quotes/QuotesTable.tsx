@@ -66,7 +66,7 @@ export default function QuotesTable({
           Schedule Date
         </div>
       ),
-      width: "210px",
+      width: "310px",
       align: "center",
       render: (q) => (
         <div className="w-full flex items-center justify-center txt-14">

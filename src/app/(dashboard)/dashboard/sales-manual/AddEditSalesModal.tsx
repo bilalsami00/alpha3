@@ -339,7 +339,7 @@ export default function AddEditSalesModal({
                       value={text}
                       onChange={(e) => setText(e.target.value)}
                       placeholder="Enter checklist task"
-                      className="w-full p-3 rounded bg-[#F2F5F6] txt-14 focus:outline-none h-14"
+                      className="w-full p-3 rounded bg-[#F2F5F6] txt-14 focus:outline-none h-14 txt-12"
                     />
                   ) : (
                     <textarea

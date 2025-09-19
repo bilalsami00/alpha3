@@ -80,6 +80,24 @@ export const INITIAL_USERS: User[] = [
     email: "matt.r@example.com",
     status: "restricted",
   },
+  {
+    id: 44,
+    name: "Matthew2 Rodriguez",
+    email: "matt.r@example.com",
+    status: "restricted",
+  },
+  {
+    id: 45,
+    name: "Matthew3 Rodriguez",
+    email: "matt.r@example.com",
+    status: "restricted",
+  },
+  {
+    id: 46,
+    name: "Matthew4 Rodriguez",
+    email: "matt.r@example.com",
+    status: "restricted",
+  },
 
   // request users (sales tab) — added phone & salesReason so truncation can be seen
   {

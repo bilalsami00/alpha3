@@ -10,4 +10,12 @@ export const INITIAL_TEAMS: Team[] = [
   { id: 6, name: "Finance Foxtrot", memberCount: 5},
   { id: 7, name: "HR Golf", memberCount: 4},
   { id: 8, name: "Design Hotel", memberCount: 7},
+  { id: 9, name: "Design Hotel", memberCount: 7},
+  { id: 10, name: "Design Hotel", memberCount: 7},
+  { id: 11, name: "Design Hotel", memberCount: 7},
+  { id: 12, name: "Design Hotel", memberCount: 7},
+  { id: 13, name: "Design Hotel", memberCount: 7},
+  { id: 14, name: "Design Hotel", memberCount: 7},
+  { id: 15, name: "Design Hotel", memberCount: 7},
+  { id: 16, name: "Design Hotel", memberCount: 7},
 ];

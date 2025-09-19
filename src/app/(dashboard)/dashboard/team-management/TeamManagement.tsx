@@ -165,7 +165,7 @@ export default function TeamManagement({
         </div>
       )}
 
-      <div className="bg-white rounded shadow- sm overflow-hidden">
+      <div className="bg-white rounded shadow- sm overflow-visible">
 
       {/* Table */}
       <TeamTable

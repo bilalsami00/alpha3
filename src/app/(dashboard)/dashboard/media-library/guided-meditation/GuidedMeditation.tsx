@@ -114,7 +114,7 @@ export default function GuidedMeditation({
   function confirmDelete() {
     if (!confirm.item) return;
     setItems((s) => s.filter((it) => it.id !== confirm.item!.id));
-    showToast("Video removed.", "info");
+    showToast("Video deleted.", "info");
     setConfirm({ open: false });
   }
 

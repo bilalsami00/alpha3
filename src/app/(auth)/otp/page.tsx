@@ -21,12 +21,36 @@ function FiveDigitVerifyInner() {
   const searchParams = useSearchParams();
   const from = searchParams.get("from");
 
-  const isFormValid = () => {
-    return code.every((digit) => digit !== "");
-  };
+  // add an "active" flag
+  const [isActive, setIsActive] = useState(true);
 
+  // start/stop interval based on isActive
+  useEffect(() => {
+    if (!isActive) return; // nothing to do
+
+    const id = setInterval(() => {
+      setSecondsLeft((s) => {
+        if (s <= 1) {
+          // stop when we reach 0
+          clearInterval(id);
+          setIsActive(false);
+          return 0;
+        }
+        return s - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(id);
+  }, [isActive]);
+
+  // when user clicks resend
   const handleResendCode = () => {
     setSecondsLeft(30);
+    setIsActive(true); // <- restart the interval
+  };
+
+  const isFormValid = () => {
+    return code.every((digit) => digit !== "");
   };
 
   useEffect(() => {
