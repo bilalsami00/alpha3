@@ -21,7 +21,7 @@ export const INITIAL_QUOTES: QuoteItem[] = [
   { id: 17, text: "Don't wait for opportunity. Create it.", scheduleDate: "2025-09-28" },
   { id: 18, text: "Make each day your masterpiece.", scheduleDate: "2025-09-29" },
   { id: 19, text: "What you do today can improve all your tomorrows.", scheduleDate: "2025-09-30" },
-  { id: 20, text: "You are confined only by the walls you build yourself.", scheduleDate: "2025-09-31" },
+  { id: 20, text: "You are confined only by the walls you build yourself.", scheduleDate: "2025-09-30" },
 ];
 
 export const INITIAL_BUZZWORDS: QuoteItem[] = [

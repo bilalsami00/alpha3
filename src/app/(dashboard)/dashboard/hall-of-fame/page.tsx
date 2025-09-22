@@ -94,7 +94,8 @@ export default function HallOfFame() {
             const name = teamIdToName((row as any).teamId);
             if (name) map.set(mid, name);
           }
-          if ((row as any).teamName) map.set(mid, String((row as any).teamName).trim());
+          if ((row as any).teamName)
+            map.set(mid, String((row as any).teamName).trim());
         }
       }
 
@@ -104,7 +105,8 @@ export default function HallOfFame() {
             const name = teamIdToName((row as any).teamId);
             if (name) map.set(rid, name);
           }
-          if ((row as any).teamName) map.set(rid, String((row as any).teamName).trim());
+          if ((row as any).teamName)
+            map.set(rid, String((row as any).teamName).trim());
         }
       }
     });
@@ -117,13 +119,18 @@ export default function HallOfFame() {
     if (!m && !row) return "";
 
     const mid = m ? (m as any).id ?? (m as any).memberId ?? null : null;
-    if (mid != null && memberTeamMap.has(mid)) return memberTeamMap.get(mid) || "";
+    if (mid != null && memberTeamMap.has(mid))
+      return memberTeamMap.get(mid) || "";
 
     const rid = row ? (row as any).id ?? null : null;
-    if (rid != null && memberTeamMap.has(rid)) return memberTeamMap.get(rid) || "";
+    if (rid != null && memberTeamMap.has(rid))
+      return memberTeamMap.get(rid) || "";
 
     const memberTeamId =
-      (m as any)?.teamId ?? (m as any)?.team?.id ?? (row as any)?.teamId ?? null;
+      (m as any)?.teamId ??
+      (m as any)?.team?.id ??
+      (row as any)?.teamId ??
+      null;
     if (memberTeamId != null) {
       const t = INITIAL_TEAMS.find((tt) => tt.id === Number(memberTeamId));
       if (t) return t.name;
@@ -205,7 +212,7 @@ export default function HallOfFame() {
             : p
         )
       );
-      showToast("Member added to Hall of Fame.", "success");
+      showToast("Hall of Fame updated.", "success");
       setEditing(null);
       setModalOpen(false);
       return;
@@ -325,7 +332,10 @@ export default function HallOfFame() {
       align: "center",
       render: (r) => (
         <div className="flex justify-center">
-          <RowActionMenu menuWidthClass="w-44 max-w-[175px]" ariaLabel={`Actions for Hall item ${r.id}`}>
+          <RowActionMenu
+            menuWidthClass="w-44 max-w-[175px]"
+            ariaLabel={`Actions for Hall item ${r.id}`}
+          >
             <button
               onClick={() => {
                 openEdit(r);
