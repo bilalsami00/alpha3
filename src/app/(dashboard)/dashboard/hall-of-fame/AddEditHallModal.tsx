@@ -6,8 +6,6 @@ import Image from "next/image";
 import InlineSelect from "../components/InlineSelect";
 import { TEAM_MEMBERS, INITIAL_TEAMS, TeamMember, Team } from "./data";
 import { PiWarningCircle } from "react-icons/pi";
-import { IoIosInformationCircleOutline } from "react-icons/io";
-
 
 
 export type HallPayload = {
@@ -184,24 +182,7 @@ export default function AddEditHallModal({
             {showTeamWarning && (
               <p className="mt-2 txt-12 flex items-center gap-1">
                 {/* icon */}
-                {/* <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="inline-block"
-                >
-                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
-                  <line x1="12" y1="9" x2="12" y2="13"></line>
-                  <line x1="12" y1="17" x2="12.01" y2="17"></line>
-                </svg> */}
                 <PiWarningCircle className="rotate-180 w-4 h-4"/>
-                {/* <IoIosInformationCircleOutline/> */}
                 Please select a team first
               </p>
             )}
