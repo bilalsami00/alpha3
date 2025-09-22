@@ -195,10 +195,10 @@ export default function Buzzwords({
 
       <ConfirmModal
         open={confirm.open}
-        title="Delete buzzword"
+        title="Delete this buzzword?"
         description={
           confirm.quote
-            ? "This will permanently delete the buzzword from the list."
+            ? "This will permanently remove the buzzword of the day for all users."
             : ""
         }
         confirmLabel="Delete"

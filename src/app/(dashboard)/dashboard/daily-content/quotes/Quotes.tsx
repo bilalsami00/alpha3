@@ -63,7 +63,7 @@ export default function Quotes({
       );
       setEditing(null);
       setAddOpen(false);
-      showToast("Quote has been updated.", "success");
+      showToast("Quote updated.", "success");
       return;
     }
     const id = Date.now() + Math.floor(Math.random() * 1000);
@@ -190,10 +190,10 @@ export default function Quotes({
 
       <ConfirmModal
         open={confirm.open}
-        title="Delete quote"
+        title="Remove this quote?"
         description={
           confirm.quote
-            ? "This will permanently delete the quote from the list."
+            ? "This quote will no longer be visible to users once deleted."
             : ""
         }
         confirmLabel="Delete"
