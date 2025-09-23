@@ -89,7 +89,9 @@ export default function EmailVerification() {
       <SideAnimation />
       {/* Right Section */}
       <div className=" w-full md:w-[50%] flex self-center ">
-        <div className="   bg-white  mx-auto md:mx-0 ">
+        {/* <div className="   bg-white  mx-auto md:mx-0 "> */}
+                <div className="bg-white w-full max-w-[496px] mx-auto md:mx-0 px-0">
+
           {/* Back Button */}
           <div onClick={() => router.back()} className="cursor-pointer mb-6">
             <GoArrowLeft className="h-8 w-8"/>

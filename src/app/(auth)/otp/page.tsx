@@ -223,7 +223,7 @@ function FiveDigitVerifyInner() {
 
             <button
               type="submit"
-              className={`w-full txt-18 2xl:w-[496px] 2xl:h-[56px] py-3 rounded-full font-semibold transition ${
+              className={`w-full txt-18 2xl:w-[496px] 2xl:h-[56px] py-3 rounded-lg font-semibold transition ${
                 !isFormValid()
                   ? " bg-[#25292A] text-white cursor-not-allowed"
                   : "bg-[#25292A] text-white cursor-pointer"

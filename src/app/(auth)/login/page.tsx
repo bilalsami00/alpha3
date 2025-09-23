@@ -94,13 +94,9 @@ export default function LoginPage() {
         <div className=" flex flex-col justify-center w-full max-w-[498px]  bg-white  mx-auto md:mx-0 ">
           {/* Login Form */}
           <h2 className="txt-32 font-bold mb-6 text-[#25292A]">Log In</h2>
-          <form
-            noValidate
-            className=" space-y-2 "
-            onSubmit={handleSubmit}
-          >
+          <form noValidate className="space-y-2" onSubmit={handleSubmit}>
             {/* Email Field */}
-            <div >
+            <div>
               <label className="block txt-14 font-normal mb-1">
                 Email Address
               </label>
@@ -130,19 +126,21 @@ export default function LoginPage() {
                     : "border border-transparent focus:border-[#224674] focus:bg-[#C8E4FC80]"
                 }`}
                 placeholder="Enter email address"
+                aria-invalid={!!errors.email}
+                aria-describedby={errors.email ? "email-error" : undefined}
               />
-              {/* Error message */}
-              <div
-                className={`text-[#25292A] flex gap-1 text-xs mt-1 transition-opacity duration-100 ${
-                  errors.email ? "opacity-100" : "opacity-0"
-                }`}
-              >
-                {/* optional icon */}
-                <span className="text-red-500 text-xs">
-                  {errors.email ?? "\u00A0"}
-                </span>
-              </div>
+              {/* Email error (only rendered when present) */}
+              {errors.email && (
+                <p
+                  id="email-error"
+                  role="alert"
+                  className="text-red-500 text-xs mt-1"
+                >
+                  {errors.email}
+                </p>
+              )}
             </div>
+
             {/* Password Field */}
             <div>
               <label className="block txt-14 font-medium mb-1">Password</label>
@@ -172,12 +170,19 @@ export default function LoginPage() {
                       : "border-transparent focus:border-[#224674] focus:bg-[#C8E4FC80]"
                   }`}
                   placeholder="Enter password"
+                  aria-invalid={!!errors.password}
+                  aria-describedby={
+                    errors.password ? "password-error" : undefined
+                  }
                 />
                 <div className="absolute inset-y-0 right-3 flex items-center">
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
                     className="text-gray-500 hover:text-gray-700 focus:outline-none"
+                    aria-label={
+                      showPassword ? "Hide password" : "Show password"
+                    }
                   >
                     {showPassword ? (
                       <RiEyeLine className="cursor-pointer txt-24 text-[#9EA9AA]" />
@@ -188,19 +193,23 @@ export default function LoginPage() {
                 </div>
               </div>
 
-              {/* error */}
-              <div className="h-5">
-                {errors.password && (
-                  <p className="text-red-500 text-xs mt-1">{errors.password}</p>
-                )}
-              </div>
+              {/* Password error (only rendered when present) */}
+              {errors.password && (
+                <p
+                  id="password-error"
+                  role="alert"
+                  className="text-red-500 text-xs mt-1"
+                >
+                  {errors.password}
+                </p>
+              )}
             </div>
 
             {/* Forgot Password */}
             <div className="w-full 2xl:w-[496px] mt-1 flex justify-end">
               <Link
                 href="/forget-password"
-                className="txt-16  font-semibold text-right"
+                className="txt-16 font-semibold text-right"
               >
                 Forgot Password?
               </Link>
@@ -214,11 +223,9 @@ export default function LoginPage() {
                   ? " bg-[#25292A] text-white cursor-not-allowed"
                   : "bg-[#25292A] text-white cursor-pointer"
               }`}
-              disabled={!isFormValid()}
+              disabled={!isFormValid() || isSubmitting}
             >
-              
-              Log in
-              
+              {isSubmitting ? "Logging in..." : "Log in"}
             </button>
           </form>
         </div>
