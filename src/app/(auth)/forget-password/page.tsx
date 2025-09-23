@@ -98,7 +98,7 @@ export default function EmailVerification() {
           <h2 className="txt-32 font-bold mb-4  text-[#25292A]">
             Email Verification
           </h2>
-          <p className="txt-20  mb-6">
+          <p className="txt-16  mb-6">
             Enter your email address to verify your account.
           </p>
 

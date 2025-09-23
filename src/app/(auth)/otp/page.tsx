@@ -172,7 +172,7 @@ function FiveDigitVerifyInner() {
           <h2 className="txt-32 font-bold mb-2 text-[#25292A]">
             Verification Code
           </h2>
-          <p className="txt-20 text-[#51595A] mb-6 w-full 2xl:w-[496px]">
+          <p className="txt-16 text-[#51595A] mb-6 w-full 2xl:w-[496px]">
             Enter {DIGITS} digit verification code sent to your email address.
           </p>
 
@@ -192,14 +192,14 @@ function FiveDigitVerifyInner() {
                   ref={(el) => {
                     inputsRef.current[idx] = el;
                   }}
-                  className="w-14 h-14  max-sm:w-8 max-sm:h-8 max-lg:w-10 max-lg:h-10 text-center txt-18 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 bg-gray-50"
+                  className="w-14 h-14  max-sm:w-8 max-sm:h-8 max-lg:w-10 max-lg:h-10 text-center txt-16 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 bg-gray-50"
                 />
               ))}
             </div>
 
             <div className="text-center mb-6">
               {secondsLeft > 0 ? (
-                <div className="  txt-18 font-[400] leading-[100%] font-[Afacad Flux]">
+                <div className="  txt-16 font-[400] leading-[100%] font-[Afacad Flux]">
                   0:
                   {secondsLeft < 10 ? `0${secondsLeft}` : secondsLeft}
                 </div>

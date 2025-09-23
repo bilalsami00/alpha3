@@ -77,21 +77,21 @@ export default function CreateNewPassword() {
       <div className=" w-full md:w-[50%] flex self-center ">
         <div className="   bg-white  mx-auto md:mx-0 ">
           {/* Back Button */}
-          <div onClick={() => router.back()} className="cursor-pointer mb-6">
+          <div onClick={() => router.back()} className="cursor-pointer mb-1 lg:mb-6">
             <GoArrowLeft className="h-8 w-8" />
           </div>
 
-          <form noValidate className="space-y-2" onSubmit={handlePasswordReset}>
+          <form noValidate className="lg:space-y-2 " onSubmit={handlePasswordReset}>
             <h2 className="txt-32 font-bold mb-2 text-[#25292A]">
               Create a New Password
             </h2>
-            <p className="txt-20 text-[#51595A] mb-6 w-full  2xl:w-[496px]">
+            <p className="txt-16 text-[#51595A] mb-1 lg:mb-6 w-full  2xl:w-[496px]">
               Create a strong password. Make it something only you would know.
             </p>
 
             {/* Password Field */}
             <div>
-              <label className=" block txt-16 font-normal mb-1">
+              <label className=" block txt-14 font-normal mb-1">
                 Password <span className="text-red-500">*</span>
               </label>
               <div className="relative w-full h-full 2xl:w-[496px] ">
@@ -114,7 +114,7 @@ export default function CreateNewPassword() {
                       password: validationErrors.password,
                     }));
                   }}
-                  className={`w-full 2xl:w-[496px] 2xl:h-[56px] rounded-lg bg-[#F2F5F6] p-3 pr-12 txt-14 outline-none transition-all duration-300 ${
+                  className={`w-full 2xl:w-[496px] 2xl:h-[56px] rounded-lg bg-[#F2F5F6] p-3 pr-12 txt-12 outline-none transition-all duration-300 ${
                     errors.password
                       ? "border border-[#F14D4D] bg-[rgba(241,77,77,0.08)]"
                       : "border border-transparent focus:border-[#224674] focus:bg-[#C8E4FC80]"
@@ -138,7 +138,7 @@ export default function CreateNewPassword() {
               </div>
               {/* Error message with fixed height and opacity transition */}
               <p
-                className={`text-[#25292A] flex gap-1 text-xs mt-1 transition-opacity duration-100 ${
+                className={`text-[#25292A] flex gap-1 text-xs mt-1 transition-opacity duration-100 mb-1 ${
                   errors.password ? "opacity-100 text-red-500" : "opacity-0"
                 }`}
               >
@@ -148,7 +148,7 @@ export default function CreateNewPassword() {
 
             {/* Confirm Password Field */}
             <div>
-              <label className="block txt-16 font-normal mb-1">
+              <label className="block txt-14 font-normal mb-1">
                 Confirm Password <span className="text-red-500">*</span>
               </label>
 
@@ -172,7 +172,7 @@ export default function CreateNewPassword() {
                       confirmPassword: validationErrors.confirmPassword,
                     }));
                   }}
-                  className={`w-full 2xl:w-[496px] 2xl:h-[56px] rounded-lg bg-[#F2F5F6] p-3 pr-12 txt-14 outline-none transition-all duration-300 ${
+                  className={`w-full 2xl:w-[496px] 2xl:h-[56px] rounded-lg bg-[#F2F5F6] p-3 pr-12 txt-12 outline-none transition-all duration-300 ${
                     errors.confirmPassword
                       ? "border border-[#F14D4D] bg-[rgba(241,77,77,0.08)]"
                       : "border border-transparent focus:border-[#224674] focus:bg-[#C8E4FC80]"
@@ -197,7 +197,7 @@ export default function CreateNewPassword() {
 
               {/* Error message with fixed height and opacity transition */}
               <p
-                className={`text-[#25292A] flex gap-1 text-xs mt-1 transition-opacity duration-100 ${
+                className={`text-[#25292A] flex gap-1 text-xs mt-1 transition-opacity duration-100 mb-1 ${
                   errors.confirmPassword
                     ? "opacity-100 text-red-500"
                     : "opacity-0"
