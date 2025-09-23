@@ -82,7 +82,7 @@ export default function EmailVerification() {
       className=" min-h-[100vh] flex flex-col  md:flex-row items-stretch   gap-10 xl:gap-20 2xl:gap-32 pt-10 pl-6 xl:pl-10 pr-6 xl:pr-20 pb-10  "
     >
       {/* <Toaster position="top-center" /> */}
-      {/* === Left Section === */}
+      {/* ==== Left Section ==== */}
       <SideAnimation />
       {/* Right Section */}
       <div className=" w-full md:w-[50%] flex self-center ">
