@@ -123,13 +123,13 @@ export default function RepsChecklist({
     {
       key: "category",
       header: "Category",
-      width: "420px",
+      width: "502px",
       render: (r) => <div className="txt-14">{r.category}</div>,
     },
     {
       key: "task",
       header: "Checklist Task",
-      width: "700px",
+      width: "502px",
       render: (r) => <div className="txt-14">{r.task}</div>,
     },
     {
@@ -192,13 +192,36 @@ export default function RepsChecklist({
 
   return (
     <div>
-      {!onAdd && (
+      {/* {!onAdd && (
         <div className="flex items-center justify-between mb-6 sm:mt-6 2xl:mt-12">
           <h2 className="txt-24 font-semibold" style={{ color: "black" }}>
             Reps Checklist
           </h2>
           <div className="flex items-center gap-4">
             {items.length > 0 && (
+              <button
+                onClick={() => {
+                  setFallbackMode("add");
+                  setFallbackInitial(null);
+                  setFallbackModalOpen(true);
+                }}
+                className="px-4 py-2 bg-[#25292A] text-white rounded-lg txt-16"
+              >
+                Add Checklist Item
+              </button>
+            )}
+          </div>
+        </div>
+      )} */}
+      {/* // find this part in your return() */}
+      {!onAdd && (
+        <div className="flex items-center justify-between mb-6 sm:mt-6 2xl:mt-12">
+          <h2 className="txt-24 font-semibold" style={{ color: "black" }}>
+            Reps Checklist
+          </h2>
+          <div className="flex items-center gap-4">
+            {/* ← changed from items.length > 0 */}
+            {total > 0 && (
               <button
                 onClick={() => {
                   setFallbackMode("add");

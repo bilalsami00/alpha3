@@ -105,7 +105,8 @@ export default function Quotes({
       <div className="flex items-center justify-between mb-6 sm:mt-6 2xl:mt-12">
         <h2 className="txt-24 font-semibold">Quotes</h2>
         <div className="flex items-center gap-4">
-          {items.length > 0 && (
+          {/* {items.length > 0 && ( */}
+          {totalItems > 0 && (
             <button
               onClick={() => {
                 setEditing(null);

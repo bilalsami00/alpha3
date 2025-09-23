@@ -148,7 +148,7 @@ export default function TeamManagement({
         <h2 className="txt-24 font-semibold">Team Management</h2>
         {/* top-right create button */}
         {/* {createButton} */}
-        {teams.length > 0 && createButton}
+        {totalItems > 0 && createButton}
       </div>
 
       {/* Search */}

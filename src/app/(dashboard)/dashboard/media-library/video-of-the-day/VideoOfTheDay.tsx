@@ -135,7 +135,8 @@ export default function VideoOfTheDay({
         <h2 className="txt-24 font-semibold">{category}</h2>
 
         <div>
-          {items.length > 0 && (
+          {/* {items.length > 0 && ( */}
+          {totalItems > 0 && (
             <button
               onClick={openAdd}
               className="bg-[#0E0E0E] text-white px-4 py-2 rounded-md txt-16"

@@ -151,13 +151,13 @@ export default function FundamentalScripts({
     {
       key: "term",
       header: "Sales Term",
-      width: "420px",
+      width: "502px",
       render: (r) => <div className="txt-14">{r.term}</div>,
     },
     {
       key: "script",
       header: "Fundamental Script",
-      width: "800px",
+      width: "502px",
       render: (r) => <div className="txt-14 truncate">{r.script}</div>,
     },
     {
@@ -223,7 +223,8 @@ export default function FundamentalScripts({
             Fundamental Scripts
           </h2>
           <div className="flex items-center gap-4">
-            {items.length > 0 && (
+            {/* {items.length > 0 && ( */}
+            {total > 0 && (
               <button
                 onClick={() => {
                   setFallbackMode("add");
