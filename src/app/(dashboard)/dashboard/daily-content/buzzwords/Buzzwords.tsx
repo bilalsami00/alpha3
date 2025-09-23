@@ -64,7 +64,7 @@ export default function Buzzwords({
       );
       setEditing(null);
       setAddOpen(false);
-      showToast("Buzzword has been updated.", "success");
+      showToast("Buzzword updated.", "success");
       return;
     }
     const id = Date.now() + Math.floor(Math.random() * 1000);
@@ -77,7 +77,7 @@ export default function Buzzwords({
   const handleDelete = (id: number) => {
     setItems((prev) => prev.filter((q) => q.id !== id));
     setConfirm({ open: false });
-    showToast("Buzzword has been deleted.", "info");
+    showToast("Buzzword deleted.", "info");
   };
 
   const emptyAction = (

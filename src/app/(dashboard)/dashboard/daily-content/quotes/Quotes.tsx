@@ -76,7 +76,7 @@ export default function Quotes({
   const handleDelete = (id: number) => {
     setItems((prev) => prev.filter((q) => q.id !== id));
     setConfirm({ open: false });
-    showToast("Quote has been deleted.", "info");
+    showToast("Quote deleted.", "info");
   };
 
   const emptyAction = (
