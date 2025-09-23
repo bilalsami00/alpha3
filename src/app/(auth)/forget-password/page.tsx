@@ -7,7 +7,6 @@ import SideAnimation from "../authComponents/SideAnimation";
 // import { FaArrowLeft } from "react-icons/fa6";
 import { GoArrowLeft } from "react-icons/go";
 
-
 export default function EmailVerification() {
   const router = useRouter();
   const [email, setEmail] = useState("");
@@ -66,18 +65,16 @@ export default function EmailVerification() {
   //   }
   // };
 
-
   const handleSubmit = (e: React.FormEvent) => {
-  e.preventDefault();
-  // optionally store email even if invalid:
-  document.cookie = `otp_email=${encodeURIComponent(email)}; Path=/; Max-Age=600; SameSite=Lax`;
+    e.preventDefault();
+    // optionally store email even if invalid:
+    document.cookie = `otp_email=${encodeURIComponent(
+      email
+    )}; Path=/; Max-Age=600; SameSite=Lax`;
 
-  // router.replace("/otp?from=forgetpassword");
+    // router.replace("/otp?from=forgetpassword");
     router.push("/otp?from=forgetpassword");
-
-};
-
-
+  };
 
   return (
     <div
@@ -90,11 +87,10 @@ export default function EmailVerification() {
       {/* Right Section */}
       <div className=" w-full md:w-[50%] flex self-center ">
         {/* <div className="   bg-white  mx-auto md:mx-0 "> */}
-                <div className="bg-white w-full max-w-[496px] mx-auto md:mx-0 px-0">
-
+        <div className="bg-white w-full max-w-[496px] mx-auto md:mx-0 px-0">
           {/* Back Button */}
           <div onClick={() => router.back()} className="cursor-pointer mb-6">
-            <GoArrowLeft className="h-8 w-8"/>
+            <GoArrowLeft className="h-8 w-8" />
           </div>
 
           <h2 className="txt-32 font-bold mb-4  text-[#25292A]">
