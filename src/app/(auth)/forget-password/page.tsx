@@ -1,4 +1,4 @@
-// src\app\(auth)\forget-password\page.tsx
+// src\app\(auth)\forget-password\page.tsx 
 "use client";
 import { useState } from "react";
 import Image from "next/image";
