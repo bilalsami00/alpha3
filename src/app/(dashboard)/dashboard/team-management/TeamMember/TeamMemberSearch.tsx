@@ -28,7 +28,7 @@ export default function TeamMemberSearch({
           onChange={onChange}
           placeholder={placeholder}
           // tweak the input to match the TeamMember look: white bg, subtle border color, rounded, extra right padding
-          inputClassName="h-10 pl-4 pr-12 text-sm rounded-lg bg-white border-[#E9EDEE] shadow-sm text-gray-900"
+          inputClassName="h-10 pl-4 pr-12 text-sm rounded-lg bg-white border-[#E9EDEE] "
           // wrap icon in the small circular area to match TeamMember visual
           iconWrapperClassName="pr-2"
           // keep outer wrapper minimal since we already provide the rounded container
