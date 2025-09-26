@@ -51,6 +51,14 @@ export default function Users() {
   });
   const [selectedTeam, setSelectedTeam] = useState<string>("");
 
+
+    useEffect(() => {
+    setSearchQuery("");
+    setCurrentPage(1); // optional: reset page so you always land on page 1 for the new tab
+  }, [activeTab]);
+
+
+
   // filtering
   const filteredUsers = allUsers.filter(
     (user) =>
