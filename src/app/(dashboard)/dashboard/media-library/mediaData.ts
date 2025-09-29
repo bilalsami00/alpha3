@@ -18,6 +18,12 @@ export const CATEGORIES = [
 ] as const;
 export type Category = (typeof CATEGORIES)[number];
 
+
+
+// add near the top of src/app/(dashboard)/dashboard/media-library/mediaData.ts
+const SHARED_VIDEO = "/dashboardIcons/MediaLibrary/demo-vid.mp4";
+const SHARED_THUMB = "/media-samples/video-thumb.jpg"; // optional
+
 /**
  * Initial seed data for the Media Library.
  * Each key is one of the CATEGORIES above.
@@ -30,7 +36,8 @@ export const INITIAL_MEDIA: Record<Category, MediaItem[]> = {
       description: "3-minute breathwork to clear your mind and focus.",
       thumbnailUrl: "/media-samples/win-the-morning.jpg",
       duration: "03:00",
-      mediaUrl: null,
+      // mediaUrl: null,
+      mediaUrl: SHARED_VIDEO,
     },
     {
       id: "gb-2",
@@ -38,7 +45,8 @@ export const INITIAL_MEDIA: Record<Category, MediaItem[]> = {
       description: "5-minute guided breathing for grounding during the day.",
       thumbnailUrl: "/media-samples/calm.jpg",
       duration: "05:00",
-      mediaUrl: null,
+      // mediaUrl: null,
+      mediaUrl: SHARED_VIDEO,
     },
     {
       id: "gb-3",
@@ -46,7 +54,8 @@ export const INITIAL_MEDIA: Record<Category, MediaItem[]> = {
       description: "A short paced box breathing exercise to reduce stress.",
       thumbnailUrl: null,
       duration: "04:00",
-      mediaUrl: null,
+      // mediaUrl: null,
+      mediaUrl: SHARED_VIDEO,
     },
   ],
 
@@ -57,7 +66,8 @@ export const INITIAL_MEDIA: Record<Category, MediaItem[]> = {
       description: "A calm guided meditation for sleep preparation.",
       thumbnailUrl: "/media-samples/calm.jpg",
       duration: "10:00",
-      mediaUrl: null,
+      // mediaUrl: null,
+      mediaUrl: SHARED_VIDEO,
     },
     {
       id: "gm-2",
@@ -65,7 +75,8 @@ export const INITIAL_MEDIA: Record<Category, MediaItem[]> = {
       description: "Visualization practice to improve clarity and goals focus.",
       thumbnailUrl: "/media-samples/visualize.jpg",
       duration: "08:00",
-      mediaUrl: null,
+      // mediaUrl: null,
+      mediaUrl: SHARED_VIDEO,
     },
     {
       id: "gm-3",
@@ -73,7 +84,8 @@ export const INITIAL_MEDIA: Record<Category, MediaItem[]> = {
       description: "2-minute micro-meditation to recenter between tasks.",
       thumbnailUrl: null,
       duration: "02:00",
-      mediaUrl: null,
+      // mediaUrl: null,
+      mediaUrl: SHARED_VIDEO,
     },
   ],
 
@@ -84,7 +96,8 @@ export const INITIAL_MEDIA: Record<Category, MediaItem[]> = {
       description: "One quick sales tip to sharpen your close today.",
       thumbnailUrl: "/media-samples/daily-tip.jpg",
       duration: "01:30",
-      mediaUrl: null,
+      // mediaUrl: null,
+      mediaUrl: SHARED_VIDEO,
     },
     {
       id: "votd-2",
@@ -92,7 +105,8 @@ export const INITIAL_MEDIA: Record<Category, MediaItem[]> = {
       description: "Short clip of an effective objection-handling role-play.",
       thumbnailUrl: null,
       duration: "02:45",
-      mediaUrl: null,
+      // mediaUrl: null,
+      mediaUrl: SHARED_VIDEO,
     },
     {
       id: "votd-3",
@@ -100,7 +114,8 @@ export const INITIAL_MEDIA: Record<Category, MediaItem[]> = {
       description: "30-second demo of a key feature to reference on calls.",
       thumbnailUrl: "/media-samples/product-demo.jpg",
       duration: "00:30",
-      mediaUrl: null,
+      // mediaUrl: null,
+      mediaUrl: SHARED_VIDEO,
     },
   ],
 
@@ -111,7 +126,8 @@ export const INITIAL_MEDIA: Record<Category, MediaItem[]> = {
       description: "Role-play and best responses for common objections.",
       thumbnailUrl: null,
       duration: "12:00",
-      mediaUrl: null,
+      // mediaUrl: null,
+      mediaUrl: SHARED_VIDEO,
     },
     {
       id: "st-2",
@@ -119,7 +135,8 @@ export const INITIAL_MEDIA: Record<Category, MediaItem[]> = {
       description: "How to ask discovery questions that reveal buying signals.",
       thumbnailUrl: "/media-samples/discovery.jpg",
       duration: "09:30",
-      mediaUrl: null,
+      // mediaUrl: null,
+      mediaUrl: SHARED_VIDEO,
     },
     {
       id: "st-3",
@@ -127,7 +144,64 @@ export const INITIAL_MEDIA: Record<Category, MediaItem[]> = {
       description: "Structured demo flow to keep the prospect engaged.",
       thumbnailUrl: "/media-samples/demo-walkthrough.jpg",
       duration: "15:00",
-      mediaUrl: null,
+      // mediaUrl: null,
+      mediaUrl: SHARED_VIDEO,
     },
   ],
 };
+
+
+
+
+
+
+
+
+
+
+
+// // src/app/(dashboard)/dashboard/media-library/mediaData.ts
+// export type MediaItem = {
+//   id: string | number;
+//   title: string;
+//   description?: string;
+//   thumbnailUrl?: string | null;
+//   mediaUrl?: string | null;
+//   duration?: string | null;
+// };
+
+// export const CATEGORIES = [
+//   "Guided Breathwork",
+//   "Guided Meditation",
+//   "Video of the Day",
+//   "Sales Training",
+// ] as const;
+// export type Category = (typeof CATEGORIES)[number];
+
+// // Point this to the file you placed in /public
+// const SHARED_VIDEO = "/dashboardIcons/MediaLibrary/demo-vid.mp4";
+// // optional poster image from /public if you have one
+// const SHARED_THUMB = "/media-samples/video-thumb.jpg";
+
+// export const INITIAL_MEDIA: Record<Category, MediaItem[]> = {
+//   "Guided Breathwork": [
+//     { id: "gb-1", title: "Morning Reset", description: "3-minute breathwork", thumbnailUrl: SHARED_THUMB, duration: "03:00", mediaUrl: SHARED_VIDEO },
+//     { id: "gb-2", title: "Calm Centering", description: "5-minute grounding", thumbnailUrl: SHARED_THUMB, duration: "05:00", mediaUrl: SHARED_VIDEO },
+//     { id: "gb-3", title: "Box Breathing", description: "Short box breathing", thumbnailUrl: SHARED_THUMB, duration: "04:00", mediaUrl: SHARED_VIDEO },
+//   ],
+//   "Guided Meditation": [
+//     { id: "gm-1", title: "Evening Wind Down", description: "Calm meditation", thumbnailUrl: SHARED_THUMB, duration: "10:00", mediaUrl: SHARED_VIDEO },
+//     { id: "gm-2", title: "Focus & Visualization", description: "Visualization practice", thumbnailUrl: SHARED_THUMB, duration: "08:00", mediaUrl: SHARED_VIDEO },
+//     { id: "gm-3", title: "Quick Recharge", description: "2-minute micro-meditation", thumbnailUrl: SHARED_THUMB, duration: "02:00", mediaUrl: SHARED_VIDEO },
+//   ],
+//   "Video of the Day": [
+//     { id: "votd-1", title: "Daily Insight — Closing Tip", description: "Quick tip", thumbnailUrl: SHARED_THUMB, duration: "01:30", mediaUrl: SHARED_VIDEO },
+//     { id: "votd-2", title: "Role-play Highlight", description: "Objection handling clip", thumbnailUrl: SHARED_THUMB, duration: "02:45", mediaUrl: SHARED_VIDEO },
+//     { id: "votd-3", title: "Product Micro-Demo", description: "30s demo", thumbnailUrl: SHARED_THUMB, duration: "00:30", mediaUrl: SHARED_VIDEO },
+//   ],
+//   "Sales Training": [
+//     { id: "st-1", title: "Objection Handling", description: "Role-play", thumbnailUrl: SHARED_THUMB, duration: "12:00", mediaUrl: SHARED_VIDEO },
+//     { id: "st-2", title: "Discovery Techniques", description: "Ask better questions", thumbnailUrl: SHARED_THUMB, duration: "09:30", mediaUrl: SHARED_VIDEO },
+//     { id: "st-3", title: "Demo Walkthrough", description: "Demo flow", thumbnailUrl: SHARED_THUMB, duration: "15:00", mediaUrl: SHARED_VIDEO },
+//   ],
+// };
