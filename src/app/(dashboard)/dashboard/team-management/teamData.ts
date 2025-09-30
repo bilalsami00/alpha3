@@ -2,7 +2,7 @@
 import type { Team } from "./types";
 
 export const INITIAL_TEAMS: Team[] = [
-  { id: 1, name: "Sales Team Alpha", memberCount: 12},
+  { id: 1, name: "Sales Team Alpha", memberCount: 12}, 
   { id: 2, name: "Marketing Bravo", memberCount: 4},
   { id: 3, name: "Development Charlie", memberCount: 4},
   { id: 4, name: "Support Delta", memberCount: 3},

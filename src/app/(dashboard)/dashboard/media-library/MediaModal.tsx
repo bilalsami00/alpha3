@@ -1645,7 +1645,9 @@ export default function MediaModalV2({
   return (
     <BaseModal
       onClose={onClose}
-      className="min-w-[438px] max-2xl:max-h-[500px] rounded-xl bg-white overflow-hidden flex flex-col custom-scroll"
+      // className="min-w-[438px] max-2xl:max-h-[500px] rounded-xl bg-white overflow-hidden flex flex-col custom-scroll"
+        className="min-w-[438px] max-h-[500px] 2xl:max-h-[500px] rounded-xl bg-white overflow-hidden flex flex-col custom-scroll"
+
     >
       <div className="h-full flex flex-col bg-white rounded-xl overflow-hidden">
         <div className="px-6 py-5 flex items-center justify-between border-b border-[#E9EDEE]">

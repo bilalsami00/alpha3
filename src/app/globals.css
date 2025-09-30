@@ -392,6 +392,20 @@ body {
 /* ensure child content is above the pseudo-element */
 .dashed-figma > * { position: relative; z-index: 1; }
 
+/* ensure dashed upload area can shrink inside flex containers */
+.media-modal .dashed-figma {
+  min-width: 0;
+}
+
+/* explicitly constrain video preview so it never expands past its container */
+.media-modal video {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 
 
