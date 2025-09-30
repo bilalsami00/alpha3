@@ -276,9 +276,6 @@
 // // // // //   );
 // // // // // }
 
-
-
-
 // // // // // src\app\(dashboard)\dashboard\media-library\MediaModal.tsx
 // // // // "use client";
 // // // // import React, { useEffect, useState, useRef } from "react";
@@ -576,26 +573,6 @@
 // // // //     </BaseModal>
 // // // //   );
 // // // // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // // // // src\app\(dashboard)\dashboard\media-library\MediaModal.tsx
 // // // "use client";
@@ -903,20 +880,6 @@
 // // //   );
 // // // }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // // // src/app/(dashboard)/dashboard/media-library/MediaModal.tsx
 // // "use client";
 // // import React, { useEffect, useState, useRef } from "react";
@@ -1155,17 +1118,6 @@
 // //     </BaseModal>
 // //   );
 // // }
-
-
-
-
-
-
-
-
-
-
-
 
 // // src/app/(dashboard)/dashboard/media-library/MediaModal.tsx
 // "use client";
@@ -1439,14 +1391,6 @@
 //   );
 // }
 
-
-
-
-
-
-
-
-
 // src/app/(dashboard)/dashboard/media-library/MediaModal.tsx
 "use client";
 import React, { useEffect, useRef, useState } from "react";
@@ -1578,7 +1522,10 @@ export default function MediaModalV2({
     }
 
     if (!f.type || !f.type.startsWith("video/")) {
-      showToast?.("Please select a video file (MP4 or other video formats).", "error");
+      showToast?.(
+        "Please select a video file (MP4 or other video formats).",
+        "error"
+      );
       if (inputRef.current) inputRef.current.value = "";
       setFile(null);
       return;
@@ -1617,7 +1564,9 @@ export default function MediaModalV2({
   const canSave =
     title.trim().length > 0 &&
     (mode === "add" ? description.trim().length > 0 : true) &&
-    (mode === "add" ? !!file || hasExistingPreview : !!file || hasExistingPreview);
+    (mode === "add"
+      ? !!file || hasExistingPreview
+      : !!file || hasExistingPreview);
 
   async function handleSave() {
     if (!canSave) return;
@@ -1646,14 +1595,25 @@ export default function MediaModalV2({
     <BaseModal
       onClose={onClose}
       // className="min-w-[438px] max-2xl:max-h-[500px] rounded-xl bg-white overflow-hidden flex flex-col custom-scroll"
-        className="min-w-[438px] max-h-[500px] 2xl:max-h-[500px] rounded-xl bg-white overflow-hidden flex flex-col custom-scroll"
-
+      className="min-w-[438px] max-h-[500px] 2xl:max-h-[500px] rounded-xl bg-white overflow-hidden flex flex-col custom-scroll"
     >
-      <div className="h-full flex flex-col bg-white rounded-xl overflow-hidden">
+      <div className="media-modal h-full flex flex-col bg-white rounded-xl overflow-hidden">
         <div className="px-6 py-5 flex items-center justify-between border-b border-[#E9EDEE]">
-          <h3 className="txt-24 font-medium">{mode === "add" ? "Add Video" : "Edit Video"}</h3>
-          <button onClick={onClose} aria-label="Close" className="w-8 h-8 rounded-full hover:bg-gray-100 flex items-center justify-center">
-            <Image src="/CloseButton.svg" alt="Close" width={32} height={32} priority />
+          <h3 className="txt-24 font-medium">
+            {mode === "add" ? "Add Video" : "Edit Video"}
+          </h3>
+          <button
+            onClick={onClose}
+            aria-label="Close"
+            className="w-8 h-8 rounded-full hover:bg-gray-100 flex items-center justify-center"
+          >
+            <Image
+              src="/CloseButton.svg"
+              alt="Close"
+              width={32}
+              height={32}
+              priority
+            />
           </button>
         </div>
 
@@ -1669,22 +1629,47 @@ export default function MediaModalV2({
                   flex items-center justify-center
                 `}
               >
-                <input ref={inputRef} type="file" accept="video/mp4,video/*" className="hidden" onChange={handleFileChange} />
+                <input
+                  ref={inputRef}
+                  type="file"
+                  accept="video/mp4,video/*"
+                  className="hidden"
+                  onChange={handleFileChange}
+                />
 
                 {previewVideoUrl ? (
                   <div className="absolute inset-0 w-full h-full flex items-center justify-center">
                     <div className="w-full h-[190px] max-h-[190px] overflow-hidden rounded-lg bg-black">
-                      <video key={previewVideoUrl} src={previewVideoUrl} className="w-full h-full object-cover block" controls playsInline />
+                      {/* <video key={previewVideoUrl} src={previewVideoUrl} className="w-full h-full object-cover block" controls playsInline /> */}
+                      <video
+                        key={previewVideoUrl}
+                        src={previewVideoUrl}
+                        className="w-full h-full object-cover block max-w-full max-h-full"
+                        controls
+                        playsInline
+                        preload="metadata"
+                      />
                     </div>
                   </div>
                 ) : previewImageUrl ? (
                   <div className="absolute inset-0 w-full h-full">
-                    <Image src={previewImageUrl} alt="Thumbnail" fill style={{ objectFit: "cover" }} />
+                    <Image
+                      src={previewImageUrl}
+                      alt="Thumbnail"
+                      fill
+                      style={{ objectFit: "cover" }}
+                    />
                   </div>
                 ) : (
                   <div className="text-center txt-14 font-normal">
                     <div className="flex items-center justify-center mb-2">
-                      <Image src="/dashboardIcons/MediaLibrary/video-circle.svg" alt="Upload" width={32} height={32} className="mr-2" />
+                      <Image
+                        src="/dashboardIcons/MediaLibrary/video-circle.svg"
+                        alt="Upload"
+                        width={32}
+                        height={32}
+                        className="mr-2"
+                      />
                     </div>
                     <div>Upload an MP4 (1080p) under 500MB.</div>
                   </div>
@@ -1692,8 +1677,18 @@ export default function MediaModalV2({
               </label>
 
               {hasExistingPreview && (
-                <button type="button" onClick={handleRemovePreview} aria-label="Remove video" className="absolute top-3 right-3 z-20  flex items-center justify-center rounded-full">
-                  <Image src="/CloseButton.svg" alt="Remove" width={20} height={20} />
+                <button
+                  type="button"
+                  onClick={handleRemovePreview}
+                  aria-label="Remove video"
+                  className="absolute top-3 right-3 z-20  flex items-center justify-center rounded-full"
+                >
+                  <Image
+                    src="/CloseButton.svg"
+                    alt="Remove"
+                    width={20}
+                    height={20}
+                  />
                 </button>
               )}
             </div>
@@ -1701,18 +1696,42 @@ export default function MediaModalV2({
 
           <label className="block">
             <div className="txt-14 font-normal text-gray-700 mb-2">Title</div>
-            <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Enter video title" className="w-full rounded-md px-4 py-4 bg-[#F3F6F6] border border-transparent placeholder-[#9CA3AF] text-sm focus:outline-none focus-green" />
+            <input
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder="Enter video title"
+              className="w-full rounded-md px-4 py-4 bg-[#F3F6F6] border border-transparent placeholder-[#9CA3AF] text-sm focus:outline-none focus-green"
+            />
           </label>
 
           <label className="block">
-            <div className="txt-14 font-normal text-gray-700 mb-2">Description</div>
-            <textarea value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Add Description" rows={5} className="w-full rounded-md px-4 py-6 bg-[#F3F6F6] border border-transparent placeholder-[#9CA3AF] text-sm resize-none focus:outline-none focus-green" />
+            <div className="txt-14 font-normal text-gray-700 mb-2">
+              Description
+            </div>
+            <textarea
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              placeholder="Add Description"
+              rows={5}
+              className="w-full rounded-md px-4 py-6 bg-[#F3F6F6] border border-transparent placeholder-[#9CA3AF] text-sm resize-none focus:outline-none focus-green"
+            />
           </label>
         </div>
 
         <div className="flex items-center justify-end gap-4 bg-[#F2F5F6] px-6 py-4 border-t border-[#E9EDEE]">
-          <button onClick={onClose} className="w-25 h-10 px-3 py-2 txt-16 font-semibold rounded-lg bg-white border border-[#E9EDEE]">Cancel</button>
-          <button onClick={handleSave} disabled={!canSave} className="min-w-25 max-w-36 h-10 px-3 py-2 txt-16 font-semibold rounded-lg bg-[#0E0E0E] text-white disabled:opacity-50 disabled:cursor-not-allowed">{mode === "add" ? "Add" : "Save Changes"}</button>
+          <button
+            onClick={onClose}
+            className="w-25 h-10 px-3 py-2 txt-16 font-semibold rounded-lg bg-white border border-[#E9EDEE]"
+          >
+            Cancel
+          </button>
+          <button
+            onClick={handleSave}
+            disabled={!canSave}
+            className="min-w-25 max-w-36 h-10 px-3 py-2 txt-16 font-semibold rounded-lg bg-[#0E0E0E] text-white disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {mode === "add" ? "Add" : "Save Changes"}
+          </button>
         </div>
       </div>
     </BaseModal>
