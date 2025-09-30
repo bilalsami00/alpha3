@@ -67,10 +67,43 @@ export const TEAM_MEMBERS: TeamMember[] = [
     username: "jmiller",
     teamId: 1
   },
+  {
+    id: 9,
+    fullName: "James Miller 2",
+    email: "james.miller@company.com",
+    status: "Onboard",
+    username: "jmiller",
+    teamId: 1
+  },
+  {
+    id: 10,
+    fullName: "James Miller 3",
+    email: "james.miller@company.com",
+    status: "Onboard",
+    username: "jmiller",
+    teamId: 1
+  },
+  {
+    id: 11,
+    fullName: "James Miller 4",
+    email: "james.miller@company.com",
+    status: "Onboard",
+    username: "jmiller",
+    teamId: 1
+  },
+  {
+    id: 12,
+    fullName: "James Miller 5",
+    email: "james.miller@company.com",
+    status: "Onboard",
+    username: "jmiller",
+    teamId: 1
+  },
+
 
   // Marketing Team Beta (teamId: 2)
   {
-    id: 9,
+    id: 13,
     fullName: "Lisa Anderson",
     email: "lisa.anderson@company.com",
     status: "Onboard",
@@ -78,7 +111,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     teamId: 2
   },
   {
-    id: 10,
+    id: 14,
     fullName: "Brian Taylor",
     email: "brian.taylor@company.com",
     status: "Onboard",
@@ -86,7 +119,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     teamId: 2
   },
   {
-    id: 11,
+    id: 15,
     fullName: "Olivia Martinez",
     email: "olivia.martinez@company.com",
     status: "Invited",
@@ -94,7 +127,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     teamId: 2
   },
   {
-    id: 12,
+    id: 16,
     fullName: "Christopher Brown",
     email: "christopher.brown@company.com",
     status: "Restricted",
@@ -104,7 +137,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
 
   // Engineering Team Gamma (teamId: 3)
   {
-    id: 13,
+    id: 17,
     fullName: "Daniel Lee",
     email: "daniel.lee@company.com",
     status: "Onboard",
@@ -112,7 +145,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     teamId: 3
   },
   {
-    id: 14,
+    id: 18,
     fullName: "Sophia Garcia",
     email: "sophia.garcia@company.com",
     status: "Onboard",
@@ -120,7 +153,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     teamId: 3
   },
   {
-    id: 15,
+    id: 19,
     fullName: "Kevin White",
     email: "kevin.white@company.com",
     status: "Invited",
@@ -128,7 +161,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     teamId: 3
   },
   {
-    id: 16,
+    id: 20,
     fullName: "Emma Davis",
     email: "emma.davis@company.com",
     status: "Restricted",
@@ -138,7 +171,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
 
   // Support Team Delta (teamId: 4)
   {
-    id: 17,
+    id: 21,
     fullName: "Andrew Clark",
     email: "andrew.clark@company.com",
     status: "Onboard",
@@ -146,7 +179,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     teamId: 4
   },
   {
-    id: 18,
+    id: 22,
     fullName: "Mia Rodriguez",
     email: "mia.rodriguez@company.com",
     status: "Onboard",
@@ -154,7 +187,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     teamId: 4
   },
   {
-    id: 19,
+    id: 23,
     fullName: "Jason Wilson",
     email: "jason.wilson@company.com",
     status: "Invited",
