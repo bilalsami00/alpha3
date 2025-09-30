@@ -1,17 +1,20 @@
-// src\app\(dashboard)\dashboard\team-management\TeamMember\StatusDropdown.tsx
+// src\app\(dashboard)\dashboard\hood\TeamSortDropdown.tsx
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { GoChevronDown } from "react-icons/go";
-import type { MemberStatusFilter } from "../types";
 
-export default function StatusDropdown({
+
+export default function TeamSortDropdown({
   value,
   onChange,
+  options,
   className = "",
 }: {
-  value: MemberStatusFilter;
-  onChange: (v: MemberStatusFilter) => void;
+  value: string;
+  onChange: (v: string) => void;
+  options: { value: string; label: string }[];
   className?: string;
 }) {
   const [open, setOpen] = useState(false);
@@ -30,9 +33,8 @@ export default function StatusDropdown({
         setOpen(false);
       }
     }
-    function onKey(e: Event) {
-      const ke = e as KeyboardEvent;
-      if (ke.key === "Escape") setOpen(false);
+    function onKey(e: KeyboardEvent) {
+      if (e.key === "Escape") setOpen(false);
     }
     document.addEventListener("mousedown", onDocClick);
     document.addEventListener("touchstart", onDocClick);
@@ -44,24 +46,21 @@ export default function StatusDropdown({
     };
   }, []);
 
-  // NOTE: value must match the MemberStatusFilter union ("All", "Onboard", "Invited")
-  const options: { value: MemberStatusFilter | "All"; label: string }[] = [
-    { value: "All", label: "All Status" },   // value is "All" (matches the shared type)
-    { value: "Invited", label: "Invited" },
-    { value: "Onboard", label: "Onboard" },
-  ];
-
   const highlighted = open || focused;
 
   const focusMenuItem = (idx: number) => {
-    const items = menuRef.current?.querySelectorAll<HTMLButtonElement>("[role='menuitem']");
+    const items =
+      menuRef.current?.querySelectorAll<HTMLButtonElement>("[role='menuitem']");
     const el = items?.[idx];
     el?.focus();
   };
 
   return (
-    <div className={className} style={{ width: 180, height: 40, position: "relative" }}>
-      <label className="sr-only">Filter by status</label>
+    <div
+      className={className}
+      style={{ width: 180, height: 40, position: "relative" }}
+    >
+      <label className="sr-only">Filter by team</label>
 
       <button
         ref={btnRef}
@@ -85,17 +84,21 @@ export default function StatusDropdown({
         }}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
-        className="w-full min-w-[180px] h-full flex items-center justify-between px-4 text-sm rounded-lg focus:outline-none"
+        className="w-full min-w-[180px] h-full flex items-center justify-between px-4 txt-14 rounded-lg focus:outline-none "
         style={{
           background: "#FFFFFF",
-          border: highlighted ? "1px solid var(--Secondary-action, #00C47E)" : "1px solid #E9EDEE",
-          boxShadow: highlighted ? "0 6px 18px rgba(0,196,126,0.08)" : undefined,
+          border: highlighted
+            ? "1px solid var(--Secondary-action, #00C47E)"
+            : "1px solid #E9EDEE",
+          boxShadow: highlighted
+            ? "0 6px 18px rgba(0,196,126,0.08)"
+            : undefined,
           color: "#111827",
           height: 40,
         }}
       >
         <span className="truncate text-[#51595A]">
-          {options.find((o) => o.value === value)?.label ?? "Status"}
+          {options.find((o) => o.value === value)?.label ?? "All Team"}
         </span>
 
         <div
@@ -108,25 +111,37 @@ export default function StatusDropdown({
           aria-hidden
           className="flex items-center justify-center"
         >
-          <GoChevronDown className="text-[#51595A]" size={24} />
+          <div
+            className={`transform transition-transform  ${
+              open ? "rotate-0" : ""
+            }`}
+          >
+            {/* <Image
+              src="/arrow-down.svg"
+              alt="Caret"
+              width={24}
+              height={24}
+              //   className={` ${open ? "rotate-180" : ""}`}
+            /> */}
+            <GoChevronDown className="text-[#51595A]" size={24} />
+          </div>
         </div>
       </button>
 
-      {/* stacked menu */}
       {open && (
         <div
           ref={menuRef}
           role="menu"
-          aria-label="Status options"
-          className="absolute top-11 right-0 w-[180px] bg-white rounded-lg shadow-sm z-[60] overflow-hidden"
+          aria-label="Team options"
+          className="absolute top-11 right-0  w-full min-w-[180px] max-h-[100px] bg-white rounded-lg shadow-sm z-[60] overflow-auto"
           style={{
             border: "1px solid #E9EDEE",
-            // paddingTop: 8,
-            // paddingBottom: 8,
           }}
           onKeyDown={(e) => {
             const items = Array.from(
-              menuRef.current?.querySelectorAll<HTMLButtonElement>("[role='menuitem']") || []
+              menuRef.current?.querySelectorAll<HTMLButtonElement>(
+                "[role='menuitem']"
+              ) || []
             );
             if (!items.length) return;
             const active = document.activeElement as HTMLElement | null;
@@ -152,8 +167,7 @@ export default function StatusDropdown({
                 role="menuitem"
                 data-index={i}
                 onClick={() => {
-                  // cast is safe: "All" | "Invited" | "Onboard"
-                  onChange(opt.value as MemberStatusFilter);
+                  onChange(opt.value);
                   setOpen(false);
                 }}
                 className="w-full text-left px-3 py-2 text-sm bg-transparent hover:bg-[#F7F8F8] focus:outline-none"
@@ -161,9 +175,9 @@ export default function StatusDropdown({
               >
                 {opt.label}
               </button>
-
-              {/* don't render divider after last item */}
-              {i < options.length - 1 && <div aria-hidden className="h-[1px] w-full bg-[#E9EDEE]" />}
+              {i < options.length - 1 && (
+                <div aria-hidden className="h-[1px] w-full bg-[#E9EDEE]" />
+              )}
             </React.Fragment>
           ))}
         </div>

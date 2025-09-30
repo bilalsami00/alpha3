@@ -36,7 +36,7 @@ export default function GenericTable<T>({
   rowHeight?: string; // tailwind class for height, e.g. 'h-14'
 }) {
   return (
-    <div className={`bg-white rounded shadow-sm overflow-auto ${tableClassName}`}>
+    <div className={`bg-white rounded shadow- sm overflow-auto ${tableClassName}`}>
       <table className="min-w-full divide-y divide-gray-200">
         <thead className="bg-[#E9EDEE]">
           <tr>
