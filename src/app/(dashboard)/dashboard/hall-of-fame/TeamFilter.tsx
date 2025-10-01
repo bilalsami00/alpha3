@@ -107,7 +107,7 @@ export default function TeamFilter({
             }}
             onFocus={() => setFocused(true)}
             onBlur={() => setFocused(false)}
-            className="w-full min-w-[180px] h-full flex items-center justify-between px-4 text-sm rounded-lg focus:outline-none"
+            className="w-full min-w-[180px] h-full flex items-center justify-between px-4 txt-14 rounded-lg focus:outline-none"
             style={{
               background: "#FFFFFF",
               border: highlighted
@@ -120,7 +120,7 @@ export default function TeamFilter({
               height: 40,
             }}
           >
-            <span className="truncate">{label}</span>
+            <span className="truncate text-[#51595A]">{label}</span>
 
             <div
               style={{
@@ -142,7 +142,7 @@ export default function TeamFilter({
               ref={menuRef}
               role="menu"
               aria-label="Team options"
-              className="absolute top-11 right-0 w-[180px] bg-white rounded-lg shadow-sm z-[60] overflow-hidden"
+              className="absolute top-11 right-0 w-[180px] max-h-[150px] bg-white rounded-lg shadow-sm z-[60] overflow-auto"
               style={{
                 border: "1px solid #E9EDEE",
                 // paddingTop: 8,
@@ -181,8 +181,8 @@ export default function TeamFilter({
                       onTeamChange(opt.id);
                       setOpen(false);
                     }}
-                    className="w-full text-left px-3 py-2 text-sm bg-transparent hover:bg-[#F7F8F8] focus:outline-none"
-                    style={{ color: "#111827" }}
+                    className="w-full text-left px-3 py-2 txt-14 bg-transparent hover:bg-[#F7F8F8] focus:outline-none"
+                    style={{ color: "#51595A" }}
                   >
                     <div className="flex items-center justify-between">
                       <div className="truncate">{opt.name}</div>

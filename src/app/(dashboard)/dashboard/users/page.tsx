@@ -367,7 +367,7 @@ export default function Users() {
             setActiveTab("active");
             setCurrentPage(1);
           }}
-          className={`flex-1 text-center whitespace-nowrap px-4 py-2 txt-14 font-medium border-b-2 ${
+          className={`flex-1 text-center md:whitespace-nowrap px-4 py-2 txt-14 font-medium border-b-2 ${
             activeTab === "active"
               ? "border-brand  bg-transparent text-[#333839]"
               : "border-transparent text-[#51595A]"
@@ -382,7 +382,7 @@ export default function Users() {
             setActiveTab("restricted");
             setCurrentPage(1);
           }}
-          className={`flex-1 text-center whitespace-nowrap px-4 py-2 txt-14 font-medium border-b-2 ${
+          className={`flex-1 text-center md:whitespace-nowrap px-4 py-2 txt-14 font-medium border-b-2 ${
             activeTab === "restricted"
               ? "border-brand  bg-transparent text-[#333839]"
               : "border-transparent text-[#51595A]"
@@ -397,7 +397,7 @@ export default function Users() {
             setActiveTab("request");
             setCurrentPage(1);
           }}
-          className={`flex-1 text-center whitespace-nowrap px-4 py-2 txt-14 font-medium border-b-2 ${
+          className={`flex-1 text-center md:whitespace-nowrap px-4 py-2 txt-14 font-medium border-b-2 ${
             activeTab === "request"
               ? "border-brand  bg-transparent text-[#333839]"
               : "border-transparent text-[#51595A]"

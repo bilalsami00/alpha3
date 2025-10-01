@@ -146,7 +146,7 @@ export default function SharedCalendar({
             <select
               value={editMonthIndex}
               onChange={(e) => setEditMonthIndex(Number(e.target.value))}
-              className="px-2 py-1 border rounded text-sm"
+              className="px-2 py-1 border rounded txt-14"
               aria-label="Select month"
             >
               {MONTHS.map((m, i) => (
@@ -160,7 +160,7 @@ export default function SharedCalendar({
               value={editYear}
               min={minYear}
               onChange={(e) => setEditYear(Number(e.target.value))}
-              className="w-20 px-2 py-1 border rounded text-sm "
+              className="w-20 px-2 py-1 border rounded txt-14 "
               aria-label="Enter year"
             />
             <button
@@ -218,7 +218,7 @@ export default function SharedCalendar({
             dt < new Date(min.getFullYear(), min.getMonth(), min.getDate());
 
           const baseBtn =
-            "w-[30px] h-[30px] flex items-center justify-center rounded-[29px] text-sm";
+            "w-[30px] h-[30px] flex items-center justify-center rounded-[29px] txt-14";
           let cls = "";
           if (isDisabled) cls = `${baseBtn} text-[#9EA9AA] cursor-not-allowed`;
           else if (isSelected) cls = `${baseBtn} bg-[#00C47E] text-white`;
