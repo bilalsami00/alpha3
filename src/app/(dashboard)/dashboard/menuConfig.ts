@@ -37,6 +37,6 @@ export const menuItems: MenuItem[] = [
       { name: "Sales Bible", href: "/dashboard/sales-manual/sales-bible", icon: "" },
     ],
   },
-  { name: "Hood", href: "/dashboard/hood", icon: "/dashboardIcons/hood.svg" },
+  { name: "Hood Status", href: "/dashboard/hood", icon: "/dashboardIcons/hood.svg" },
 
 ];
