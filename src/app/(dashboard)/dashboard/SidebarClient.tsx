@@ -857,7 +857,7 @@ useEffect(() => {
 
           {/* NAV - scrollable area */}
           <nav
-            className="mt-4 overflow-y-auto flex-1"
+            className="mt-4 overflow-y-auto flex-1 custom-scroll"
             // smooth native scrolling on iOS
             style={{ WebkitOverflowScrolling: "touch" }}
           >
