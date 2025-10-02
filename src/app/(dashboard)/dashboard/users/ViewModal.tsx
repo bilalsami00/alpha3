@@ -206,7 +206,7 @@ export default function ViewModal({
   const addDisabled = !selectedTeam || selectedTeam.trim().length === 0;
 
   return (
-    <BaseModal onClose={onClose} className="w-full max-w-[486px] mx-auto">
+    <BaseModal onClose={onClose} className="w-full max-w-[438px] mx-auto">
       {/* Only render the white modal card here - BaseModal handles overlay/centering */}
       <div className="bg-white rounded-xl max-w-[438px] max-sm:mx- 6 relative" aria-labelledby="view-user-title">
         <div className="px-6 py-4 flex items-center border-b border-[#E9EDEE]">
