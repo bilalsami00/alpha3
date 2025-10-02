@@ -184,7 +184,7 @@ export default function CreateTeamModal({
   const isEdit = Boolean(editingTeam);
 
   return (
-    <BaseModal onClose={onClose}>
+    <BaseModal onClose={onClose} fixedSize={{ width: 486, height: 275 }}>
       {/* Only render the white modal card here - BaseModal handles overlay/centering */}
       <div
         className="bg-white rounded-xl max-w-[520px] w-full mx- 4 relative"
