@@ -1048,7 +1048,10 @@ export default function AddEditItem({
   const addAnotherDisabled = !date || !text.trim();
 
   return (
-    <div className="w-full max-w-[560px] h-auto max-2xl:max-h-[460px] xl:h-full rounded-xl bg-white overflow-hidden flex flex-col custom-scroll">
+    <div
+    //  className="w-full max-w-[560px] h-auto max-xl:max-h-[470px] xl:h-full rounded-xl bg-white overflow-hidden flex flex-col custom-scroll"
+           className="w-full rounded-xl bg-white overflow-hidden flex flex-col custom-scroll" style={{ maxHeight: "calc(100vh - 48px)" }}
+>
       <style>{`@keyframes slideIn { 0% { opacity: 0; transform: translateX(40px) translateY(-6px) scale(.995); } 60% { opacity: 1; transform: translateX(-8px) translateY(2px) scale(1.01); } 100% { opacity: 1; transform: translateX(0) translateY(0) scale(1); } }`}</style>
 
       <div className="flex items-center justify-between p-4 border-b border-[color:var(--Neutral-Grey-20,#E9EDEE)]">
@@ -1192,7 +1195,7 @@ export default function AddEditItem({
               >
                 {entries.map((e) => (
                   // each child now responsive: full width on mobile, fixed on sm+
-                  <div key={e.uid} className="flex-shrink-0 w-full sm:w-[420px]">
+                  <div key={e.uid} className="flex-shrink-0 w-full">
                     <PreviewCardMemo
                       e={e}
                       animateUid={animateUid}
@@ -1301,7 +1304,7 @@ function PreviewCard({
 
   return (
     <div
-      className={`bg-white rounded-lg p-3 border w-full sm:w-[420px] border-[var(--Neutral-Grey-10,#E9EDEE)]`}
+      className={`bg-white rounded-lg p-3 border w-full  border-[var(--Neutral-Grey-10,#E9EDEE)]`}
       style={isAnimating ? { animation: "slideIn 380ms cubic-bezier(.2,.9,.25,1)" } : {}}
     >
       <div className="flex mb-2 flex-col-reverse w-full">

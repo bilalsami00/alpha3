@@ -871,7 +871,10 @@ export default function AddEditSalesModal({
   // --- render ---
   return (
     <BaseModal onClose={onClose} className="w-full max-w-[486px] mx-auto">
-      <div className="w-full rounded-xl bg-white overflow-hidden flex flex-col" style={{ maxHeight: "calc(100vh - 48px)" }}>
+      <div 
+      className="w-full rounded-xl bg-white overflow-hidden flex flex-col custom-scroll" style={{ maxHeight: "calc(100vh - 48px)" }}
+      // className="w-full max-w-[560px] h-auto max-xl:max-h-[400px] xl:h-full rounded-xl bg-white overflow-hidden flex flex-col custom-scroll"
+      >
         <div className="flex items-center justify-between p-4 border-b border-[color:var(--Neutral-Grey-20,#E9EDEE)]">
           <h3 className="txt-20 sm:txt-24 font-medium">
             {mode === "edit" ? (isChecklist ? "Edit Reps Checklist" : "Edit Fundamental Script") : isChecklist ? "Add Reps Checklist" : "Add Fundamental Script"}
@@ -953,7 +956,7 @@ export default function AddEditSalesModal({
                   <div className="overflow-hidden mx-auto w-full" ref={cardOuterRef}>
                     <div ref={trackRef} className="flex gap-4 transition-transform duration-300 min-w-0" style={{ transform: `translateX(-${sliderTranslateX}px)` }}>
                       {entries.map((e) => (
-                        <div key={e.uid} className="flex-shrink-0 w-full sm:w-[438px]">
+                        <div key={e.uid} className="flex-shrink-0 w-full ">
                           <PreviewCard
                             e={e}
                             animateUid={animateUid}
@@ -1018,7 +1021,7 @@ function PreviewCard({
   const maxChars = compact ? 40 : 150;
 
   return (
-    <div className={`bg-white rounded-lg p-3 border w-full sm:w-[438px] border-[var(--Neutral-Grey-10,#E9EDEE)]`} style={isAnimating ? { animation: "slideInX 380ms cubic-bezier(.2,.9,.25,1)", animationFillMode: "both" } : {}}>
+    <div className={`bg-white rounded-lg p-3 border w-full  border-[var(--Neutral-Grey-10,#E9EDEE)]`} style={isAnimating ? { animation: "slideInX 380ms cubic-bezier(.2,.9,.25,1)", animationFillMode: "both" } : {}}>
       <div className="ml-2 flex items-end justify-end">
         <button onClick={onRemove} className="p-1 rounded hover:bg-neutral-100" aria-label="Delete">
           <Image src="/dashboardIcons/DailyContent/trash-black.svg" alt="Delete" width={24} height={24} />
