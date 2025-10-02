@@ -23,7 +23,7 @@ export default function Pagination({
   const endItem = Math.min(currentPage * rowsPerPage, totalItems);
 
   return (
-    <div className="flex items-center justify-end gap-10 border border-[color:var(--Neutral-Grey-10,#E9EDEE)] rounded-b-lg p-4 ">
+    <div className="flex items-center justify-between md:justify-end gap-10 border border-[color:var(--Neutral-Grey-10,#E9EDEE)] rounded-b-lg p-4 ">
       <div className="flex items-center gap-1">
         <span className="text-sm text-gray-700 ">Rows per page:</span>
 
