@@ -632,60 +632,108 @@ export default function SidebarClient() {
   // -------------------------
   // BODY SCROLL LOCK EFFECT (preserve scroll pos)
   // -------------------------
-  useEffect(() => {
-    let removeTouchListener = () => {};
-    if (sidebarOpen) {
-      // save current scroll
-      scrollYRef.current = window.scrollY || window.pageYOffset || 0;
+  // useEffect(() => {
+  //   let removeTouchListener = () => {};
+  //   if (sidebarOpen) {
+  //     // save current scroll
+  //     scrollYRef.current = window.scrollY || window.pageYOffset || 0;
 
-      // lock body (preserve visual position)
-      document.body.style.position = "fixed";
-      document.body.style.top = `-${scrollYRef.current}px`;
-      document.body.style.left = "0";
-      document.body.style.right = "0";
-      document.body.style.width = "100%";
-      document.documentElement.style.overflow = "hidden";
+  //     // lock body (preserve visual position)
+  //     document.body.style.position = "fixed";
+  //     document.body.style.top = `-${scrollYRef.current}px`;
+  //     document.body.style.left = "0";
+  //     document.body.style.right = "0";
+  //     document.body.style.width = "100%";
+  //     document.documentElement.style.overflow = "hidden";
 
-      // iOS fallback: prevent touchmove when touching outside the sidebar,
-      // but allow touchmove / scrolling within the sidebar itself.
-      const preventTouchExceptSidebar = (e: TouchEvent) => {
-        // if the touch target is inside the sidebar, allow it
-        const target = e.target as Node | null;
-        if (sidebarRef.current && target && sidebarRef.current.contains(target)) {
-          // allow native scrolling inside sidebar
-          return;
-        }
-        // otherwise prevent default (blocks background touch scrolling)
-        e.preventDefault();
-      };
-      document.addEventListener("touchmove", preventTouchExceptSidebar, { passive: false });
-      removeTouchListener = () => document.removeEventListener("touchmove", preventTouchExceptSidebar);
-    } else {
-      // restore
-      const top = document.body.style.top || "";
-      document.body.style.position = "";
-      document.body.style.top = "";
-      document.body.style.left = "";
-      document.body.style.right = "";
-      document.body.style.width = "";
-      document.documentElement.style.overflow = "";
+  //     // iOS fallback: prevent touchmove when touching outside the sidebar,
+  //     // but allow touchmove / scrolling within the sidebar itself.
+  //     const preventTouchExceptSidebar = (e: TouchEvent) => {
+  //       // if the touch target is inside the sidebar, allow it
+  //       const target = e.target as Node | null;
+  //       if (sidebarRef.current && target && sidebarRef.current.contains(target)) {
+  //         // allow native scrolling inside sidebar
+  //         return;
+  //       }
+  //       // otherwise prevent default (blocks background touch scrolling)
+  //       e.preventDefault();
+  //     };
+  //     document.addEventListener("touchmove", preventTouchExceptSidebar, { passive: false });
+  //     removeTouchListener = () => document.removeEventListener("touchmove", preventTouchExceptSidebar);
+  //   } else {
+  //     // restore
+  //     const top = document.body.style.top || "";
+  //     document.body.style.position = "";
+  //     document.body.style.top = "";
+  //     document.body.style.left = "";
+  //     document.body.style.right = "";
+  //     document.body.style.width = "";
+  //     document.documentElement.style.overflow = "";
 
-      if (top) {
-        const restoreY = -parseInt(top.replace("px", ""), 10) || 0;
-        window.scrollTo(0, restoreY);
-      }
-    }
+  //     if (top) {
+  //       const restoreY = -parseInt(top.replace("px", ""), 10) || 0;
+  //       window.scrollTo(0, restoreY);
+  //     }
+  //   }
 
-    return () => {
-      document.body.style.position = "";
-      document.body.style.top = "";
-      document.body.style.left = "";
-      document.body.style.right = "";
-      document.body.style.width = "";
-      document.documentElement.style.overflow = "";
-      removeTouchListener();
+  //   return () => {
+  //     document.body.style.position = "";
+  //     document.body.style.top = "";
+  //     document.body.style.left = "";
+  //     document.body.style.right = "";
+  //     document.body.style.width = "";
+  //     document.documentElement.style.overflow = "";
+  //     removeTouchListener();
+  //   };
+  // }, [sidebarOpen]);
+// in SidebarClient useEffect (replace your current body-lock effect)
+useEffect(() => {
+  let removeTouchListener = () => {};
+
+  if (sidebarOpen && isMobile) {
+    // save current scroll
+    scrollYRef.current = window.scrollY || window.pageYOffset || 0;
+
+    // lock body (preserve visual position) — optional: you could just set overflow hidden
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollYRef.current}px`;
+    document.body.style.left = "0";
+    document.body.style.right = "0";
+    document.body.style.width = "100%";
+    document.documentElement.style.overflow = "hidden";
+
+    const preventTouchExceptSidebar = (e: TouchEvent) => {
+      const target = e.target as Node | null;
+      if (sidebarRef.current && target && sidebarRef.current.contains(target)) return;
+      e.preventDefault();
     };
-  }, [sidebarOpen]);
+    document.addEventListener("touchmove", preventTouchExceptSidebar, { passive: false });
+    removeTouchListener = () => document.removeEventListener("touchmove", preventTouchExceptSidebar);
+  } else {
+    // restore
+    const top = document.body.style.top || "";
+    document.body.style.position = "";
+    document.body.style.top = "";
+    document.body.style.left = "";
+    document.body.style.right = "";
+    document.body.style.width = "";
+    document.documentElement.style.overflow = "";
+    if (top) {
+      const restoreY = -parseInt(top.replace("px", ""), 10) || 0;
+      window.scrollTo(0, restoreY);
+    }
+  }
+
+  return () => {
+    document.body.style.position = "";
+    document.body.style.top = "";
+    document.body.style.left = "";
+    document.body.style.right = "";
+    document.body.style.width = "";
+    document.documentElement.style.overflow = "";
+    removeTouchListener();
+  };
+}, [sidebarOpen, isMobile]);
 
   // -------------------------
   // SidebarParent component (unchanged logic)
