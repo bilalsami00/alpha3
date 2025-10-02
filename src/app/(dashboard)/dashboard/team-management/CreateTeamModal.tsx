@@ -187,7 +187,7 @@ export default function CreateTeamModal({
     <BaseModal onClose={onClose} fixedSize={{ width: 520 }}>
       {/* Only render the white modal card here - BaseModal handles overlay/centering */}
       <div
-        className="bg-white rounded-xl max-w-[520px] w-full mx-4 relative"
+        className="bg-white rounded-xl max-w-[520px] w-full mx- 4 relative"
         aria-labelledby="create-team-title"
       >
         {/* Header */}
