@@ -1918,7 +1918,7 @@ export default function MediaModalV2({
         <div className="px-6 py-4 flex items-center justify-between border-b border-[#E9EDEE]">
           <h3 className="txt-20 sm:txt-24 font-medium">{mode === "add" ? "Add Video" : "Edit Video"}</h3>
           <div className="flex items-center gap-2">
-            {mode === "edit" && onDelete && (
+            {/* {mode === "edit" && onDelete && (
               <button
                 onClick={onDelete}
                 className="hidden sm:inline-flex px-3 py-2 rounded-md text-sm border border-transparent hover:bg-gray-50"
@@ -1927,13 +1927,13 @@ export default function MediaModalV2({
               >
                 Delete
               </button>
-            )}
+            )} */}
             <button
               onClick={onClose}
               aria-label="Close"
               className="w-8 h-8 rounded-full hover:bg-gray-100 flex items-center justify-center"
             >
-              <Image src="/CloseButton.svg" alt="Close" width={20} height={20} priority />
+              <Image src="/CloseButton.svg" alt="Close" width={32} height={32} priority />
             </button>
           </div>
         </div>
