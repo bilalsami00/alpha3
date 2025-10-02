@@ -70,21 +70,59 @@ export default function SalesTraining({
     setModalOpen(true);
   }
 
-  async function handleSave(payload: {
+  // async function handleSave(payload: {
+  //   title: string;
+  //   description?: string;
+  //   file?: File | null;
+  // }) {
+  //   if (modalMode === "add") {
+  //     const id = `st-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+  //     const thumbnailUrl = payload.file 
+  //       ? URL.createObjectURL(payload.file)
+  //       : null;
+  //     const newItem: MediaItem = {
+  //       id,
+  //       title: payload.title,
+  //       description: payload.description ?? "",
+  //       thumbnailUrl,
+  //     };
+  //     setItems((s) => [newItem, ...s]);
+  //     showToast("Video added.", "success");
+  //     setModalOpen(false);
+  //     setCurrentPage(1);
+  //     return;
+  //   }
+
+  //   if (modalMode === "edit" && editing) {
+  //     const thumbnailUrl = payload.file
+  //       ? URL.createObjectURL(payload.file)
+  //       : editing.thumbnailUrl ?? null;
+  //     const updated: MediaItem = {
+  //       ...editing,
+  //       title: payload.title,
+  //       description: payload.description ?? "",
+  //       thumbnailUrl,
+  //     };
+  //     setItems((s) => s.map((it) => (it.id === editing.id ? updated : it)));
+  //     showToast("Video updated.", "success");
+  //     setModalOpen(false);
+  //     setEditing(null);
+  //   }
+  // }
+ async function handleSave(payload: {
     title: string;
     description?: string;
     file?: File | null;
   }) {
     if (modalMode === "add") {
-      const id = `st-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
-      const thumbnailUrl = payload.file
-        ? URL.createObjectURL(payload.file)
-        : null;
+      const id = `votd-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+      const objUrl = payload.file ? URL.createObjectURL(payload.file) : null;
       const newItem: MediaItem = {
         id,
         title: payload.title,
         description: payload.description ?? "",
-        thumbnailUrl,
+        thumbnailUrl: objUrl ?? null,
+        mediaUrl: objUrl ?? null,
       };
       setItems((s) => [newItem, ...s]);
       showToast("Video added.", "success");
@@ -94,14 +132,21 @@ export default function SalesTraining({
     }
 
     if (modalMode === "edit" && editing) {
-      const thumbnailUrl = payload.file
-        ? URL.createObjectURL(payload.file)
-        : editing.thumbnailUrl ?? null;
+      const newObjUrl = payload.file ? URL.createObjectURL(payload.file) : null;
+
+      // If replacing a blob-based mediaUrl, revoke the previous one before replacing
+      if (payload.file && editing.mediaUrl && editing.mediaUrl.startsWith("blob:")) {
+        try {
+          URL.revokeObjectURL(editing.mediaUrl);
+        } catch {}
+      }
+
       const updated: MediaItem = {
         ...editing,
         title: payload.title,
         description: payload.description ?? "",
-        thumbnailUrl,
+        thumbnailUrl: newObjUrl ?? editing.thumbnailUrl ?? null,
+        mediaUrl: newObjUrl ?? editing.mediaUrl ?? null,
       };
       setItems((s) => s.map((it) => (it.id === editing.id ? updated : it)));
       showToast("Video updated.", "success");
@@ -110,6 +155,7 @@ export default function SalesTraining({
     }
   }
 
+  
   function requestDelete(item: MediaItem) {
     setConfirm({ open: true, item });
   }
