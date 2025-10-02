@@ -28,7 +28,7 @@ export default function EmptyState({
       aria-live="polite"
     >
       <div
-        className="flex flex-col items-center justify-center sm:w-[480px]"
+        className="flex flex-col items-center justify-center w-[275px] sm:w-[480px]"
       >
         <div className="w-16 h-16 rounded-full flex items-center justify-center">
           <Image src={icon} alt="Empty" width={64} height={64} />

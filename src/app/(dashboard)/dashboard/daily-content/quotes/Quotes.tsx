@@ -82,7 +82,7 @@ export default function Quotes({
   const emptyAction = (
     <button
       onClick={() => setAddOpen(true)}
-      className="px-4 py-2 rounded-lg bg-[#25292A] text-white"
+      className="px-4 py-2 txt-16 rounded-lg bg-[#25292A] text-white"
     >
       {emptyStateConfig?.actionLabel ?? "Add Quote"}
     </button>

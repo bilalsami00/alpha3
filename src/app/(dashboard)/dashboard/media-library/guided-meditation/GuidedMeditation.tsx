@@ -380,7 +380,7 @@ export default function GuidedMeditation({
   }
 
   const emptyAction = (
-    <button onClick={openAdd} className="px-4 py-2 rounded-lg bg-[#25292A] text-white">
+    <button onClick={openAdd} className="px-4 py-2 txt-16 rounded-lg bg-[#25292A] text-white">
       {emptyStateConfig?.actionLabel ?? `Add Video`}
     </button>
   );

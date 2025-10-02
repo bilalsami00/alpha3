@@ -376,7 +376,7 @@ export default function HallOfFame() {
   const emptyAction = (
     <button
       onClick={openAdd}
-      className="px-4 py-2 rounded-lg bg-[#25292A] text-white"
+      className="px-4 py-2 txt-16 rounded-lg bg-[#25292A] text-white"
     >
       Add to Hall of Fame
     </button>

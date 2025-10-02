@@ -73,7 +73,7 @@ export default function SalesBible({ onHasItemsChange }: Props) {
   const uploadBtn = (
     <button
       onClick={openFilePicker}
-      className="px-4 py-2 rounded-lg bg-[#25292A] text-white txt-16"
+      className="px-4 py-2 txt-16 rounded-lg bg-[#25292A] text-white txt-16"
     >
       Upload Sales Bible
     </button>
