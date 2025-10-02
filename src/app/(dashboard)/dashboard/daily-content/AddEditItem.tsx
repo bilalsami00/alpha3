@@ -1048,7 +1048,7 @@ export default function AddEditItem({
   const addAnotherDisabled = !date || !text.trim();
 
   return (
-    <div className="w-full max-w-[560px] h-auto max-2xl:max-h-[450px] xl:h-full rounded-xl bg-white overflow-hidden flex flex-col custom-scroll">
+    <div className="w-full max-w-[560px] h-auto max-2xl:max-h-[460px] xl:h-full rounded-xl bg-white overflow-hidden flex flex-col custom-scroll">
       <style>{`@keyframes slideIn { 0% { opacity: 0; transform: translateX(40px) translateY(-6px) scale(.995); } 60% { opacity: 1; transform: translateX(-8px) translateY(2px) scale(1.01); } 100% { opacity: 1; transform: translateX(0) translateY(0) scale(1); } }`}</style>
 
       <div className="flex items-center justify-between p-4 border-b border-[color:var(--Neutral-Grey-20,#E9EDEE)]">
@@ -1059,7 +1059,7 @@ export default function AddEditItem({
       </div>
 
       {/* SCROLLABLE MIDDLE */}
-      <div ref={scrollContainerRef} className="p-6 overflow-auto min-h-0 flex-1 scroller min-w-0">
+      <div ref={scrollContainerRef} className="p-4 sm:p-6 overflow-auto min-h-0 flex-1 scroller min-w-0">
         <div className="mb-4">
           <div className="txt-14 font-medium mb-2">Schedule Date</div>
           <div className="relative">
