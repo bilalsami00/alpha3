@@ -1432,12 +1432,13 @@
 
 
 
+// src/app/(dashboard)/dashboard/daily-content/AddEditItem.tsx
 "use client";
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import ReactDOM from "react-dom";
 import Image from "next/image";
 import SharedCalendar, { parseLocalISO, toLocalISO } from "./SharedCalendar";
-import BaseModal from "../components/BaseModal";
+import BaseModal from "../components/BaseModal"; // << added
 
 type Entry = { uid: string; text: string; scheduleDate: string | null };
 const CLOSE_ALL_CALENDARS_EVENT = "dashboard:closeAllCalendars";
@@ -1732,6 +1733,8 @@ export default function AddEditItem({
 
   const addAnotherDisabled = !date || !text.trim();
 
+  // ---- early return only after hooks ----
+  // Keep the same public API (no `open` prop here) — BaseModal will handle scroll lock while mounted.
   return (
     <BaseModal onClose={onCancel} className="w-full max-w-[560px] mx-auto">
       <div className="w-full max-w-[560px] h-auto max-2xl:max-h-[460px] xl:h-full rounded-xl bg-white overflow-hidden flex flex-col custom-scroll">
@@ -2075,7 +2078,7 @@ function PreviewCard({
             ref={taRef as any}
             value={e.text}
             onChange={(ev) => onUpdate({ text: ev.target.value.slice(0, maxChars) })}
-            className="w-full px-3 txt-12 rounded-lg mb-0 bg-[#F2F5F6] focus:outline-none focus-green h-14"
+            className="w-full px-3 txt-12 rounded-lg mb-0 bg-[#F3F6F6] focus:outline-none focus-green h-14"
             placeholder={`Add ${label} (Max ${maxChars} characters)`}
           />
         ) : (
@@ -2085,7 +2088,7 @@ function PreviewCard({
             onChange={(ev) => onUpdate({ text: ev.target.value.slice(0, maxChars) })}
             rows={4}
             maxLength={maxChars}
-            className="w-full p-3 txt-12 rounded-lg mb-0 resize-none bg-[#F2F5F6] focus:outline-none focus-green h-24"
+            className="w-full p-3 txt-12 rounded-lg mb-0 resize-none bg-[#F3F6F6] focus:outline-none focus-green h-24"
             placeholder={`Add ${label} (Max ${maxChars} characters)`}
           />
         )}
