@@ -170,9 +170,9 @@ export default function Users() {
       header: "Name",
       width: "502px",
       render: (user) => (
-        <div className="flex items-center txt-14 font-medium">
+        <div className="flex items-center txt-14 font-medium gap-3">
           <div
-            className="w-11 h-11 rounded-full border flex items-center justify-center mr-3 bg-white border-[color:var(--Neutral-Grey-10,#E9EDEE)]"
+            className="w-11 h-11 rounded-full p-5 border flex items-center justify-center  bg-white border-[color:var(--Neutral-Grey-10,#E9EDEE)]"
             aria-hidden
           >
             <span
@@ -258,9 +258,9 @@ export default function Users() {
       width: "240px",
       className: " max-2xl:!pl-8 max-2xl:!pr-0",
       render: (user) => (
-        <div className="flex items-center txt-14 font-medium">
+        <div className="flex items-center txt-14 font-medium gap-3">
           <div
-            className="w-11 h-11 rounded-full border flex items-center justify-center mr-3 bg-white border-[color:var(--Neutral-Grey-10,#E9EDEE)]"
+            className="w-11 h-11 rounded-full border flex items-center justify-center  bg-white border-[color:var(--Neutral-Grey-10,#E9EDEE)]"
             aria-hidden
           >
             <span

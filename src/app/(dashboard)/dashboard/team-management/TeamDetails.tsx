@@ -1587,8 +1587,6 @@
 //   );
 // }
 
-
-
 // src\app\(dashboard)\dashboard\team-management\TeamDetails.tsx
 "use client";
 import React, { useEffect, useState, useRef, useMemo } from "react";
@@ -1771,7 +1769,11 @@ export default function TeamDetails({
       width: "40%",
       render: (m) => (
         <div className="flex items-center gap-3">
-          <div className="w-11 h-11 rounded-full border flex items-center justify-center mr-2 border-[color:var(--Neutral-Grey-10,#E9EDEE)]">
+          <div
+            // className="w-11 h-11 rounded-full border flex items-center justify-center mr-2 border-[color:var(--Neutral-Grey-10,#E9EDEE)]"
+            className="w-11 h-11 rounded-full p-5 border flex items-center justify-center  bg-white border-[color:var(--Neutral-Grey-10,#E9EDEE)]"
+            // w-11 h-11 rounded-full bg-white border border-[color:var(--Neutral-Grey-10,#E9EDEE)] flex items-center justify-center text-sm font-medium
+          >
             <span
               className="txt-18 font-semibold"
               style={{

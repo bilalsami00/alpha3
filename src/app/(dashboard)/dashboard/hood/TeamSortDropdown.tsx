@@ -133,7 +133,7 @@ export default function TeamSortDropdown({
           ref={menuRef}
           role="menu"
           aria-label="Team options"
-          className="absolute top-11 right-0  w-full min-w-[180px] max-h-[100px] bg-white rounded-lg shadow-sm z-[60] overflow-auto"
+          className="absolute top-11 right-0  w-full min-w-[180px] max-h-[150px] bg-white rounded-lg shadow-sm z-[60] overflow-auto"
           style={{
             border: "1px solid #E9EDEE",
           }}

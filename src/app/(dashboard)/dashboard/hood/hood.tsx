@@ -357,7 +357,7 @@ export default function Hood() {
       render: (m) => (
         <div className="flex items-center txt-14 font-medium gap-3">
           <div
-            className="w-11 h-11 rounded-full bg-white border border-[color:var(--Neutral-Grey-10,#E9EDEE)] flex items-center justify-center text-sm font-medium"
+            className="w-11 h-11 p-5 rounded-full bg-white border border-[color:var(--Neutral-Grey-10,#E9EDEE)] flex items-center justify-center text-sm font-medium"
             style={{ borderColor: "var(--Neutral-Grey-10, #E9EDEE)" }}
             aria-hidden
           >
