@@ -20,11 +20,24 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // return (
+  //   <html lang="en">
+  //     <body className={`${openSans.variable} antialiased`}>
+  //       {children}
+  //     </body>
+  //   </html>
+  // );
+  // inside your RootLayout return, add a <head> sibling to <body>
   return (
     <html lang="en">
-      <body className={`${openSans.variable} antialiased`}>
-        {children}
-      </body>
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+          name="format-detection"
+          content="telephone=no,email=no,address=no"
+        />
+      </head>
+      <body className={`${openSans.variable} antialiased`}>{children}</body>
     </html>
   );
 }

@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+
+a[href^="tel:"],
+a[href^="mailto:"],
+a[href^="sms:"] {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+
 @theme {
   --breakpoint-xll: 1400px;
   --breakpoint-3xl: 1600px;
