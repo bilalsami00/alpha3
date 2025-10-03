@@ -166,9 +166,8 @@ export default function TeamManagement({
       )}
 
       <div className="bg-white rounded shadow- sm overflow-visible">
-
-      {/* Table */}
-      <TeamTable
+        {/* Table */}
+        {/* <TeamTable
         data={paginatedTeams}
         startIndex={startIndex}
         openMenuId={openMenuId}
@@ -185,10 +184,10 @@ export default function TeamManagement({
           // also notify parent if provided
           if (onOpenTeam) onOpenTeam(team);
         }}
-      />
+      /> */}
 
-      {/* Empty state if no items - Parent also shows createButton */}
-      {totalItems === 0 && (
+        {/* Empty state if no items - Parent also shows createButton */}
+        {/* {totalItems === 0 && (
         <div className="mt-4">
           <EmptyState
             icon={EMPTY_ICONS.teams}
@@ -197,24 +196,43 @@ export default function TeamManagement({
             action={createButton}
           />
         </div>
-      )}
+      )} */}
 
-      {/* Pagination */}
-      {totalItems > 0 && (
-        <div className="">
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={(p) => setCurrentPage(p)}
-            rowsPerPage={rowsPerPage}
-            onRowsPerPageChange={(n) => {
-              setRowsPerPage(n);
-              setCurrentPage(1);
-            }}
-            totalItems={totalItems}
-          />
-        </div>
-      )}
+        <TeamTable
+          data={paginatedTeams}
+          startIndex={startIndex}
+          openMenuId={openMenuId}
+          setOpenMenuId={setOpenMenuId}
+          onRequestDelete={onRequestDelete}
+          onRequestEdit={(team) => {
+            setEditTeam(team);
+            setCreateOpen(true);
+            setOpenMenuId(null);
+          }}
+          onRowClick={(team) => {
+            setSelectedTeam(team);
+            if (onOpenTeam) onOpenTeam(team);
+          }}
+          totalItems={totalItems} // <-- pass the total, not just paginated length
+          createButton={createButton} // <-- optional: button shown inside EmptyState
+        />
+
+        {/* Pagination */}
+        {totalItems > 0 && (
+          <div className="">
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={(p) => setCurrentPage(p)}
+              rowsPerPage={rowsPerPage}
+              onRowsPerPageChange={(n) => {
+                setRowsPerPage(n);
+                setCurrentPage(1);
+              }}
+              totalItems={totalItems}
+            />
+          </div>
+        )}
       </div>
 
       {/* Confirm modal (delete team) */}
