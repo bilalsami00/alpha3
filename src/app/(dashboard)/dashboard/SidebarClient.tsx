@@ -849,7 +849,7 @@ useEffect(() => {
         aria-hidden={!sidebarOpen}
       >
         {/* Layout: header/logo + scrollable nav area + footer */}
-        <div className="flex flex-col h-full 2xl:py-6 px-3">
+        <div className="flex flex-col h-auto lg:h-full 2xl:py-6 px-3">
           {/* logo/header */}
           <div className="flex-shrink-0 flex justify-center pt-2">
             <Image src="/authIcons/Alpha-logo.png" alt="Alpha Logo" width={96} height={96} className="h-24 w-24" />
