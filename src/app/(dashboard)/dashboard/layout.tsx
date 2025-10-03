@@ -113,7 +113,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <div className="flex-1 flex max-lg:flex-col overflow-hidden">
         <SidebarClient />
           {/* allow this flex child to shrink to available height */}
-          <main className="flex-1 min-h-0 overflow-y-auto p-6 custom-scroll">
+          {/* <main className="flex-1 min-h-0 overflow-y-auto p-6 custom-scroll"> */}
+          <main className="flex-1 min-h-0 overflow-y-auto p-6 pt-24 sm:pt-16 lg:pt-6 custom-scroll">
+
             {/* remove forced h-full — use min-h-full if you need it */}
             <div className="mx-auto">{children}</div>
           </main>
