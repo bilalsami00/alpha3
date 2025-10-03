@@ -187,7 +187,7 @@ export default function BaseModal({
 
   return ReactDOM.createPortal(
     <div
-      className="fixed z-50 flex items-center justify-center"
+      className="fixed z-60 flex items-center justify-center"
       style={
         excludeLeft
           ? { left: excludeLeft, right: 0, top: 0, bottom: 0 }
