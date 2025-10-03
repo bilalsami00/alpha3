@@ -37,7 +37,7 @@ export default function TeamMemberSearch({
       </div>
 
       {/* Status dropdown component */}
-      <div className="w-44 h-10 relative">
+      <div className="md:w-44 h-10 relative">
         <StatusDropdown value={status} onChange={onStatusChange} />
       </div>
     </div>

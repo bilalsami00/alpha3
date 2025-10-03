@@ -136,7 +136,7 @@
 
 
 
-
+// src\app\(dashboard)\dashboard\components\GenericTable.tsx
 "use client";
 import React from "react";
 

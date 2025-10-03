@@ -949,14 +949,6 @@
 // // // // //   );
 // // // // // }
 
-
-
-
-
-
-
-
-
 // // // // "use client";
 
 // // // // import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
@@ -1236,17 +1228,6 @@
 // // // //   );
 // // // // }
 
-
-
-
-
-
-
-
-
-
-
-
 // // // "use client";
 
 // // // import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
@@ -1525,17 +1506,6 @@
 // // //     </>
 // // //   );
 // // // }
-
-
-
-
-
-
-
-
-
-
-
 
 // // "use client";
 
@@ -1822,21 +1792,6 @@
 // //   );
 // // }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // "use client";
 
 // import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
@@ -2048,7 +2003,7 @@
 //         <div className="fixed inset-0 bg-black/50 z-40 lg:hidden" onClick={() => setSidebarOpen(false)} aria-hidden />
 //       )}
 
-//       {/* 
+//       {/*
 //         - fixed on mobile (overlay drawer)
 //         - relative + sticky top-0 on lg+ so it stays in-flow and will match the parent's height
 //         - do NOT use inset-y-0 or h-screen here (that forces viewport height)
@@ -2121,31 +2076,6 @@
 //     </>
 //   );
 // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // // // src/app/(dashboard)/dashboard/SidebarClient.tsx
 // // "use client";
@@ -2384,17 +2314,6 @@
 // //     </>
 // //   );
 // // }
-
-
-
-
-
-
-
-
-
-
-
 
 // // src/app/(dashboard)/dashboard/SidebarClient.tsx
 // "use client";
@@ -2711,6 +2630,10 @@
 
 
 
+
+
+
+
 // src/app/(dashboard)/dashboard/SidebarClient.tsx
 "use client";
 
@@ -2722,7 +2645,10 @@ import Image from "next/image";
 import { menuItems } from "./menuConfig";
 
 const toSlug = (s: string) =>
-  s.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
+  s
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/[^a-z0-9-]/g, "");
 
 export default function SidebarClient() {
   const pathname = usePathname() || "/dashboard";
@@ -2755,7 +2681,9 @@ export default function SidebarClient() {
   useEffect(() => {
     const matchedParent = menuItems.find((mi) => {
       if (!mi.children) return false;
-      return mi.children.some((c) => pathname === (c.href ?? `/${toSlug(c.name)}`));
+      return mi.children.some(
+        (c) => pathname === (c.href ?? `/${toSlug(c.name)}`)
+      );
     });
     if (pathname === "/dashboard") {
       setActiveDropdown(null);
@@ -2764,7 +2692,8 @@ export default function SidebarClient() {
     }
   }, [pathname]);
 
-  const toggleDropdown = (name: string) => setActiveDropdown((p) => (p === name ? null : name));
+  const toggleDropdown = (name: string) =>
+    setActiveDropdown((p) => (p === name ? null : name));
 
   const isTabSelected = (href?: string) => {
     if (!href) return false;
@@ -2772,7 +2701,8 @@ export default function SidebarClient() {
     return pathname === href;
   };
 
-  const hasSelectedChild = (children?: any[]) => (children ? children.some((c) => isTabSelected(c.href)) : false);
+  const hasSelectedChild = (children?: any[]) =>
+    children ? children.some((c) => isTabSelected(c.href)) : false;
 
   const handleLogout = () => {
     window.location.href = "/login";
@@ -2781,123 +2711,77 @@ export default function SidebarClient() {
   // -------------------------
   // BODY SCROLL LOCK EFFECT (preserve scroll pos)
   // -------------------------
-  // useEffect(() => {
-  //   let removeTouchListener = () => {};
-  //   if (sidebarOpen) {
-  //     // save current scroll
-  //     scrollYRef.current = window.scrollY || window.pageYOffset || 0;
+  useEffect(() => {
+    let removeTouchListener = () => {};
 
-  //     // lock body (preserve visual position)
-  //     document.body.style.position = "fixed";
-  //     document.body.style.top = `-${scrollYRef.current}px`;
-  //     document.body.style.left = "0";
-  //     document.body.style.right = "0";
-  //     document.body.style.width = "100%";
-  //     document.documentElement.style.overflow = "hidden";
+    if (sidebarOpen && isMobile) {
+      // save current scroll
+      scrollYRef.current = window.scrollY || window.pageYOffset || 0;
 
-  //     // iOS fallback: prevent touchmove when touching outside the sidebar,
-  //     // but allow touchmove / scrolling within the sidebar itself.
-  //     const preventTouchExceptSidebar = (e: TouchEvent) => {
-  //       // if the touch target is inside the sidebar, allow it
-  //       const target = e.target as Node | null;
-  //       if (sidebarRef.current && target && sidebarRef.current.contains(target)) {
-  //         // allow native scrolling inside sidebar
-  //         return;
-  //       }
-  //       // otherwise prevent default (blocks background touch scrolling)
-  //       e.preventDefault();
-  //     };
-  //     document.addEventListener("touchmove", preventTouchExceptSidebar, { passive: false });
-  //     removeTouchListener = () => document.removeEventListener("touchmove", preventTouchExceptSidebar);
-  //   } else {
-  //     // restore
-  //     const top = document.body.style.top || "";
-  //     document.body.style.position = "";
-  //     document.body.style.top = "";
-  //     document.body.style.left = "";
-  //     document.body.style.right = "";
-  //     document.body.style.width = "";
-  //     document.documentElement.style.overflow = "";
+      // lock body (preserve visual position) — optional: you could just set overflow hidden
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${scrollYRef.current}px`;
+      document.body.style.left = "0";
+      document.body.style.right = "0";
+      document.body.style.width = "100%";
+      document.documentElement.style.overflow = "hidden";
 
-  //     if (top) {
-  //       const restoreY = -parseInt(top.replace("px", ""), 10) || 0;
-  //       window.scrollTo(0, restoreY);
-  //     }
-  //   }
-
-  //   return () => {
-  //     document.body.style.position = "";
-  //     document.body.style.top = "";
-  //     document.body.style.left = "";
-  //     document.body.style.right = "";
-  //     document.body.style.width = "";
-  //     document.documentElement.style.overflow = "";
-  //     removeTouchListener();
-  //   };
-  // }, [sidebarOpen]);
-// in SidebarClient useEffect (replace your current body-lock effect)
-useEffect(() => {
-  let removeTouchListener = () => {};
-
-  if (sidebarOpen && isMobile) {
-    // save current scroll
-    scrollYRef.current = window.scrollY || window.pageYOffset || 0;
-
-    // lock body (preserve visual position) — optional: you could just set overflow hidden
-    document.body.style.position = "fixed";
-    document.body.style.top = `-${scrollYRef.current}px`;
-    document.body.style.left = "0";
-    document.body.style.right = "0";
-    document.body.style.width = "100%";
-    document.documentElement.style.overflow = "hidden";
-
-    const preventTouchExceptSidebar = (e: TouchEvent) => {
-      const target = e.target as Node | null;
-      if (sidebarRef.current && target && sidebarRef.current.contains(target)) return;
-      e.preventDefault();
-    };
-    document.addEventListener("touchmove", preventTouchExceptSidebar, { passive: false });
-    removeTouchListener = () => document.removeEventListener("touchmove", preventTouchExceptSidebar);
-  } else {
-    // restore
-    const top = document.body.style.top || "";
-    document.body.style.position = "";
-    document.body.style.top = "";
-    document.body.style.left = "";
-    document.body.style.right = "";
-    document.body.style.width = "";
-    document.documentElement.style.overflow = "";
-    if (top) {
-      const restoreY = -parseInt(top.replace("px", ""), 10) || 0;
-      window.scrollTo(0, restoreY);
+      const preventTouchExceptSidebar = (e: TouchEvent) => {
+        const target = e.target as Node | null;
+        if (sidebarRef.current && target && sidebarRef.current.contains(target))
+          return;
+        e.preventDefault();
+      };
+      document.addEventListener("touchmove", preventTouchExceptSidebar, {
+        passive: false,
+      });
+      removeTouchListener = () =>
+        document.removeEventListener("touchmove", preventTouchExceptSidebar);
+    } else {
+      // restore
+      const top = document.body.style.top || "";
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.left = "";
+      document.body.style.right = "";
+      document.body.style.width = "";
+      document.documentElement.style.overflow = "";
+      if (top) {
+        const restoreY = -parseInt(top.replace("px", ""), 10) || 0;
+        window.scrollTo(0, restoreY);
+      }
     }
-  }
 
-  return () => {
-    document.body.style.position = "";
-    document.body.style.top = "";
-    document.body.style.left = "";
-    document.body.style.right = "";
-    document.body.style.width = "";
-    document.documentElement.style.overflow = "";
-    removeTouchListener();
-  };
-}, [sidebarOpen, isMobile]);
+    return () => {
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.left = "";
+      document.body.style.right = "";
+      document.body.style.width = "";
+      document.documentElement.style.overflow = "";
+      removeTouchListener();
+    };
+  }, [sidebarOpen, isMobile]);
 
   // -------------------------
   // SidebarParent component (unchanged logic)
   // -------------------------
-  function SidebarParent({ item }: { item: typeof menuItems[number] }) {
+  function SidebarParent({ item }: { item: (typeof menuItems)[number] }) {
     const wrapperRef = useRef<HTMLDivElement | null>(null);
     const btnRef = useRef<HTMLButtonElement | null>(null);
-    const [lineStyle, setLineStyle] = useState<{ top: number; height: number; visible: boolean }>({
+    const [lineStyle, setLineStyle] = useState<{
+      top: number;
+      height: number;
+      visible: boolean;
+    }>({
       top: 0,
       height: 0,
       visible: false,
     });
 
     const measure = () => {
-      if (!wrapperRef.current || !btnRef.current) return setLineStyle((s) => ({ ...s, visible: false }));
+      if (!wrapperRef.current || !btnRef.current)
+        return setLineStyle((s) => ({ ...s, visible: false }));
 
       const wrapperRect = wrapperRef.current.getBoundingClientRect();
       const btnRect = btnRef.current.getBoundingClientRect();
@@ -2935,7 +2819,11 @@ useEffect(() => {
               alt={item.name}
               width={24}
               height={24}
-              className={`object-contain ${isTabSelected(item.href) || hasSelectedChild(item.children) ? "filter brightness-0" : ""}`}
+              className={`object-contain ${
+                isTabSelected(item.href) || hasSelectedChild(item.children)
+                  ? "filter brightness-0"
+                  : ""
+              }`}
             />
           </div>
           <span className="flex-1 text-left">{item.name}</span>
@@ -2944,8 +2832,12 @@ useEffect(() => {
             alt="arrow down"
             width={20}
             height={20}
-            className={`transform transition-transform ${activeDropdown === item.name ? "rotate-180" : ""} ${
-              isTabSelected(item.href) || hasSelectedChild(item.children) ? "filter brightness-0" : ""
+            className={`transform transition-transform ${
+              activeDropdown === item.name ? "rotate-180" : ""
+            } ${
+              isTabSelected(item.href) || hasSelectedChild(item.children)
+                ? "filter brightness-0"
+                : ""
             }`}
           />
         </button>
@@ -2969,7 +2861,9 @@ useEffect(() => {
                     href={href}
                     onClick={() => setSidebarOpen(false)}
                     className={`block px-4 py-2 txt-16 rounded-md transition-colors ${
-                      isChildSelected ? "bg-brand text-[#0E0E0E] font-medium" : "text-text-col hover:bg-neutral-100 font-normal"
+                      isChildSelected
+                        ? "bg-brand text-[#0E0E0E] font-medium"
+                        : "text-text-col hover:bg-neutral-100 font-normal"
                     }`}
                   >
                     {child.name}
@@ -2987,7 +2881,11 @@ useEffect(() => {
     <>
       {/* Backdrop (when mobile) */}
       {isMobile && sidebarOpen && (
-        <div className="fixed inset-0 bg-black/50 z-40 lg:hidden" onClick={() => setSidebarOpen(false)} aria-hidden />
+        <div
+          className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+          onClick={() => setSidebarOpen(false)}
+          aria-hidden
+        />
       )}
 
       <aside
@@ -3001,7 +2899,13 @@ useEffect(() => {
         <div className="flex flex-col h-full 2xl:py-6 px-3">
           {/* logo/header */}
           <div className="flex-shrink-0 flex justify-center pt-2">
-            <Image src="/authIcons/Alpha-logo.png" alt="Alpha Logo" width={96} height={96} className="h-24 w-24" />
+            <Image
+              src="/authIcons/Alpha-logo.png"
+              alt="Alpha Logo"
+              width={96}
+              height={96}
+              className="h-24 w-24"
+            />
           </div>
 
           {/* NAV - scrollable area */}
@@ -3014,12 +2918,16 @@ useEffect(() => {
               {menuItems.map((item) => {
                 return (
                   <li key={item.name}>
-                    {item.children ? <SidebarParent item={item} /> : (
+                    {item.children ? (
+                      <SidebarParent item={item} />
+                    ) : (
                       <Link
                         href={item.href || `/dashboard/${toSlug(item.name)}`}
                         onClick={() => setSidebarOpen(false)}
                         className={`flex items-center px-4 py-2 txt-16 rounded-md transition-colors ${
-                          isTabSelected(item.href) ? "bg-brand text-[#0E0E0E] font-medium" : "text-text-col font-normal hover:bg-neutral-100"
+                          isTabSelected(item.href)
+                            ? "bg-brand text-[#0E0E0E] font-medium"
+                            : "text-text-col font-normal hover:bg-neutral-100"
                         }`}
                       >
                         <div className="w-6 h-6 mr-3 flex items-center justify-center">
@@ -3028,7 +2936,11 @@ useEffect(() => {
                             alt={item.name}
                             width={24}
                             height={24}
-                            className={`object-contain ${isTabSelected(item.href) ? "filter brightness-0" : ""}`}
+                            className={`object-contain ${
+                              isTabSelected(item.href)
+                                ? "filter brightness-0"
+                                : ""
+                            }`}
                           />
                         </div>
                         <span>{item.name}</span>
@@ -3042,8 +2954,16 @@ useEffect(() => {
 
           {/* footer / logout (always visible) */}
           <div className="flex-shrink-0 mt-2 py-4 bg-white">
-            <button onClick={handleLogout} className="w-full h-10 py-2 px-3 flex items-center gap-2 rounded-lg hover:bg-neutral-100 transition-colors">
-              <Image src="/dashboardIcons/logout.svg" alt="Logout" width={24} height={24} />
+            <button
+              onClick={handleLogout}
+              className="w-full h-10 py-2 px-3 flex items-center gap-2 rounded-lg hover:bg-neutral-100 transition-colors"
+            >
+              <Image
+                src="/dashboardIcons/logout.svg"
+                alt="Logout"
+                width={24}
+                height={24}
+              />
               <span className="txt-16 font-medium text-text-col">Logout</span>
             </button>
           </div>
@@ -3052,7 +2972,10 @@ useEffect(() => {
 
       {/* Mobile header toggle */}
       <header className="h-16 lg:hidden flex items-center px-4 bg-white border-b border-neutral-200">
-        <button onClick={() => setSidebarOpen((s) => !s)} className="p-2 rounded-md text-neutral-700 hover:bg-neutral-100 focus:outline-none">
+        <button
+          onClick={() => setSidebarOpen((s) => !s)}
+          className="p-2 rounded-md text-neutral-700 hover:bg-neutral-100 focus:outline-none"
+        >
           <TbLayoutSidebar className="h-6 w-6" />
         </button>
       </header>

@@ -106,7 +106,7 @@ import ToastManager from "./components/ToastManager";
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   return (
     <ToastProvider>
-      <div className="flex h-screen bg-white">
+      <div className="flex min-h-screen bg-white">
         {/* Sidebar */}
 
         {/* make container not let children overflow out of the flex box */}
