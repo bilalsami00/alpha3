@@ -2622,18 +2622,6 @@
 //   );
 // }
 
-
-
-
-
-
-
-
-
-
-
-
-
 // src/app/(dashboard)/dashboard/SidebarClient.tsx
 "use client";
 
@@ -2880,6 +2868,13 @@ export default function SidebarClient() {
   return (
     <>
       {/* Backdrop (when mobile) */}
+      {/* {isMobile && sidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+          onClick={() => setSidebarOpen(false)}
+          aria-hidden
+        />
+      )} */}
       {isMobile && sidebarOpen && (
         <div
           className="fixed inset-0 bg-black/50 z-40 lg:hidden"
@@ -2887,7 +2882,13 @@ export default function SidebarClient() {
           aria-hidden
         />
       )}
-
+      {/* <aside
+        ref={sidebarRef}
+        className={`fixed lg:static inset-y-0 left-0 z-50 w-64 bg-white border-r border-neutral-200 transform transition-transform duration-300 ease-in-out ${
+          sidebarOpen ? "translate-x-0" : "-translate-x-full"
+        } lg:translate-x-0 flex flex-col`}
+        aria-hidden={!sidebarOpen}
+      > */}
       <aside
         ref={sidebarRef}
         className={`fixed lg:static inset-y-0 left-0 z-50 w-64 bg-white border-r border-neutral-200 transform transition-transform duration-300 ease-in-out ${
@@ -2971,7 +2972,23 @@ export default function SidebarClient() {
       </aside>
 
       {/* Mobile header toggle */}
-      <header className="h-16 lg:hidden flex items-center px-4 bg-white border-b border-neutral-200">
+      {/* <header className="h-16 lg:hidden flex items-center px-4 bg-white border-b border-neutral-200">
+        <button
+          onClick={() => setSidebarOpen((s) => !s)}
+          className="p-2 rounded-md text-neutral-700 hover:bg-neutral-100 focus:outline-none"
+        >
+          <TbLayoutSidebar className="h-6 w-6" />
+        </button>
+      </header> */}
+      {/* Mobile header toggle */}
+      {/* sticky so it stays at the top when content scrolls */}
+      {/* Mobile header toggle — slide-up when sidebar opens */}
+      <header
+        aria-hidden={sidebarOpen}
+        className={`h-16 lg:hidden fixed top-0 left-0 right-0 z-60 flex items-center px-4 bg-white border-b border-neutral-200 transform transition-transform duration-300 ease-in-out ${
+          sidebarOpen ? "-translate-y-full" : "translate-y-0"
+        }`}
+      >
         <button
           onClick={() => setSidebarOpen((s) => !s)}
           className="p-2 rounded-md text-neutral-700 hover:bg-neutral-100 focus:outline-none"
