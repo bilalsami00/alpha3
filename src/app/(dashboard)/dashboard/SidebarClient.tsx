@@ -2851,7 +2851,7 @@ export default function SidebarClient() {
         )}
 
         {activeDropdown === item.name && (
-          <ul className="ml-10 mt-1 space-y-1 relative z-10">
+          <ul className="ml-9 mt-1 space-y-1 relative z-10">
             {item.children!.map((child) => {
               const href = child.href || `/dashboard/${toSlug(child.name)}`;
               const isChildSelected = isTabSelected(href);

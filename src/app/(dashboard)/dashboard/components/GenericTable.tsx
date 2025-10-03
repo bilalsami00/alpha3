@@ -578,7 +578,7 @@ export default function GenericTable<T>({
   // and render a centered fixed-width body container for the empty-state (no horizontal scroll).
   if (!hasData) {
     return (
-      <div className={`bg-white rounded shadow-sm ${tableClassName}`}>
+      <div className={`bg-white rounded shadow- sm ${tableClassName}`}>
         {/* Header area (scrollable horizontally) */}
         <div className="w-full overflow-x-auto border-b border-[color:var(--Neutral-Grey-10,#E9EDEE)]">
           <table
@@ -640,7 +640,7 @@ export default function GenericTable<T>({
   return (
     // container allows horizontal scroll when data exists (table may be wide)
     <div
-      className={`bg-white rounded shadow-sm ${tableClassName}`}
+      className={`bg-white rounded shadow- sm ${tableClassName}`}
       style={{
         overflowX: "auto",
         overflowY: "auto",
